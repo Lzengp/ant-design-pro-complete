@@ -12,7 +12,11 @@ npm install
 npm start
 ```
 
+## 与原项目[Ant Design Pro](https://github.com/ant-design/ant-design-pro)的区别
+
+没啥区别，就替换了下logo，然后新增了一些小demo和工具类
+
 ## 此项目的目的
 
-- 方便自己找样式
+- 方便自己找样式，记录笔记
 - 练手项目
