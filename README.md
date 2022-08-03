@@ -1,8 +1,8 @@
-# Ant Design Pro
+# 项目介绍
 
-This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
+来自 [Ant Design Pro](https://pro.ant.design) 官网的脚手架， 并且包括所有区块， 样式十分丰富，满足日常常见场景
 
-## Environment Prepare
+## 项目搭建与启动
 
 Install `node_modules`:
 
