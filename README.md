@@ -19,11 +19,19 @@ npm start
 ## 此项目的目的
 
 - 方便自己找样式
+
 - 记录笔记
+
 - 练手项目
 
 ## 其他
 
-此项目目前部署在[Vercel](https://vercel.com/)上(个人网站首推的远程服务器)，然后绑定在自己的域名下
+-  此项目目前部署在[Vercel](https://vercel.com/)上(个人网站首推的远程服务器)，然后绑定在自己的域名下
+
+-  [使用Vercel发布自己的GitHub项目到远程服务器上](https://zhuanlan.zhihu.com/p/549887095)
+
+-  项目里面的数据使用的是Apifox软件mock的, 数据加载稍微有点慢
+
+-  如果只是本地开发, 可以使用本地mock的数据: 全局搜索 **https://<span></span>mock.apifox.cn/m1/1401620-0-default** , 然后直接删除这个前缀就可以使用本地mock了
 
 项目体验地址: [https://www.lzengp.top](https://www.lzengp.top)
