@@ -14,7 +14,7 @@ npm start
 
 ## 与原项目[Ant Design Pro](https://github.com/ant-design/ant-design-pro)的区别
 
-没啥区别，就替换了下logo，去掉了.husky文件（这个文件其实就一个git hooks, 本地测试的时候会导致提交的时候报错 **Git: [STARTED] Preparing...**，所以秉着解决问题的源头，干脆删掉）， 然后新增了一些小demo和工具类
+没啥区别，就替换了下logo(logo来自iconfont, 作者是[Vizovanver](https://www.iconfont.cn/user/detail?spm=a313x.7781069.0.d214f71f6&uid=969416&nid=7Y5iPgJrZJmk))，去掉了.husky文件（这个文件其实就一个git hooks, 本地测试的时候会导致提交的时候报错 **Git: [STARTED] Preparing...**，所以秉着解决问题的源头，干脆删掉），然后新增了一些小demo和工具类
 
 ## 此项目的目的
 
