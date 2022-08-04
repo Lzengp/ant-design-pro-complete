@@ -7,5 +7,5 @@ export async function queryBasicProfile(): Promise<{
     basicGoods: BasicGood[];
   };
 }> {
-  return request('/api/profile/basic');
+  return request('https://mock.apifox.cn/m1/1401620-0-default/api/profile/basic');
 }

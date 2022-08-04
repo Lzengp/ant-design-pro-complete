@@ -19,7 +19,7 @@ export async function rule(
     /** 列表的内容总数 */
     total?: number;
     success?: boolean;
-  }>('/api/rule', {
+  }>('https://mock.apifox.cn/m1/1401620-0-default/api/rule', {
     method: 'GET',
     params: {
       ...params,

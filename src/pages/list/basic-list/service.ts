@@ -8,7 +8,7 @@ type ParamsType = {
 export async function queryFakeList(
   params: ParamsType,
 ): Promise<{ data: { list: BasicListItemDataType[] } }> {
-  return request('/api/get_list', {
+  return request('https://mock.apifox.cn/m1/1401620-0-default/api/get_list', {
     params,
   });
 }
