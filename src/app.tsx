@@ -12,6 +12,7 @@ import logo from '../public/letter_l.png';
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
+const personalPath = '/personal';
 
 /** 获取用户信息比较慢的时候会展示一个 loading */
 export const initialStateConfig = {
@@ -37,7 +38,7 @@ export async function getInitialState(): Promise<{
     return undefined;
   };
   // 如果不是登录页面，执行
-  if (history.location.pathname !== loginPath) {
+  if (history.location.pathname !== loginPath || !history.location.pathname.includes(personalPath)) {
     const currentUser = await fetchUserInfo();
     return {
       fetchUserInfo,
@@ -64,21 +65,21 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     onPageChange: () => {
       const { location } = history;
       // 如果没有登录，重定向到 login
-      if (!initialState?.currentUser && location.pathname !== loginPath) {
+      if (!initialState?.currentUser && location.pathname !== loginPath && !location.pathname.includes(personalPath)) {
         history.push(loginPath);
       }
     },
     links: isDev
       ? [
-          <Link key="openapi" to="/umi/plugin/openapi" target="_blank">
-            <LinkOutlined />
-            <span>OpenAPI 文档</span>
-          </Link>,
-          <Link to="/~docs" key="docs">
-            <BookOutlined />
-            <span>业务组件文档</span>
-          </Link>,
-        ]
+        <Link key="openapi" to="/umi/plugin/openapi" target="_blank">
+          <LinkOutlined />
+          <span>OpenAPI 文档</span>
+        </Link>,
+        <Link to="/~docs" key="docs">
+          <BookOutlined />
+          <span>业务组件文档</span>
+        </Link>,
+      ]
       : [],
     menuHeaderRender: undefined,
     // 自定义 403 页面
