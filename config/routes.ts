@@ -290,7 +290,7 @@
   },
   {
     path: '/',
-    redirect: '/dashboard/analysis',
+    redirect: '/personal',
   },
   {
     component: '404',
