@@ -25,6 +25,13 @@ const GlobalHeaderRight: React.FC = () => {
 
   return (
     <Space className={className}>
+      <a
+        onClick={() => {
+          window.open('/personal');
+        }}
+      >
+        关于我
+      </a>
       <HeaderSearch
         className={`${styles.action} ${styles.search}`}
         placeholder="站内搜索"
