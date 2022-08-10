@@ -289,6 +289,23 @@
     ],
   },
   {
+    name: 'myPages',
+    icon: 'highlight',
+    path: '/myPages',
+    routes: [
+      {
+        path: '/myPages',
+        redirect: '/myPages/myEditor',
+      },
+      {
+        name: 'myEditor',
+        icon: 'smile',
+        path: '/myPages/myEditor',
+        component: './mypages/myeditorpage',
+      },
+    ],
+  },
+  {
     path: '/',
     redirect: '/dashboard/analysis',
   },
