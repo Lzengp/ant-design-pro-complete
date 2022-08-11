@@ -3,6 +3,7 @@ import '@wangeditor/editor/dist/css/style.css' // 引入 css
 import { useState, useEffect } from 'react'
 import { Editor, Toolbar } from '@wangeditor/editor-for-react'
 import { IDomEditor, IEditorConfig, IToolbarConfig } from '@wangeditor/editor'
+import { SlateEditor } from '@wangeditor/editor'
 
 interface MyEditorProps {
     value: string;
@@ -16,6 +17,13 @@ function MyEditor(props: MyEditorProps) {
 
     // 编辑器内容
     const [html, setHtml] = useState(value || '');
+
+    useEffect(() => {
+        if (editor && html) {
+            const endPoint = SlateEditor.end(editor, [])
+            editor.select(endPoint)
+        }
+    }, [editor]);
 
     // 组件受控
     useEffect(() => {
