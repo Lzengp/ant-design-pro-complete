@@ -6,9 +6,10 @@ import { history, Link } from 'umi';
 import RightContent from '@/components/RightContent';
 import Footer from '@/components/Footer';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
-import { BookOutlined, LinkOutlined } from '@ant-design/icons';
+import Icon, { BookOutlined, LinkOutlined } from '@ant-design/icons';
 import defaultSettings from '../config/defaultSettings';
 import logo from '../public/letter_l.png';
+import { IconMap } from './components/MenuIcon';
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -113,6 +114,19 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
           )}
         </>
       );
+    },
+    menuDataRender: (menuData) => {
+      return menuData.map((item) => {
+        return {
+          ...item,
+          icon:
+            typeof item.icon === 'string' && item.icon.indexOf('|svg') > -1 ? (
+              <Icon component={IconMap[item.icon.replace('|svg', '')]} style={{ fontSize: 14 }} />
+            ) : (
+              item.icon
+            ),
+        };
+      });
     },
     ...initialState?.settings,
   };

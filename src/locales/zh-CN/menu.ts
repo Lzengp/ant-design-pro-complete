@@ -51,4 +51,5 @@ export default {
   'menu.editor.koni': '拓扑编辑器',
   'menu.myPages': '我的页面',
   'menu.myPages.myEditor': '富文本框编辑器',
+  'menu.myPages.myModularization': '模块化页面',
 };

@@ -7,11 +7,10 @@ import { IDomEditor, IEditorConfig, IToolbarConfig } from '@wangeditor/editor'
 interface MyEditorProps {
     value: string;
     onChange: (value: string) => void;
-    showHtml?: boolean;
 }
 
 function MyEditor(props: MyEditorProps) {
-    const { value, onChange, showHtml = false } = props;
+    const { value, onChange } = props;
     // editor 实例
     const [editor, setEditor] = useState<IDomEditor | null>(null)   // TS 语法
 
@@ -31,6 +30,7 @@ function MyEditor(props: MyEditorProps) {
     // 编辑器配置
     const editorConfig: Partial<IEditorConfig> = {    // TS 语法
         placeholder: '请输入内容...',
+        autoFocus: true,
     }
 
     // 及时销毁 editor ，重要！
@@ -60,14 +60,6 @@ function MyEditor(props: MyEditorProps) {
                     style={{ height: '500px', overflowY: 'hidden' }}
                 />
             </div>
-            {
-                showHtml && (
-                    <div style={{ marginTop: '15px' }}>
-                        {html}
-                    </div>
-                )
-            }
-
         </>
     )
 }

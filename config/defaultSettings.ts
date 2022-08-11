@@ -15,7 +15,7 @@ const Settings: LayoutSettings & {
   title: 'Lzengp.top',
   pwa: false,
   // logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
-  iconfontUrl: '',
+  iconfontUrl: '//at.alicdn.com/t/c/font_3269449_pxfeihmehnf.js', // 改地址为iconfont中的项目地址，可根据实际情况修改
 };
 
 export default Settings;

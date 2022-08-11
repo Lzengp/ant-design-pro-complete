@@ -290,7 +290,8 @@
   },
   {
     name: 'myPages',
-    icon: 'highlight',
+    // icon: 'icon-webyemiansheji', // iconfont远程icon，需要配置defaultSettings.iconfontUrl
+    icon: 'mywebpage|svg', // 本地自定义icon，需要重写menuDataRender方法
     path: '/myPages',
     routes: [
       {
@@ -301,7 +302,13 @@
         name: 'myEditor',
         icon: 'smile',
         path: '/myPages/myEditor',
-        component: './mypages/myeditorpage',
+        component: './mypages/myEditorPage',
+      },
+      {
+        name: 'myModularization',
+        icon: 'smile',
+        path: '/myPages/myModularization',
+        component: './mypages/myModularization',
       },
     ],
   },

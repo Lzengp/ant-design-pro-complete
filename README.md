@@ -38,4 +38,30 @@ npm start
 
 ## 引入第三方组件库
 
-### [添加 wangEditor 富文本编辑器](https://www.wangeditor.com/v5/for-frame.html#react)
+### [使用 wangEditor 富文本编辑器](https://www.wangeditor.com/v5/for-frame.html#react)
+
+### [使用 iconFont](https://www.iconfont.cn/)
+
+- 菜单图标使用 iconFont
+
+使用线上 CDN
+
+defaultSettings 里面的 iconfontUrl 添加 Symbol 里面的链接//at.alicdn.com/t/c/font_3269449_pxfeihmehnf.js
+
+这个链接的位置在 资源管理->我的项目->我发起的项目-Symbol 里面，然后直接复制图片的代码 icon-webyemiansheji， 放在 icon 里面就可以了
+
+使用本地
+
+修改了 app.tsx 文件中 ProLayout 的 menuDataRender 属性，支持自定义图标；参考 [mywebpage](./src/components/MenuIcon/index.tsx) 菜单 icon 的使用
+
+- 页面中使用 iconFont [代码参考](./src/pages/mypages/myModularization/index.tsx)
+
+使用线上 CDN
+
+使用 ant-design/icons 提供的 createFromIconfontCN，可以连接到 iconFont，具体参考页面中[MyIcon](./src/components/MyIcon/index.tsx) 的使用，线上版本可以更改 icon 颜色
+
+使用本地
+
+直接下载 svg 资源，然后通过 img.src 导入图片，缺点：不可以修改颜色
+
+使用 antd 的 icon，把 svg 资源放在 component 里面，可以改变颜色
