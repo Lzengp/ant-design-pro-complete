@@ -24,11 +24,10 @@ const personalIntroduction = () => {
           alignItems: 'center',
           color: '#c1c1c1'
         }}>
-          <img src='./my.jpg' />
+          <img src='./my.jpg' style={{ width: '80%' }} />
           <span>我与地主家的儿子</span>
         </div>
-
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+        <div dangerouslySetInnerHTML={{ __html: html }} className={styles.mainContent} />
       </div>
       <div className={styles.poweredByVercel}>Powered by Vercel</div>
     </div >
