@@ -20,8 +20,10 @@ function MyEditor(props: MyEditorProps) {
 
     useEffect(() => {
         if (editor && html) {
-            const endPoint = SlateEditor.end(editor, [])
-            editor.select(endPoint)
+            setTimeout(() => {
+                const endPoint = SlateEditor.end(editor, [])
+                editor.select(endPoint)
+            }, 500);
         }
     }, [editor]);
 
