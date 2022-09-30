@@ -67,6 +67,7 @@
     "bizcharts-plugin-slider": "^2.1.1-beta.1",
     "classnames": "^2.3.0",
     "gg-editor": "^2.0.2",
+    "jsbarcode-react": "^0.2.5",
     "lodash": "^4.17.0",
     "lodash-decorators": "^6.0.0",
     "moment": "^2.29.0",
@@ -81,6 +82,7 @@
     "react-fittext": "^1.0.0",
     "react-helmet-async": "^1.2.0",
     "react-router": "^4.3.1",
+    "react-to-print": "^2.14.7",
     "umi": "^3.5.0",
     "umi-serve": "^1.9.10",
     "xml-formatter": "^2.6.1"

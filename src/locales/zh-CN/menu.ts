@@ -1,3 +1,10 @@
+/*
+ * @Description:
+ * @Author: longwei
+ * @Date: 2022-08-03 20:16:25
+ * @LastEditors: longwei
+ * @LastEditTime: 2022-09-30 17:02:10
+ */
 export default {
   'menu.welcome': '欢迎',
   'menu.more-blocks': '更多区块',
@@ -52,4 +59,5 @@ export default {
   'menu.myPages': '我的页面',
   'menu.myPages.myEditor': '富文本框编辑器',
   'menu.myPages.myModularization': '模块化页面',
+  'menu.personal': '个人页面',
 };

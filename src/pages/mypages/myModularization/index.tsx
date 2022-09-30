@@ -1,5 +1,13 @@
+/*
+ * @Description: 
+ * @Author: longwei
+ * @Date: 2022-08-11 13:48:52
+ * @LastEditors: longwei
+ * @LastEditTime: 2022-09-30 17:00:08
+ */
 import styles from './index.less';
 import IconPage from "./components/IconPage";
+import ReactToPrintPage from './components/ReactToPrintPage';
 // import DragVerificationCode from './components/DragVerificationCode';
 
 interface ComponentsProps {
@@ -12,6 +20,7 @@ const myModularization = () => {
 
     const componentsList = [
         { dom: <IconPage /> },
+        { dom: <ReactToPrintPage /> }
         // { dom: <DragVerificationCode />, height: 400 },
     ];
 
@@ -20,7 +29,7 @@ const myModularization = () => {
             {
                 componentsList.map((item: ComponentsProps) => {
                     return (
-                        <div className={styles.modularization} style={{ height: `${item.height}px` }}>
+                        <div className={styles.modularization} style={{ height: `${item.height}px` }} key={Math.ceil(Math.random() * 1000000)}>
                             {item.dom}
                         </div>
                     )
