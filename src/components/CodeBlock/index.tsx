@@ -41,11 +41,7 @@ const CodeBlock = (props: CodeBlockProps) => {
         borderRadius: '5px',
       }}
     >
-      <Markdown
-        // source={md}
-        children={children}
-        components={components}
-      />
+      <Markdown children={children} components={components} />
     </div>
   );
 };
