@@ -3,7 +3,7 @@
  * @Author: longwei
  * @Date: 2022-10-09 09:44:11
  * @LastEditors: longwei
- * @LastEditTime: 2022-10-09 11:34:36
+ * @LastEditTime: 2022-10-09 13:49:32
  */
 // @ts-ignore
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -23,11 +23,13 @@ const CodeBlock = (props: CodeBlockProps) => {
       const match = /language-(\w+)/.exec(className || '');
       return !inline && match ? (
         <SyntaxHighlighter
-          style={vscDarkPlus}
-          language={match[1]}
+          style={vscDarkPlus} // 这个就是你代码高亮的样式，颜色类的
+          // language={match[1]}
+          language='tsx' // 你需要的类型，比如url、JavaScript等
           PreTag="div"
-          children={String(children).replace(/\n$/, '')}
-          showLineNumbers={true}
+          children={String(children).replace(/\n$/, '')} // 代码块儿内容
+          showLineNumbers={true} // 这个是显示不显示左侧的行数
+          wrapLines={true}        //确定每行代码是否应该包装在父元素中
           {...props}
         />
       ) : (
