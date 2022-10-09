@@ -4,15 +4,13 @@ export const code = `
 * @Description:
 * @Author: longwei
 * @Date: 2022-09-30 16:28:42
-* @LastEditors: longwei
-* @LastEditTime: 2022-09-30 17:33:08
+ * @LastEditors: longwei
+ * @LastEditTime: 2022-10-09 11:30:52
 */
 import ReactToPrint from 'react-to-print';
 import Barcode from 'jsbarcode-react';
 import { useRef, useState } from 'react';
 import { Button, Input, message } from 'antd';
-import ProCard from '@ant-design/pro-card';
-import ReactMarkdown from '@/components/ReactMarkdown';
 
 // 打印，条形码
 const ReactToPrintPage = () => {

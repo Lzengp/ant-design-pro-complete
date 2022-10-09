@@ -1,7 +1,14 @@
+/*
+ * @Description: 
+ * @Author: longwei
+ * @Date: 2022-10-09 09:44:11
+ * @LastEditors: longwei
+ * @LastEditTime: 2022-10-09 11:34:36
+ */
 // @ts-ignore
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 // @ts-ignore
-import { coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { coy, vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import Markdown from 'react-markdown';
 
 interface CodeBlockProps {
@@ -16,10 +23,11 @@ const CodeBlock = (props: CodeBlockProps) => {
       const match = /language-(\w+)/.exec(className || '');
       return !inline && match ? (
         <SyntaxHighlighter
-          style={coy}
+          style={vscDarkPlus}
           language={match[1]}
           PreTag="div"
           children={String(children).replace(/\n$/, '')}
+          showLineNumbers={true}
           {...props}
         />
       ) : (
@@ -34,15 +42,7 @@ const CodeBlock = (props: CodeBlockProps) => {
   };
 
   return (
-    <div
-      style={{
-        border: '1px solid #f0f2f5',
-        padding: '20px',
-        borderRadius: '5px',
-      }}
-    >
-      <Markdown children={children} components={components} />
-    </div>
+    <Markdown children={children} components={components} />
   );
 };
 
