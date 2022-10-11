@@ -3,12 +3,13 @@
  * @Author: longwei
  * @Date: 2022-08-11 13:48:52
  * @LastEditors: longwei
- * @LastEditTime: 2022-09-30 17:00:08
+ * @LastEditTime: 2022-10-11 10:45:46
  */
 import styles from './index.less';
 import IconPage from './components/IconPage';
 import ReactToPrintPage from './components/ReactToPrintPage';
 import ResizeTitle from './components/ResizeTitle';
+import SpeakText from './components/SpeakText';
 // import DragVerificationCode from './components/DragVerificationCode';
 
 interface ComponentsProps {
@@ -22,6 +23,7 @@ const myModularization = () => {
     { dom: <IconPage /> },
     { dom: <ReactToPrintPage /> },
     { dom: <ResizeTitle /> },
+    { dom: <SpeakText /> },
     // { dom: <DragVerificationCode />, height: 400 },
   ];
 
