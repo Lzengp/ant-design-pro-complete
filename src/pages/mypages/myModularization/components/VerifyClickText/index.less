@@ -1,0 +1,68 @@
+.verifyClickText {
+  padding: 20px;
+
+  .box {
+    position: relative;
+    width: 420px;
+    height: 420px;
+    border: 10px solid #c1c1c1;
+    border-radius: 10px;
+
+    .showTextStyle {
+      position: absolute;
+      z-index: 20;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      user-select: none;
+
+      .serialNo {
+        position: absolute;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        font-size: 15px;
+        line-height: 20px;
+        text-align: center;
+        background-color: #1abd6c;
+        border-radius: 50%;
+      }
+    }
+    // 背景图 模糊
+    .bgImg {
+      width: 100%;
+      height: 100%;
+      background: url('https://img2.baidu.com/it/u=2248863795,4033026016&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800')
+        no-repeat;
+      background-position: center;
+      background-size: cover;
+      // 模糊滤镜
+      filter: blur(10px);
+    }
+  }
+
+  // 底部提示区
+  .titBox {
+    width: 420px;
+    height: 50px;
+    margin-top: 15px;
+    color: #333;
+    font-size: 26px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #c1c1c1;
+    border-radius: 10px;
+
+    // 文字区
+    .titBoxText {
+      color: #6097eb;
+      font-weight: bold;
+    }
+
+    .reload {
+      margin-left: 30px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+}

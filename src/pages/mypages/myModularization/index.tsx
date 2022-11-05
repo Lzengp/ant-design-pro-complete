@@ -13,6 +13,7 @@ import SpeakText from './components/SpeakText';
 import { MenuUnfoldOutlined } from '@ant-design/icons';
 import { Drawer } from 'antd';
 import { useState } from 'react';
+import VerifyClickText from './components/VerifyClickText';
 // import DragVerificationCode from './components/DragVerificationCode';
 
 interface ComponentsProps {
@@ -29,6 +30,7 @@ const myModularization = () => {
     { dom: <ReactToPrintPage />, id: 'ReactToPrintPage', name: '打印生成条形码' },
     { dom: <ResizeTitle />, id: 'ResizeTitle', name: '监听窗口滚动' },
     { dom: <SpeakText />, id: 'SpeakText', name: '文字转语音' },
+    { dom: <VerifyClickText />, id: 'VerifyClickText', name: '文字点击验证' },
     // { dom: <DragVerificationCode />, height: 400 },
   ];
 
