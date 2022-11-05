@@ -12,7 +12,7 @@ import ResizeTitle from './components/ResizeTitle';
 import SpeakText from './components/SpeakText';
 import { MenuUnfoldOutlined } from '@ant-design/icons';
 import { Drawer } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import VerifyClickText from './components/VerifyClickText';
 // import DragVerificationCode from './components/DragVerificationCode';
 
@@ -51,10 +51,21 @@ const myModularization = () => {
     setOpen(false);
   };
 
+  // 快捷导航 - 鼠标移入触发事件
+  useEffect(() => {
+    const drawerMenu = document.getElementById('drawerMenu');
+    drawerMenu?.addEventListener('mouseenter', () => {
+      showDrawer();
+    });
+    return () => {
+      drawerMenu?.removeEventListener('mouseenter', () => {});
+    };
+  }, []);
+
   return (
     <>
       <div style={{ position: 'fixed', top: '48px', right: 0, zIndex: 100 }} title="快捷导航">
-        <MenuUnfoldOutlined style={{ fontSize: '25px' }} onClick={showDrawer} />
+        <MenuUnfoldOutlined style={{ fontSize: '25px' }} onClick={showDrawer} id="drawerMenu" />
         <Drawer title="快捷导航" placement="right" onClose={onClose} open={open}>
           <div style={{ display: 'flex', flexFlow: 'column' }}>
             {componentsList.map((item: ComponentsProps) => {
