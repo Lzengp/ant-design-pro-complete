@@ -14,6 +14,7 @@ import { MenuUnfoldOutlined } from '@ant-design/icons';
 import { Drawer } from 'antd';
 import { useEffect, useState } from 'react';
 import VerifyClickText from './components/VerifyClickText';
+import StockQuery from './components/StockQuery';
 // import DragVerificationCode from './components/DragVerificationCode';
 
 interface ComponentsProps {
@@ -31,6 +32,7 @@ const myModularization = () => {
     { dom: <ResizeTitle />, id: 'ResizeTitle', name: '监听窗口滚动' },
     { dom: <SpeakText />, id: 'SpeakText', name: '文字转语音' },
     { dom: <VerifyClickText />, id: 'VerifyClickText', name: '文字点击验证' },
+    { dom: <StockQuery />, id: 'StockQuery', name: '股票计算' },
     // { dom: <DragVerificationCode />, height: 400 },
   ];
 
