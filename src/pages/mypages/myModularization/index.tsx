@@ -15,6 +15,7 @@ import { Drawer } from 'antd';
 import { useEffect, useState } from 'react';
 import VerifyClickText from './components/VerifyClickText';
 import StockQuery from './components/StockQuery';
+import PlayAudio from './components/PlayAudio';
 // import DragVerificationCode from './components/DragVerificationCode';
 
 interface ComponentsProps {
@@ -33,6 +34,7 @@ const myModularization = () => {
     { dom: <SpeakText />, id: 'SpeakText', name: '文字转语音' },
     { dom: <VerifyClickText />, id: 'VerifyClickText', name: '文字点击验证' },
     { dom: <StockQuery />, id: 'StockQuery', name: '股票计算' },
+    { dom: <PlayAudio />, id: 'PlayAudio', name: '播放音频' },
     // { dom: <DragVerificationCode />, height: 400 },
   ];
 
