@@ -16,6 +16,8 @@ import { useEffect, useState } from 'react';
 import VerifyClickText from './components/VerifyClickText';
 import StockQuery from './components/StockQuery';
 import PlayAudio from './components/PlayAudio';
+import GoodTools from './components/GoodTools';
+import UsefulGithubProject from './components/UsefulGithubProject';
 // import DragVerificationCode from './components/DragVerificationCode';
 
 interface ComponentsProps {
@@ -28,6 +30,9 @@ interface ComponentsProps {
 // 模块化页面：不同的模块功能组成的一个大页面，用于一些小功能的展示
 const myModularization = () => {
   const componentsList = [
+    // { dom: <DragVerificationCode />, id: 'DragVerificationCode', name: '拖动验证码', height: 400 },
+    { dom: <GoodTools />, id: 'GoodTools', name: '好用的工具网址' },
+    { dom: <UsefulGithubProject />, id: 'UsefulGithubProject', name: '有意思的GitHub项目' },
     { dom: <IconPage />, id: 'IconPage', name: '图标的使用' },
     { dom: <ReactToPrintPage />, id: 'ReactToPrintPage', name: '打印生成条形码' },
     { dom: <ResizeTitle />, id: 'ResizeTitle', name: '监听窗口滚动' },
@@ -35,7 +40,6 @@ const myModularization = () => {
     { dom: <VerifyClickText />, id: 'VerifyClickText', name: '文字点击验证' },
     { dom: <StockQuery />, id: 'StockQuery', name: '股票计算' },
     { dom: <PlayAudio />, id: 'PlayAudio', name: '播放音频' },
-    // { dom: <DragVerificationCode />, height: 400 },
   ];
 
   const goAnchor = (id: string) => {

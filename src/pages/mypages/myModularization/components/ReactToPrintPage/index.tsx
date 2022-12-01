@@ -17,6 +17,7 @@ import { Button, Input, message } from 'antd';
 const ReactToPrintPage = () => {
   const element = useRef<any>();
   const [value, setValue] = useState<string>('');
+  const [pdfValue, setPDFValue] = useState<string>('');
   const [barcodeValue, setBarcodeValue] = useState<string>('');
 
   return (
@@ -58,15 +59,22 @@ const ReactToPrintPage = () => {
         <div ref={element}>{barcodeValue && <Barcode value={barcodeValue} />}</div>
       </div>
       <h3>调用第三方pdf.js完成预览pdf功能和打印</h3>
+      <Input
+        value={pdfValue}
+        placeholder="请输入pdf链接"
+        style={{ width: '300px', marginRight: '20px' }}
+        onChange={(e) => {
+          setPDFValue(e.target.value);
+        }}
+      />
       <Button
         type="primary"
         onClick={() => {
-          window.open('https://mozilla.github.io/pdf.js/web/viewer.html?file=');
+          window.open(`https://mozilla.github.io/pdf.js/web/viewer.html?file=${pdfValue}`);
         }}
       >
         打印PDF
       </Button>
-
       <ProCard title="代码" headerBordered collapsible defaultCollapsed>
         <pre>
           <CodeBlock children={code} />
