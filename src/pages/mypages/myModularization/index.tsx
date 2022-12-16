@@ -18,6 +18,8 @@ import StockQuery from './components/StockQuery';
 import PlayAudio from './components/PlayAudio';
 import GoodTools from './components/GoodTools';
 import UsefulGithubProject from './components/UsefulGithubProject';
+import TypedJs from './components/TypedJs';
+import Introduce from './components/Introduce';
 // import DragVerificationCode from './components/DragVerificationCode';
 
 interface ComponentsProps {
@@ -31,6 +33,8 @@ interface ComponentsProps {
 const myModularization = () => {
   const componentsList = [
     // { dom: <DragVerificationCode />, id: 'DragVerificationCode', name: '拖动验证码', height: 400 },
+    { dom: <Introduce />, id: 'Introduce', name: '自我介绍' },
+    { dom: <TypedJs />, id: 'TypedJs', name: '打字效果' },
     { dom: <GoodTools />, id: 'GoodTools', name: '好用的工具网址' },
     { dom: <UsefulGithubProject />, id: 'UsefulGithubProject', name: '有意思的GitHub项目' },
     { dom: <IconPage />, id: 'IconPage', name: '图标的使用' },
