@@ -310,6 +310,12 @@
         path: '/myPages/myModularization',
         component: './mypages/myModularization',
       },
+      {
+        name: 'myArticle',
+        icon: 'smile',
+        path: '/myPages/myArticle',
+        component: './mypages/myArticle',
+      },
     ],
   },
   {

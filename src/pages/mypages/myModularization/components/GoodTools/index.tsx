@@ -11,8 +11,12 @@ const GoodTools = () => {
       title: 'Animate.css动画库',
     },
     {
-      url: 'https://picsum.photos/300/150/?image=1',
+      url: `https://picsum.photos/300/150/?image=${Math.ceil(Math.random() * 100)}`,
       title: '随机图片',
+    },
+    {
+      url: 'https://joeschmoe.io/api/v1/random',
+      title: '随机头像',
     },
   ];
 

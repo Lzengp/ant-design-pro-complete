@@ -1,0 +1,90 @@
+.myArticleWarp {
+  display: flex;
+  height: 100%;
+  padding: 20px;
+  background-color: #fff;
+
+  .catalogue {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    .newAddArticle {
+      position: absolute;
+      right: 10px;
+      cursor: pointer;
+    }
+  }
+
+  .leftTitle {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 700px;
+    overflow: auto;
+
+    .titleWrapper {
+      position: relative;
+      display: block;
+      width: 276px;
+      height: 36px;
+      margin-bottom: 2px;
+      padding: 0 8px;
+      overflow: hidden;
+      line-height: 36px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      cursor: pointer;
+      user-select: none;
+
+      .moreIcon {
+        display: none;
+      }
+    }
+
+    .titleWrapper:hover {
+      background-color: #eff0f0;
+      border: 1.5px solid #eff0f0;
+      border-radius: 6px;
+
+      .moreIcon {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        font-weight: 700;
+        font-size: 16px;
+      }
+      .moreIcon:hover {
+        background-color: #e7e9e8;
+        border-radius: 4px;
+      }
+    }
+
+    .selectTitleWrapper {
+      font-weight: 700;
+      background-color: #eff0f0;
+      border: 1.5px solid #eff0f0;
+      border-radius: 6px;
+    }
+  }
+
+  .rightContent {
+    max-width: 800px;
+    padding: 0 40px 40px;
+    background-color: #fff;
+    border-left: 1px solid #f4f5f5;
+
+    .title {
+      margin: 24px 0 32px;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 1.389;
+    }
+  }
+}

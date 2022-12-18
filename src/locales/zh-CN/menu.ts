@@ -56,8 +56,9 @@ export default {
   'menu.editor.flow': '流程编辑器',
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
+  'menu.personal': '个人页面',
   'menu.myPages': '我的页面',
   'menu.myPages.myEditor': '富文本框编辑器',
   'menu.myPages.myModularization': '模块化页面',
-  'menu.personal': '个人页面',
+  'menu.myPages.myArticle': '我的文章',
 };
