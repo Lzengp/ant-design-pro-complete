@@ -41,12 +41,27 @@ const MyArticle = () => {
   const [data, setData] = useState<Array<ArticleProps>>([...initData]);
   const [selectData, setSelectData] = useState<ArticleProps>(initData[0]);
   const [fullScreenFlag, setFullScreenFlag] = useState<boolean>(false);
+  const [commentData, setCommentData] = useState<any>();
 
   const queryData = () => {
     request('/apiL/article/getArticle').then((res: any) => {
       if (Array.isArray(res.data) && res.data.length) {
         setData(res.data);
         setSelectData(res.data[0]);
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (selectData) {
+      queryComments();
+    }
+  }, [selectData]);
+
+  const queryComments = () => {
+    request(`/apiL/comment/getComments/${selectData?.id}`).then((res: any) => {
+      if (Array.isArray(res.data) && res.data.length) {
+        setCommentData(res.data);
       }
     });
   };
@@ -120,7 +135,7 @@ const MyArticle = () => {
 
   // 全屏
   const fullScreen = () => {
-    const dom = document.getElementById('rightContent');
+    const dom = document.getElementById('rightContent') as any;
     setFullScreenFlag(true);
     if (dom?.requestFullscreen) {
       dom.requestFullscreen();
@@ -134,13 +149,32 @@ const MyArticle = () => {
   // 退出全屏
   const exitFullScreen = () => {
     setFullScreenFlag(false);
+    const document1 = document as any;
     if (document.exitFullscreen) {
       document.exitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
+    } else if (document1.mozCancelFullScreen) {
+      document1.mozCancelFullScreen();
+    } else if (document1.webkitExitFullscreen) {
+      document1.webkitExitFullscreen();
     }
+  };
+
+  const [textArea, setTextArea] = useState<string>();
+  const textAreaChange = (e) => {
+    console.log(e.target.value);
+    setTextArea(e.target.value);
+  };
+
+  const reply = () => {
+    console.log('恢复');
+    request('/apiL/comment/addComment', {
+      data: {
+        comments: textArea,
+        createName: '龙伟',
+        articleId: selectData?.id,
+      },
+      method: 'post',
+    }).then((res: any) => {});
   };
 
   return (
@@ -211,9 +245,9 @@ const MyArticle = () => {
             size="large"
             src={`https://picsum.photos/300/150/?image=${Math.ceil(Math.random() * 100)}`}
           />
-          <TextArea rows={3} style={{ width: '500px' }} />
+          <TextArea rows={3} style={{ width: '500px' }} onChange={textAreaChange} />
         </div>
-        <Button type="primary" style={{ marginLeft: '50px', borderRadius: '6px' }}>
+        <Button type="primary" style={{ marginLeft: '50px', borderRadius: '6px' }} onClick={reply}>
           回复
         </Button>
       </div>
