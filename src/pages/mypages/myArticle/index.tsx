@@ -1,3 +1,4 @@
+import { TimeToText } from '@/pages/utils';
 import {
   ClockCircleOutlined,
   DeleteOutlined,
@@ -12,7 +13,7 @@ import {
 import { Avatar, Button, Dropdown, Input, Menu, message, Modal, Space } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import classNames from 'classnames';
-import { debounce } from 'lodash';
+import { debounce, isEmpty } from 'lodash';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { request, history } from 'umi';
@@ -26,6 +27,14 @@ interface ArticleProps {
   modifyTime: string;
 }
 
+interface CommentProps {
+  id: string;
+  comments: string;
+  createTime: string;
+  createName: string;
+  articleId: string;
+}
+
 const initData = [
   {
     content: '<p>我新增的文章，不错不错</p>',
@@ -37,11 +46,28 @@ const initData = [
   },
 ];
 
+const initCommentData = [
+  {
+    id: '16',
+    createName: '龙伟',
+    createTime: '2022-12-19T00:35:09',
+    comments: '评论回复222',
+    articleId: '16',
+  },
+  {
+    id: '17',
+    createName: '龙四',
+    createTime: '2022-12-18T09:35:09',
+    comments: '评论回复1111',
+    articleId: '17',
+  },
+];
+
 const MyArticle = () => {
   const [data, setData] = useState<Array<ArticleProps>>([...initData]);
   const [selectData, setSelectData] = useState<ArticleProps>(initData[0]);
   const [fullScreenFlag, setFullScreenFlag] = useState<boolean>(false);
-  const [commentData, setCommentData] = useState<any>();
+  const [commentData, setCommentData] = useState<Array<CommentProps>>([...initCommentData]);
 
   const queryData = () => {
     request('/apiL/article/getArticle').then((res: any) => {
@@ -149,13 +175,12 @@ const MyArticle = () => {
   // 退出全屏
   const exitFullScreen = () => {
     setFullScreenFlag(false);
-    const document1 = document as any;
     if (document.exitFullscreen) {
       document.exitFullscreen();
-    } else if (document1.mozCancelFullScreen) {
-      document1.mozCancelFullScreen();
-    } else if (document1.webkitExitFullscreen) {
-      document1.webkitExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
     }
   };
 
@@ -174,7 +199,7 @@ const MyArticle = () => {
         articleId: selectData?.id,
       },
       method: 'post',
-    }).then((res: any) => {});
+    }).then((res: any) => { });
   };
 
   return (
@@ -215,7 +240,7 @@ const MyArticle = () => {
       </div>
       {/* 右侧文章主题 */}
       <div className={styles.rightContent}>
-        <div id="rightContent" style={{ minHeight: '500px' }}>
+        <div id="rightContent" style={{ minHeight: '500px', background: '#FFF' }}>
           <div style={{ position: 'absolute', right: '20px', top: '20px' }}>
             {!fullScreenFlag && (
               <FullscreenOutlined onClick={fullScreen} style={{ fontSize: '16px' }} />
@@ -239,17 +264,43 @@ const MyArticle = () => {
               : ''}
           </Space>
         </Space>
-        <div style={{ display: 'flex', margin: '20px 0' }}>
-          <Avatar
-            style={{ marginTop: '0px', marginRight: '10px' }}
-            size="large"
-            src={`https://picsum.photos/300/150/?image=${Math.ceil(Math.random() * 100)}`}
-          />
-          <TextArea rows={3} style={{ width: '500px' }} onChange={textAreaChange} />
+        {
+          !isEmpty(commentData) && (
+            <div>
+              <div className={styles.commentsTotal}>所有评论({commentData.length})</div>
+              {
+                commentData.map((item: CommentProps) => {
+                  return (
+                    <div className={styles.avatarAndComment}>
+                      <Avatar
+                        style={{ marginTop: '0px', marginRight: '10px' }}
+                        size="large"
+                        src={`https://picsum.photos/300/150/?image=${Math.ceil(Math.random() * 100)}`}
+                      />
+                      <div>
+                        <div>{item.createName} <span style={{ color: '#8A8F8D', marginLeft: '10px' }}>{TimeToText(item.createTime)}  {moment(item.createTime).format('HH:mm')}</span></div>
+                        <div style={{ paddingTop: '8px' }}>{item.comments}</div>
+                      </div>
+                    </div>
+                  )
+                })
+              }
+            </div>
+          )
+        }
+        <div>
+          <div style={{ display: 'flex', margin: '20px 0' }}>
+            <Avatar
+              style={{ marginTop: '0px', marginRight: '10px' }}
+              size="large"
+              src={`https://picsum.photos/300/150/?image=${Math.ceil(Math.random() * 100)}`}
+            />
+            <TextArea rows={3} style={{ width: '500px' }} onChange={textAreaChange} />
+          </div>
+          <Button type="primary" style={{ marginLeft: '50px', borderRadius: '6px' }} onClick={reply}>
+            回复
+          </Button>
         </div>
-        <Button type="primary" style={{ marginLeft: '50px', borderRadius: '6px' }} onClick={reply}>
-          回复
-        </Button>
       </div>
     </div>
   );
