@@ -20,6 +20,7 @@ import GoodTools from './components/GoodTools';
 import UsefulGithubProject from './components/UsefulGithubProject';
 import TypedJs from './components/TypedJs';
 import Introduce from './components/Introduce';
+import MultipleDateInput from './components/MultipleDateInput';
 // import DragVerificationCode from './components/DragVerificationCode';
 
 interface ComponentsProps {
@@ -44,6 +45,7 @@ const myModularization = () => {
     { dom: <VerifyClickText />, id: 'VerifyClickText', name: '文字点击验证' },
     { dom: <StockQuery />, id: 'StockQuery', name: '股票计算' },
     { dom: <PlayAudio />, id: 'PlayAudio', name: '播放音频' },
+    { dom: <MultipleDateInput />, id: 'MultipleDateInput', name: '时间多选控件' },
   ];
 
   const goAnchor = (id: string) => {
@@ -70,7 +72,7 @@ const myModularization = () => {
       showDrawer();
     });
     return () => {
-      drawerMenu?.removeEventListener('mouseenter', () => {});
+      drawerMenu?.removeEventListener('mouseenter', () => { });
     };
   }, []);
 
