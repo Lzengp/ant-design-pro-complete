@@ -316,6 +316,18 @@
         path: '/myPages/myArticle',
         component: './mypages/myArticle',
       },
+      {
+        name: 'myArticleList',
+        icon: 'smile',
+        path: '/myPages/myArticleList',
+        component: './mypages/myArticleList',
+      },
+      {
+        name: 'myVirtualTable',
+        icon: 'smile',
+        path: '/myPages/myVirtualTable',
+        component: './mypages/myVirtualTable',
+      },
     ],
   },
   {

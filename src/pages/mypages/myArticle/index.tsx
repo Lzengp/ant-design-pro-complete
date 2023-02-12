@@ -18,6 +18,8 @@ import { useEffect, useState } from 'react';
 import { request, history } from 'umi';
 import styles from './index.less';
 
+const myAvatar = `https://picsum.photos/300/150/?image=${Math.ceil(Math.random() * 100)}`;
+
 interface ArticleProps {
   id: string;
   title: string;
@@ -191,7 +193,7 @@ const MyArticle = () => {
     }
   };
 
-  const textAreaChange = (e) => {
+  const textAreaChange = (e: any) => {
     setTextArea(e.target.value);
   };
 
@@ -309,7 +311,7 @@ const MyArticle = () => {
                   <Avatar
                     style={{ marginTop: '0px', marginRight: '10px' }}
                     size="large"
-                    src={`https://picsum.photos/300/150/?image=${Math.ceil(Math.random() * 100)}`}
+                    src={myAvatar}
                   />
                   <div>
                     <div>
@@ -327,7 +329,11 @@ const MyArticle = () => {
                           onChange={(e) => setEditTextArea(e.target.value)}
                         />
                         <div style={{ marginTop: '10px' }}>
-                          <Button type="primary" onClick={commitEditComment}>
+                          <Button
+                            type="primary"
+                            onClick={commitEditComment}
+                            disabled={!editTextArea}
+                          >
                             提交
                           </Button>
                           <Button type="link" onClick={() => setEditId('')}>
@@ -355,11 +361,7 @@ const MyArticle = () => {
         )}
         <div>
           <div style={{ display: 'flex', margin: '20px 0' }}>
-            <Avatar
-              style={{ marginTop: '0px', marginRight: '10px' }}
-              size="large"
-              src={`https://picsum.photos/300/150/?image=${Math.ceil(Math.random() * 100)}`}
-            />
+            <Avatar style={{ marginTop: '0px', marginRight: '10px' }} size="large" src={myAvatar} />
             <TextArea
               value={textArea}
               rows={3}
@@ -371,6 +373,7 @@ const MyArticle = () => {
             type="primary"
             style={{ marginLeft: '50px', borderRadius: '6px' }}
             onClick={reply}
+            disabled={!textArea}
           >
             回复
           </Button>

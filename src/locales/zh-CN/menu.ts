@@ -61,4 +61,6 @@ export default {
   'menu.myPages.myEditor': '富文本框编辑器',
   'menu.myPages.myModularization': '模块化页面',
   'menu.myPages.myArticle': '我的文章',
+  'menu.myPages.myArticleList': '我的文章列表',
+  'menu.myPages.myVirtualTable': '虚拟列表',
 };
