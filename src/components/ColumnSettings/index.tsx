@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import _ from 'lodash';
 import { Container, Draggable } from 'react-smooth-dnd';
 
-interface OriginColumnsProps {
+export interface OriginColumnsProps {
     key?: string;
     dataIndex?: string;
     title: string;
@@ -13,7 +13,7 @@ interface OriginColumnsProps {
     [key: string]: any;
 }
 
-export interface ColumnsProps extends OriginColumnsProps {
+interface ColumnsProps extends OriginColumnsProps {
     name?: string;
     visible?: boolean;
 }
@@ -22,6 +22,7 @@ interface ColumnSettingsProps {
     columns: Array<OriginColumnsProps>;
     onChange: (value: Array<ColumnsProps>) => void;
     defaultColumnSettingsName?: string;
+    style?: React.CSSProperties; // 按钮样式
 }
 
 interface DropResult {
@@ -34,9 +35,9 @@ interface DropResult {
 // 列缓存设置
 const ColumnSettings = (props: ColumnSettingsProps) => {
 
-    const { columns, onChange: propsOnChange, defaultColumnSettingsName } = props;
+    const { columns, onChange: propsOnChange, defaultColumnSettingsName, style } = props;
     const [checkedList, setCheckedList] = useState(columns.map((d: any) => d.key || d.dataIndex));
-    const [currentColumns, setCurrentColumns] = useState<Array<any>>([...columns]);
+    const [currentColumns, setCurrentColumns] = useState<Array<any>>(columns);
     const topCurrentColumns = currentColumns.filter(r => r.fixed === 'left');
     const midCurrentColumns = currentColumns.filter(r => r.fixed !== 'left' && r.fixed !== 'right');
     const btmCurrentColumns = currentColumns.filter(r => r.fixed === 'right');
@@ -50,10 +51,9 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
     }
 
     useEffect(() => {
-        console.log('渲染columns');
         // 判断缓存是否有当前列表,render是无法放缓存的，还需要从原始columns拿
+        let checkedListList: Array<string> = [];
         if (customColumnSettings && Array.isArray(customColumnSettings[columnSettingsName])) {
-            let checkedListList: Array<string> = [];
             const list = customColumnSettings[columnSettingsName].map((d: ColumnsProps) => {
                 if (d.visible) {
                     checkedListList.push(d.name || '');
@@ -64,26 +64,28 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
                 };
             });
             setCheckedList([...checkedListList]);
-            setCurrentColumns(list);
+            handleToLocalStorage(list);
         } else {
             const list = columns.map((d) => {
+                checkedListList.push(d.key || d.dataIndex || '');
                 return {
                     name: d.key || d.dataIndex,
-                    visible: checkedList.includes(d.key || d.dataIndex),
+                    visible: true, // 默认全部可看状态
                     ...d,
                 };
             });
-            setCurrentColumns(list);
+            setCheckedList([...checkedListList]);
+            handleToLocalStorage(list);
         }
-    }, [columns]);
+    }, []);
 
-    useEffect(() => {
-        console.log('渲染currentColumns', currentColumns);
-        // propsOnChange && propsOnChange(currentColumns.filter((d) => d.visible));
+    const handleToLocalStorage = (list: Array<ColumnsProps>) => {
+        setCurrentColumns(list);
+        propsOnChange && propsOnChange(list.filter((d) => d.visible));
         // 缓存列设置到缓存里面
-        // const resCustomColumnSettings = { ...customColumnSettings, [columnSettingsName]: currentColumns };
-        // localStorage.setItem('customColumnSettings', JSON.stringify(resCustomColumnSettings));
-    }, [currentColumns]);
+        const resCustomColumnSettings = { ...customColumnSettings, [columnSettingsName]: list };
+        localStorage.setItem('customColumnSettings', JSON.stringify(resCustomColumnSettings));
+    };
 
     /**
      * 勾选事件 - 是否展示列表字段
@@ -95,8 +97,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
         setCheckedList(list);
         const resList = [...currentColumns];
         resList.forEach((d) => d.visible = list.includes(d.name));
-        setCurrentColumns(resList);
-
+        handleToLocalStorage(resList);
         return;
     };
 
@@ -119,7 +120,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
             1,
             list[currentIndex],
         )[0];
-        setCurrentColumns(list);
+        handleToLocalStorage(list);
     };
 
     /**
@@ -140,7 +141,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
             1,
             list[currentIndex],
         )[0];
-        setCurrentColumns(list);
+        handleToLocalStorage(list);
     };
 
     /**
@@ -152,7 +153,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
         list[list.findIndex((r: any) => r.name === d.name)].fixed = 'left';
         const leftColumns = list.filter(r => r.fixed === 'left');
         const resList = leftColumns.concat(list.filter(r => r.fixed !== 'left'));
-        setCurrentColumns(resList);
+        handleToLocalStorage(resList);
     };
 
     /**
@@ -164,7 +165,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
         list[list.findIndex((r: any) => r.name === d.name)].fixed = 'right';
         const rightColumns = list.filter(r => r.fixed === 'right');
         const resList = list.filter(r => r.fixed !== 'right').concat(rightColumns);
-        setCurrentColumns(resList);
+        handleToLocalStorage(resList);
     };
 
     /**
@@ -174,7 +175,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
     const cancelFixed = (d: ColumnsProps) => {
         const list = [...currentColumns];
         list[list.findIndex((r: any) => r.name === d.name)].fixed = '';
-        setCurrentColumns(list);
+        handleToLocalStorage(list);
     };
 
     // 重置
@@ -187,19 +188,17 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
                 ...d,
             };
         });
-        setCurrentColumns(list);
+        handleToLocalStorage(list);
     };
 
     // 拖拽事件
     const onDrop = (e: DropResult) => {
         const { removedIndex, addedIndex } = e;
         const list = [...currentColumns];
-        console.log('e:', e, 'remocedData:', list[removedIndex], 'topCurrentColumns:', topCurrentColumns, 'currentColumns:', currentColumns);
         if (removedIndex !== addedIndex && (removedIndex || removedIndex === 0) && (addedIndex || addedIndex === 0)) {
             let remocedData = list[removedIndex]; // 移动的数据
             list.splice(removedIndex, 1); // 删掉原来位置上的数据
             // 注意需要处理列首和列尾
-            // const topList = list.filter((d) => d.fixed === 'left');
             const rightIndex = list.findIndex((d) => d.fixed === 'right');
             if (remocedData) {
                 if (remocedData && topCurrentColumns.length - 1 >= addedIndex) {
@@ -210,8 +209,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
                     remocedData = { ...remocedData, fixed: '' };
                 }
                 list.splice(addedIndex, 0, remocedData); // 在新的位置上插入
-                setCurrentColumns(list);
-                console.log('currentColumns:', list, 'remocedData:', remocedData);
+                handleToLocalStorage(list);
             }
         }
     };
@@ -358,7 +356,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
     return (
         <Dropdown overlay={menu} trigger={['click']}>
             <Tooltip title="列设置">
-                <Button>
+                <Button style={{ ...style }}>
                     <SettingOutlined />
                     列设置
                 </Button>
