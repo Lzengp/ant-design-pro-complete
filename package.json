@@ -127,8 +127,5 @@
     "swagger-ui-react": "^3.52.0",
     "typescript": "^4.5.0",
     "umi-serve": "^1.9.10"
-  },
-  "engines": {
-    "node": "14.21.1"
   }
 }
