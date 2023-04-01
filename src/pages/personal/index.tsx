@@ -22,7 +22,7 @@ const personalIntroduction = () => {
   return (
     <div className={styles.personalIntroductionWrap}>
       <div className={styles.upperRightCorner}>
-        <a href="./dashboard/analysis">体验系统</a>
+        <a href="./myPages/myModularization">体验系统</a>
         <a
           onClick={() => {
             window.open('https://github.com/Lzengp/ant-design-pro-complete');

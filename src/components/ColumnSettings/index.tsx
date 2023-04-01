@@ -1,26 +1,26 @@
+// @ts-noCheck
 import { ArrowDownOutlined, ArrowUpOutlined, SettingOutlined, VerticalAlignBottomOutlined, VerticalAlignMiddleOutlined, VerticalAlignTopOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Dropdown, Menu, message, Space, Tooltip } from "antd";
-import { useEffect, useState } from "react";
-import _ from 'lodash';
+import React, { useEffect, useState } from "react";
 import { Container, Draggable } from 'react-smooth-dnd';
 
-export interface OriginColumnsProps {
+export interface ColumnsProps {
     key?: string;
     dataIndex?: string;
-    title: string;
+    title: string | JSX.Element;
     fixed?: string;
     render?: any;
     [key: string]: any;
 }
 
-interface ColumnsProps extends OriginColumnsProps {
+interface CurrentColumnsProps extends ColumnsProps {
     name?: string;
     visible?: boolean;
 }
 
 interface ColumnSettingsProps {
-    columns: Array<OriginColumnsProps>;
-    onChange: (value: Array<ColumnsProps>) => void;
+    columns: Array<ColumnsProps>;
+    onChange: (value: Array<CurrentColumnsProps>) => void;
     defaultColumnSettingsName?: string;
     style?: React.CSSProperties; // 按钮样式
 }
@@ -41,6 +41,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
     const topCurrentColumns = currentColumns.filter(r => r.fixed === 'left');
     const midCurrentColumns = currentColumns.filter(r => r.fixed !== 'left' && r.fixed !== 'right');
     const btmCurrentColumns = currentColumns.filter(r => r.fixed === 'right');
+    const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
 
     // 默认列设置名称, 取列表的前10个字段名称, 如果两个列表字段一样，使用defaultColumnSettingsName定义唯一标识
     let columnSettingsName = defaultColumnSettingsName || columns.slice(0, 10).map((item: any) => item.key || item.dataIndex).join('');
@@ -54,7 +55,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
         // 判断缓存是否有当前列表,render是无法放缓存的，还需要从原始columns拿
         let checkedListList: Array<string> = [];
         if (customColumnSettings && Array.isArray(customColumnSettings[columnSettingsName])) {
-            const list = customColumnSettings[columnSettingsName].map((d: ColumnsProps) => {
+            const list = customColumnSettings[columnSettingsName].map((d: CurrentColumnsProps) => {
                 if (d.visible) {
                     checkedListList.push(d.name || '');
                 }
@@ -79,11 +80,25 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
         }
     }, []);
 
-    const handleToLocalStorage = (list: Array<ColumnsProps>) => {
+    const handleToLocalStorage = (list: Array<CurrentColumnsProps>) => {
         setCurrentColumns(list);
-        propsOnChange && propsOnChange(list.filter((d) => d.visible));
+        const returnList = list.filter((d) => d.visible).map((item) => ({
+            ...item,
+            ...columns[columns.findIndex((r: any) => r.key == item.name || r.dataIndex == item.name)],
+            fixed: item.fixed,
+        }));
+        propsOnChange && propsOnChange(returnList);
+        const resList = list.map(d => {
+            // 解决title是dom节点无法展示问题
+            if (typeof d.title === 'object' && d.title?.props) {
+                d.title = d.title?.props?.children;
+            }
+            // 删除render, 避免render无法存放缓存
+            delete d.render;
+            return { ...d };
+        });
         // 缓存列设置到缓存里面
-        const resCustomColumnSettings = { ...customColumnSettings, [columnSettingsName]: list };
+        const resCustomColumnSettings = { ...customColumnSettings, [columnSettingsName]: resList };
         localStorage.setItem('customColumnSettings', JSON.stringify(resCustomColumnSettings));
     };
 
@@ -106,7 +121,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
      * @param d columns里面的元素
      * @returns 
      */
-    const moveUp = (d: ColumnsProps) => {
+    const moveUp = (d: CurrentColumnsProps) => {
         const fixedColumns = currentColumns.filter((r: any) => !r.fixed);
         const fixedIndex = fixedColumns.findIndex((r: any) => r.name === d.name);
         if (fixedIndex === 0) {
@@ -127,7 +142,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
      * 下移
      * @param d columns里面的元素
      */
-    const moveDown = (d: ColumnsProps) => {
+    const moveDown = (d: CurrentColumnsProps) => {
         const fixedColumns = currentColumns.filter((r: any) => !r.fixed);
         const fixedIndex = fixedColumns.findIndex((r: any) => r.name === d.name);
         if (fixedIndex === 0) {
@@ -148,7 +163,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
      * 固定在列首
      * @param d columns里面的元素
      */
-    const topFixedFunc = (d: ColumnsProps) => {
+    const topFixedFunc = (d: CurrentColumnsProps) => {
         const list = [...currentColumns];
         list[list.findIndex((r: any) => r.name === d.name)].fixed = 'left';
         const leftColumns = list.filter(r => r.fixed === 'left');
@@ -160,7 +175,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
      * 固定在列尾
      * @param d columns里面的元素
      */
-    const btmFixedFunc = (d: ColumnsProps) => {
+    const btmFixedFunc = (d: CurrentColumnsProps) => {
         const list = [...currentColumns];
         list[list.findIndex((r: any) => r.name === d.name)].fixed = 'right';
         const rightColumns = list.filter(r => r.fixed === 'right');
@@ -172,7 +187,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
      * 取消固定
      * @param d columns里面的元素
      */
-    const cancelFixed = (d: ColumnsProps) => {
+    const cancelFixed = (d: CurrentColumnsProps) => {
         const list = [...currentColumns];
         list[list.findIndex((r: any) => r.name === d.name)].fixed = '';
         handleToLocalStorage(list);
@@ -354,7 +369,7 @@ const ColumnSettings = (props: ColumnSettingsProps) => {
     );
 
     return (
-        <Dropdown overlay={menu} trigger={['click']}>
+        <Dropdown overlay={menu} trigger={['click']} visible={dropdownOpen} onVisibleChange={setDropdownOpen}>
             <Tooltip title="列设置">
                 <Button style={{ ...style }}>
                     <SettingOutlined />

@@ -35,7 +35,6 @@ interface ComponentsProps {
 const myModularization = () => {
   const componentsList = [
     // { dom: <DragVerificationCode />, id: 'DragVerificationCode', name: '拖动验证码', height: 400 },
-    { dom: <ColumnsSets />, id: 'ColumnsSets', name: '列缓存设置' },
     { dom: <Introduce />, id: 'Introduce', name: '自我介绍' },
     { dom: <TypedJs />, id: 'TypedJs', name: '打字效果' },
     { dom: <GoodTools />, id: 'GoodTools', name: '好用的工具网址' },
@@ -48,7 +47,7 @@ const myModularization = () => {
     { dom: <StockQuery />, id: 'StockQuery', name: '股票计算' },
     { dom: <PlayAudio />, id: 'PlayAudio', name: '播放音频' },
     { dom: <MultipleDateInput />, id: 'MultipleDateInput', name: '时间多选控件' },
-
+    { dom: <ColumnsSets />, id: 'ColumnsSets', name: '列缓存设置' },
   ];
 
   const goAnchor = (id: string) => {
