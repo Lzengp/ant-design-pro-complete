@@ -33,18 +33,9 @@ const personalIntroduction = () => {
         </a>
       </div>
       <div className={styles.aboutThisSite}>
-        <div
-          style={{
-            position: 'absolute',
-            right: '25%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            color: '#c1c1c1',
-          }}
-        >
+        <div className={styles.myPicture}  >
           <img src="./my.jpg" style={{ width: '80%' }} />
-          <span>地主家的儿子与我</span>
+          <span className={styles.imgText}>地主家的儿子与我</span>
         </div>
         {/* <div dangerouslySetInnerHTML={{ __html: html }} className={styles.mainContent} /> */}
         <div id="introduce" className={styles.mainContent}></div>

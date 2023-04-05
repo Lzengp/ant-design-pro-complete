@@ -19,6 +19,45 @@
     border: 3px solid #000;
     border-radius: 15px;
     box-shadow: 0 2px 15px black;
+
+
+    .myPicture {
+      position: absolute;
+      right: 25%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #c1c1c1;
+
+      img {
+        box-shadow: 0px 0px 15px #000;
+        border-radius: 4px;
+      }
+
+    }
+
+
+    .myPicture :hover {
+      animation: move 3s;
+    }
+
+    @keyframes move {
+      0% {
+        // transform: scale(1);
+        transform: rotateY(0);
+
+      }
+
+      50% {
+        // transform: scale(1.5);
+        transform: rotateY(180deg);
+      }
+
+      100% {
+        // transform: scale(1);
+        transform: rotateY(360deg);
+      }
+    }
   }
 
   .aboutThisSite::selection {
