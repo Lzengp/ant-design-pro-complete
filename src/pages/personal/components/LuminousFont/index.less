@@ -1,0 +1,37 @@
+.luminousFont {
+    .content {
+        margin: auto;
+        color: #000;
+        font-size: 20px;
+        font-weight: bolder;
+        position: fixed;
+        width: 312px;
+        bottom: 100px;
+        left: 43%;
+    }
+
+    .content::before {
+        // content: "从前从前 有个人爱你很久";
+        content: attr(data-before);
+        color: #06ee99;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        // border-right: 5px solid #06ee99;
+        animation: fontcolor 8s linear infinite;
+        filter: drop-shadow(0 0 50px #06ee99);
+    }
+
+    @keyframes fontcolor {
+        0% {
+            width: 0;
+        }
+
+        100% {
+            width: 100%;
+        }
+    }
+}
