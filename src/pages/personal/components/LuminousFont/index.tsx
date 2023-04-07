@@ -16,28 +16,39 @@ const Sentence = {
 const LuminousFont = () => {
 
     const [num, setNum] = useState<number>(1);
+    const [show, setShow] = useState<boolean>(true);
 
-    useEffect(() => {
+    const begin = () => {
         timer = setInterval(() => {
             setNum((num: number) => {
-                console.log('内存', num);
                 if (num === 4) {
                     return 1;
                 }
                 return num + 1;
             });
         }, 9000);
+    };
 
+    useEffect(() => {
+        begin();
         return () => {
             timer && clearInterval(timer);
         };
     }, []);
 
-    console.log('外层', num);
+    const close = () => {
+        if (show) {
+            timer && clearInterval(timer);
+        } else {
+            begin();
+        }
+        setShow(!show);
+    };
 
     return (
         <div className={styles.luminousFont}>
-            <div className={styles.content} data-before={Sentence[num]}>{Sentence[num]}</div>
+            {/* <div className={styles.close} onClick={close}>{show ? '关闭播放' : '开启播放'}</div> */}
+            {show && <div className={styles.content} data-before={Sentence[num]}>{Sentence[num]}</div>}
         </div>
     );
 };
