@@ -23,6 +23,7 @@ import Introduce from './components/Introduce';
 import MultipleDateInput from './components/MultipleDateInput';
 import ColumnsSets from './components/ColumnsSets';
 // import DragVerificationCode from './components/DragVerificationCode';
+import { Decimal } from 'decimal.js';
 
 interface ComponentsProps {
   dom: JSX.Element;
@@ -69,6 +70,12 @@ const myModularization = () => {
 
   // 快捷导航 - 鼠标移入触发事件
   useEffect(() => {
+    //减法
+    var a = 1.0;
+    var b = 0.7;
+    console.log('直接减法运算 a - b =', a - b);
+    console.log('Decimal.js减法运算 a - b =', new Decimal(67126.35).add(new Decimal(-58922.35)).toNumber());
+    console.log('Decimal.js惩法运算 a - b =', new Decimal(666.35).mul(new Decimal(100)).toNumber());
     window.localStorage.removeItem('customColumnSettings');
     const drawerMenu = document.getElementById('drawerMenu');
     drawerMenu?.addEventListener('mouseenter', () => {
