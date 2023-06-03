@@ -332,7 +332,7 @@
   },
   {
     path: '/',
-    redirect: '/myPages/myModularization',
+    redirect: '/personal',
   },
   {
     component: '404',
