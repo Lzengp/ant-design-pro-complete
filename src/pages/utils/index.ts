@@ -83,3 +83,8 @@ export const bufferToJSON = (buffer: any) => {
 //         message.error(res.message || '操作失败！');
 //         return
 //     }
+
+// 判断是手机还是pc
+export const isMobileDevice = () => {
+  return /Android|webOS|iPhone|iPad|BlackBerry/i.test(navigator.userAgent);
+};

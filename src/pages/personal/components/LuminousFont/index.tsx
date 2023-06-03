@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import styles from './index.less';
+import { isMobileDevice } from '@/pages/utils';
 
 let timer: any;
 
@@ -48,7 +49,7 @@ const LuminousFont = () => {
     return (
         <div className={styles.luminousFont}>
             {/* <div className={styles.close} onClick={close}>{show ? '关闭播放' : '开启播放'}</div> */}
-            {show && <div className={styles.content} data-before={Sentence[num]}>{Sentence[num]}</div>}
+            {show && <div className={styles.content} style={{ left: isMobileDevice() ? '24%' : '43%' }} data-before={Sentence[num]}>{Sentence[num]}</div>}
         </div>
     );
 };
