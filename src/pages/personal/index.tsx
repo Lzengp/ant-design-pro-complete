@@ -37,7 +37,7 @@ const personalIntroduction = () => {
       <div className={styles.aboutThisSite}>
         <div className={styles.myPicture} style={isMobileDevice() ? { width: '100%' } : { alignItems: 'center' }} >
           <img src="./my.jpg" style={{ width: isMobileDevice() ? '50%' : '35%' }} />
-          <span className={styles.imgText}>我和我儿子们</span>
+          <span className={styles.imgText}>三人行必有我师焉</span>
         </div>
         {/* <div dangerouslySetInnerHTML={{ __html: html }} className={styles.mainContent} /> */}
         <div id="introduce" className={styles.mainContent}></div>

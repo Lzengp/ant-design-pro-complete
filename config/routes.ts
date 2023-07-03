@@ -332,7 +332,7 @@
   },
   {
     path: '/',
-    redirect: '/personal',
+    redirect: '/myPages/myArticle',
   },
   {
     component: '404',
