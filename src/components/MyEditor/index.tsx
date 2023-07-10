@@ -7,11 +7,12 @@ import { SlateEditor } from '@wangeditor/editor';
 
 interface MyEditorProps {
   value: string;
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
+  readOnly?: boolean;
 }
 
 function MyEditor(props: MyEditorProps) {
-  const { value, onChange } = props;
+  const { value, onChange, readOnly = false } = props;
   // editor 实例
   const [editor, setEditor] = useState<IDomEditor | null>(null); // TS 语法
 
@@ -42,6 +43,7 @@ function MyEditor(props: MyEditorProps) {
     // TS 语法
     placeholder: '请输入内容...',
     autoFocus: true,
+    readOnly,
   };
 
   // 及时销毁 editor ，重要！
@@ -55,20 +57,24 @@ function MyEditor(props: MyEditorProps) {
 
   return (
     <>
-      <div style={{ border: '1px solid #ccc', zIndex: 100 }}>
-        <Toolbar
-          editor={editor}
-          defaultConfig={toolbarConfig}
-          mode="default"
-          style={{ borderBottom: '1px solid #ccc' }}
-        />
+      <div style={{ zIndex: 100 }}>
+        {
+          !readOnly && (
+            <Toolbar
+              editor={editor}
+              defaultConfig={toolbarConfig}
+              mode="default"
+              style={{ borderBottom: '1px solid #ccc' }}
+            />
+          )
+        }
         <Editor
           defaultConfig={editorConfig}
           value={value}
           onCreated={setEditor}
           onChange={(editor) => onChange && onChange(editor.getHtml())}
           mode="default"
-          style={{ height: '500px', overflowY: 'hidden' }}
+          style={{ minHeight: '500px', overflowY: 'hidden' }}
         />
       </div>
     </>

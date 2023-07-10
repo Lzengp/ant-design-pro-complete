@@ -1,5 +1,15 @@
 ﻿export default [
   {
+    path: '/myArticle',
+    layout: false,
+    component: './mypages/myArticle',
+  },
+  {
+    path: '/myEditor',
+    layout: false,
+    component: './mypages/myEditorPage',
+  },
+  {
     path: '/personal',
     layout: false,
     routes: [
@@ -332,7 +342,7 @@
   },
   {
     path: '/',
-    redirect: '/myPages/myArticle',
+    redirect: '/myArticle',
   },
   {
     component: '404',

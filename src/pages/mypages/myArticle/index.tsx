@@ -17,8 +17,7 @@ import { debounce, isEmpty } from 'lodash';
 import { useEffect, useState } from 'react';
 import { request, history } from 'umi';
 import styles from './index.less';
-
-const myAvatar = `https://picsum.photos/300/150/?image=${Math.ceil(Math.random() * 100)}`;
+import MyEditor from '@/components/MyEditor';
 
 interface ArticleProps {
   id: string;
@@ -34,50 +33,57 @@ interface CommentProps {
   createTime: string;
   createName: string;
   articleId: string;
+  ip: string;
+  photo: string;
 }
 
-const initData = [
-  {
-    content: '<p>我新增的文章，不错不错</p>',
-    id: '16',
-    title: '我的文章',
-    createName: '龙伟',
-    createTime: '2022-12-18T00:35:09',
-    modifyTime: '2022-12-18T00:35:09',
-  },
-];
+interface UserProps {
+  name: string;
+  photo: string;
+}
 
-const initCommentData = [
-  {
-    id: '16',
-    createName: '龙伟',
-    createTime: '2022-12-19T00:35:09',
-    comments: '评论回复222',
-    articleId: '16',
-  },
-  {
-    id: '17',
-    createName: '龙四',
-    createTime: '2022-12-18T09:35:09',
-    comments: '评论回复1111',
-    articleId: '17',
-  },
-];
-
-const MyArticle = () => {
-  const [data, setData] = useState<Array<ArticleProps>>([...initData]);
-  const [selectData, setSelectData] = useState<ArticleProps>(initData[0]);
+const MyArticle = (props: any) => {
+  const {
+    location: {
+      query: { id },
+    },
+  } = props;
+  const [data, setData] = useState<Array<ArticleProps>>([]);
+  const [selectData, setSelectData] = useState<ArticleProps | null>(null);
   const [fullScreenFlag, setFullScreenFlag] = useState<boolean>(false);
-  const [commentData, setCommentData] = useState<Array<CommentProps>>([...initCommentData]);
+  const [commentData, setCommentData] = useState<Array<CommentProps>>([]);
   const [textArea, setTextArea] = useState<string>(); // 回复输入框
   const [editTextArea, setEditTextArea] = useState<string>(); // 修改输入框
   const [editId, setEditId] = useState<string>(); // 编辑标识，评论id
+  const [user, setUser] = useState<UserProps>();
+  const isMenuPage = window.location.href.indexOf('myPages') > -1; // 是否为菜单页面
+  const isAuthor = localStorage.getItem('currentAuthor') === 'longwei';
+
+  // 初始化查询所有文章
+  useEffect(() => {
+    queryData();
+    findUsers();
+  }, []);
+
+  const findUsers = () => {
+    request(`/apiL/users/findUsers`, {
+      method: 'post',
+    }).then((res: any) => {
+      setUser(res.data);
+    });
+  };
 
   const queryData = () => {
     request('/apiL/article/getArticle').then((res: any) => {
-      if (Array.isArray(res.data) && res.data.length) {
+      if (id && Array.isArray(res.data) && res.data.length) {
+        setData(res.data);
+        setSelectData(res.data.filter((item: any) => item.id === id)[0]);
+      } else if (Array.isArray(res.data) && res.data.length) {
         setData(res.data);
         setSelectData(res.data[0]);
+      } else {
+        setData([]);
+        setSelectData(null);
       }
     });
   };
@@ -98,10 +104,6 @@ const MyArticle = () => {
     });
   };
 
-  // 初始化查询所有文章
-  useEffect(() => {
-    queryData();
-  }, []);
 
   const moreAction = (e: any) => {
     e.stopPropagation();
@@ -110,7 +112,7 @@ const MyArticle = () => {
   const editArticle = (id: string) => {
     // 跳转到富文本编辑页面
     history.push({
-      pathname: '/myPages/myEditor',
+      pathname: isMenuPage ? '/myPages/myEditor' : '/myEditor',
       query: {
         id,
       },
@@ -148,7 +150,7 @@ const MyArticle = () => {
     );
   };
   const newAddArticle = () => {
-    history.push('/myPages/myEditor');
+    history.push(isMenuPage ? '/myPages/myEditor' : '/myEditor',);
   };
 
   const searchArticle = (e: any) => {
@@ -157,6 +159,9 @@ const MyArticle = () => {
         if (Array.isArray(res.data) && res.data.length) {
           setData(res.data);
           setSelectData(res.data[0]);
+        } else {
+          setData([]);
+          setSelectData(null);
         }
       });
     } else {
@@ -202,7 +207,7 @@ const MyArticle = () => {
     request('/apiL/comment/addComment', {
       data: {
         comments: textArea,
-        createName: '龙伟',
+        createName: user?.name,
         articleId: selectData?.id,
       },
       method: 'post',
@@ -253,7 +258,7 @@ const MyArticle = () => {
             onChange={debounce(searchArticle, 500)}
             style={{ width: '220px', marginLeft: '10px', borderRadius: '4px' }}
           />
-          <PlusOutlined title="新增文章" className={styles.newAddArticle} onClick={newAddArticle} />
+          {isAuthor && <PlusOutlined title="新增文章" className={styles.newAddArticle} onClick={newAddArticle} />}
         </div>
         {data.map((item: ArticleProps) => {
           return (
@@ -268,12 +273,15 @@ const MyArticle = () => {
               {/* <div className={styles.moreIcon} onClick={moreAction}>
                 <MoreOutlined />
               </div> */}
-
-              <div className={styles.moreIcon} onClick={moreAction}>
-                <Dropdown overlay={() => overlayMenu(item.id)} trigger={['click']}>
-                  <MoreOutlined />
-                </Dropdown>
-              </div>
+              {
+                isAuthor && (
+                  <div className={styles.moreIcon} onClick={moreAction}>
+                    <Dropdown overlay={() => overlayMenu(item.id)} trigger={['click']}>
+                      <MoreOutlined />
+                    </Dropdown>
+                  </div>
+                )
+              }
             </div>
           );
         })}
@@ -290,16 +298,17 @@ const MyArticle = () => {
             )}
           </div>
           <div className={styles.title}>{selectData?.title || ''}</div>
-          <div dangerouslySetInnerHTML={{ __html: selectData?.content || '' }}></div>
+          <MyEditor value={selectData?.content ? JSON.parse(selectData?.content) : ''} readOnly={true} />
+          {/* <div dangerouslySetInnerHTML={{ __html: selectData?.content ? selectData?.content.substr(1, selectData?.content.length - 2) : '' }}></div> */}
         </div>
         <Space style={{ color: '#c1c1c1' }}>
           <Space>
             <UserDeleteOutlined />
-            {selectData.createName}
+            {selectData?.createName}
           </Space>
           <Space style={{ marginLeft: '20px' }}>
             <ClockCircleOutlined />
-            {selectData.modifyTime ? FormatTime(selectData.modifyTime) : ''}
+            {selectData?.modifyTime ? FormatTime(selectData?.modifyTime) : ''}
           </Space>
         </Space>
         {!isEmpty(commentData) && (
@@ -311,13 +320,13 @@ const MyArticle = () => {
                   <Avatar
                     style={{ marginTop: '0px', marginRight: '10px' }}
                     size="large"
-                    src={myAvatar}
+                    src={item?.photo}
                   />
                   <div>
                     <div>
                       {item.createName}
                       <span style={{ color: '#8A8F8D', marginLeft: '10px' }}>
-                        {TimeToText(item.createTime)} {FormatTime(item.createTime, 'HH:mm')}
+                        {TimeToText(item.createTime)} {FormatTime(item.createTime, 'HH:mm')} {item.ip}
                       </span>
                     </div>
                     {editId == item.id ? (
@@ -361,7 +370,7 @@ const MyArticle = () => {
         )}
         <div>
           <div style={{ display: 'flex', margin: '20px 0' }}>
-            <Avatar style={{ marginTop: '0px', marginRight: '10px' }} size="large" src={myAvatar} />
+            <Avatar style={{ marginTop: '0px', marginRight: '10px' }} size="large" src={user?.photo} />
             <TextArea
               value={textArea}
               rows={3}
@@ -373,7 +382,7 @@ const MyArticle = () => {
             type="primary"
             style={{ marginLeft: '50px', borderRadius: '6px' }}
             onClick={reply}
-            disabled={!textArea}
+            disabled={!textArea || !selectData?.title}
           >
             回复
           </Button>

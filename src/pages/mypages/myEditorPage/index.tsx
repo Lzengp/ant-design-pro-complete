@@ -24,8 +24,9 @@ const myEditorPage = (props: MyEditorPageProps) => {
       query: { id },
     },
   } = props;
-  const [value, setValue] = useState<string>('hello world');
-  const [title, setTitle] = useState<string>('hello world');
+  const [value, setValue] = useState<string>('请输入内容');
+  const [title, setTitle] = useState<string>('');
+  const isMenuPage = window.location.href.indexOf('myPages') > -1; // 是否为菜单页面
 
   useEffect(() => {
     if (id) {
@@ -35,20 +36,23 @@ const myEditorPage = (props: MyEditorPageProps) => {
 
   const queryData = () => {
     request(`/apiL/article/getArticleById/${id}`).then((res: any) => {
-      console.log(res);
       if (res.data) {
-        setValue(res.data.content);
+        setValue(JSON.parse(res.data.content));
         setTitle(res.data.title);
       }
     });
   };
 
   const save = () => {
+    if (!title) {
+      return message.error("请输入标题");
+    }
+    const json = JSON.stringify(value);
     if (id) {
       request(`/apiL/article/updateArticle/${id}`, {
         data: {
           title: title,
-          content: value,
+          content: json,
         },
         method: 'post',
       }).then((res: any) => {
@@ -59,15 +63,16 @@ const myEditorPage = (props: MyEditorPageProps) => {
       request('/apiL/article/addArticle', {
         data: {
           title: title,
-          content: value,
+          content: json,
           createName: '龙伟',
         },
         method: 'post',
       }).then((res: any) => {
         message.success('新增成功');
-        history.push('/myPages/myArticle');
+        history.push(isMenuPage ? '/myPages/myArticle' : '/myArticle');
       });
     }
+    return;
   };
 
   const renderMyEditor = useMemo(() => {
@@ -75,9 +80,8 @@ const myEditorPage = (props: MyEditorPageProps) => {
   }, [value]);
 
   return (
-    <>
-      <div className="typed"></div>
-      <Space style={{ marginBottom: '20px' }}>
+    <div>
+      <Space style={{ margin: '20px' }}>
         标题：
         <Input
           value={title}
@@ -89,18 +93,26 @@ const myEditorPage = (props: MyEditorPageProps) => {
         <Button type="primary" onClick={save}>
           {id ? '更新' : '保存'}
         </Button>
+        <Button onClick={() => {
+          history.push({
+            pathname: isMenuPage ? '/myPages/myArticle' : '/myArticle',
+            query: {
+              id,
+            },
+          });
+        }}>返回</Button>
       </Space>
       {renderMyEditor}
-      <Typography>
+      {/* 解析xml <root><content>一定需要加上,不然解析报错 */}
+      {/* <Typography>
         <Paragraph>
           <blockquote>{value.replaceAll('<br>', '<br />')}</blockquote>
           <pre>
-            {/* 解析xml <root><content>一定需要加上,不然解析报错 */}
             {format(`<root><content>${value}</content>`)}
           </pre>
         </Paragraph>
-      </Typography>
-    </>
+      </Typography> */}
+    </div>
   );
 };
 
