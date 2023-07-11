@@ -10,6 +10,7 @@ import { Button, Input, message, Space, Typography } from 'antd';
 import { useEffect, useMemo, useState } from 'react';
 import format from 'xml-formatter';
 import { request, history } from 'umi';
+import styles from './index.less';
 
 const { Paragraph } = Typography;
 
@@ -24,7 +25,7 @@ const myEditorPage = (props: MyEditorPageProps) => {
       query: { id },
     },
   } = props;
-  const [value, setValue] = useState<string>('请输入内容');
+  const [value, setValue] = useState<string>('');
   const [title, setTitle] = useState<string>('');
   const isMenuPage = window.location.href.indexOf('myPages') > -1; // 是否为菜单页面
 
@@ -44,8 +45,8 @@ const myEditorPage = (props: MyEditorPageProps) => {
   };
 
   const save = () => {
-    if (!title) {
-      return message.error("请输入标题");
+    if (!title || !value) {
+      return message.error("请输入标题和内容");
     }
     const json = JSON.stringify(value);
     if (id) {
@@ -76,12 +77,18 @@ const myEditorPage = (props: MyEditorPageProps) => {
   };
 
   const renderMyEditor = useMemo(() => {
-    return <MyEditor value={value} onChange={setValue} />;
+    return (
+      <MyEditor
+        value={value}
+        onChange={setValue}
+        style={{ top: '72px' }}
+        editorStyle={{ overflow: 'auto', height: '80vh' }}
+      />);
   }, [value]);
 
   return (
-    <div>
-      <Space style={{ margin: '20px' }}>
+    <div className={styles.myEditorPageWrap}>
+      <Space className={styles.title}>
         标题：
         <Input
           value={title}

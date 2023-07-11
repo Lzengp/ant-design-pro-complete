@@ -9,10 +9,12 @@ interface MyEditorProps {
   value: string;
   onChange?: (value: string) => void;
   readOnly?: boolean;
+  style?: React.CSSProperties;
+  editorStyle?: React.CSSProperties;
 }
 
 function MyEditor(props: MyEditorProps) {
-  const { value, onChange, readOnly = false } = props;
+  const { value, onChange, readOnly = false, style, editorStyle } = props;
   // editor 实例
   const [editor, setEditor] = useState<IDomEditor | null>(null); // TS 语法
 
@@ -41,9 +43,10 @@ function MyEditor(props: MyEditorProps) {
   // 编辑器配置
   const editorConfig: Partial<IEditorConfig> = {
     // TS 语法
-    placeholder: '请输入内容...',
+    placeholder: readOnly ? '暂无内容' : '请输入内容...',
     autoFocus: true,
     readOnly,
+    scroll: false
   };
 
   // 及时销毁 editor ，重要！
@@ -57,7 +60,7 @@ function MyEditor(props: MyEditorProps) {
 
   return (
     <>
-      <div style={{ zIndex: 100 }}>
+      <div style={{ zIndex: 100, position: 'relative', ...style }}>
         {
           !readOnly && (
             <Toolbar
@@ -74,7 +77,7 @@ function MyEditor(props: MyEditorProps) {
           onCreated={setEditor}
           onChange={(editor) => onChange && onChange(editor.getHtml())}
           mode="default"
-          style={{ minHeight: '500px', overflowY: 'hidden' }}
+          style={{ ...editorStyle }}
         />
       </div>
     </>

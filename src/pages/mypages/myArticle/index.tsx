@@ -169,10 +169,29 @@ const MyArticle = (props: any) => {
     }
   };
 
+  const escFunction = (e) => {
+    setFullScreenFlag((fullScreenFlag) => !fullScreenFlag);
+  };
+
+  useEffect(() => {
+    // 监听退出全屏事件 --- chrome 用 esc 退出全屏并不会触发 keyup 事件
+    document.addEventListener("webkitfullscreenchange", escFunction); /* Chrome, Safari and Opera */
+    document.addEventListener("mozfullscreenchange", escFunction); /* Firefox */
+    document.addEventListener("fullscreenchange", escFunction); /* Standard syntax */
+    document.addEventListener("msfullscreenchange", escFunction); /* IE / Edge */
+    return () => {
+      //销毁时清除监听
+      document.removeEventListener("webkitfullscreenchange", escFunction);
+      document.removeEventListener("mozfullscreenchange", escFunction);
+      document.removeEventListener("fullscreenchange", escFunction);
+      document.removeEventListener("MSFullscreenChange", escFunction);
+    };
+  }, []);
+
   // 全屏
   const fullScreen = () => {
     const dom = document.getElementById('rightContent') as any;
-    setFullScreenFlag(true);
+    // setFullScreenFlag(true);
     if (dom?.requestFullscreen) {
       dom.requestFullscreen();
     } else if (dom?.mozRrequestFullScreen) {
@@ -184,8 +203,8 @@ const MyArticle = (props: any) => {
 
   // 退出全屏
   const exitFullScreen = () => {
-    setFullScreenFlag(false);
-    if (document.exitFullscreen) {
+    // setFullScreenFlag(false);
+    if (document?.exitFullscreen) {
       document.exitFullscreen();
       // @ts-ignore
     } else if (document.mozCancelFullScreen) {
@@ -298,7 +317,7 @@ const MyArticle = (props: any) => {
             )}
           </div>
           <div className={styles.title}>{selectData?.title || ''}</div>
-          <MyEditor value={selectData?.content ? JSON.parse(selectData?.content) : ''} readOnly={true} />
+          <MyEditor value={selectData?.content ? JSON.parse(selectData?.content) : ''} readOnly={true} editorStyle={fullScreenFlag ? { overflow: 'auto', height: '80vh' } : {}} />
           {/* <div dangerouslySetInnerHTML={{ __html: selectData?.content ? selectData?.content.substr(1, selectData?.content.length - 2) : '' }}></div> */}
         </div>
         <Space style={{ color: '#c1c1c1' }}>
@@ -353,15 +372,20 @@ const MyArticle = (props: any) => {
                     ) : (
                       <div style={{ paddingTop: '8px' }}>{item.comments}</div>
                     )}
-                    <Space style={{ marginTop: '6px' }}>
-                      <EditOutlined
-                        className={styles.operateCommentIcon}
-                        onClick={() => editComment(item)}
-                      />
-                      <Popconfirm title="确认删该评论么？" onConfirm={() => deleteComment(item.id)}>
-                        <DeleteOutlined className={styles.operateCommentIcon} />
-                      </Popconfirm>
-                    </Space>
+                    {
+                      // 只有自己的评论才可以修改和删除
+                      user?.name === item.createName && (
+                        <Space style={{ marginTop: '6px' }}>
+                          <EditOutlined
+                            className={styles.operateCommentIcon}
+                            onClick={() => editComment(item)}
+                          />
+                          <Popconfirm title="确认删该评论么？" onConfirm={() => deleteComment(item.id)}>
+                            <DeleteOutlined className={styles.operateCommentIcon} />
+                          </Popconfirm>
+                        </Space>
+                      )
+                    }
                   </div>
                 </div>
               );
