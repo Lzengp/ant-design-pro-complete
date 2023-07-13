@@ -267,152 +267,158 @@ const MyArticle = (props: any) => {
   };
 
   return (
-    <div className={styles.myArticleWarp}>
-      {/* 左侧文章目录 */}
-      <div className={styles.leftTitle}>
-        <div className={styles.catalogue}>
-          目录
-          <Input
-            placeholder="搜索"
-            onChange={debounce(searchArticle, 500)}
-            style={{ width: '220px', marginLeft: '10px', borderRadius: '4px' }}
-          />
-          {isAuthor && <PlusOutlined title="新增文章" className={styles.newAddArticle} onClick={newAddArticle} />}
-        </div>
-        {data.map((item: ArticleProps) => {
-          return (
-            <div
-              className={classNames(
-                styles.titleWrapper,
-                selectData?.id === item.id && styles.selectTitleWrapper,
-              )}
-              onClick={() => setSelectData(item)}
-            >
-              {item.title}
-              {/* <div className={styles.moreIcon} onClick={moreAction}>
+    <>
+      <div className={styles.myArticleWarp}>
+        {/* 左侧文章目录 */}
+        <div className={styles.leftTitle}>
+          <div className={styles.catalogue}>
+            目录
+            <Input
+              placeholder="搜索"
+              onChange={debounce(searchArticle, 500)}
+              style={{ width: '220px', marginLeft: '10px', borderRadius: '4px' }}
+            />
+            {isAuthor && <PlusOutlined title="新增文章" className={styles.newAddArticle} onClick={newAddArticle} />}
+          </div>
+          {data.map((item: ArticleProps) => {
+            return (
+              <div
+                className={classNames(
+                  styles.titleWrapper,
+                  selectData?.id === item.id && styles.selectTitleWrapper,
+                )}
+                onClick={() => setSelectData(item)}
+              >
+                {item.title}
+                {/* <div className={styles.moreIcon} onClick={moreAction}>
                 <MoreOutlined />
               </div> */}
-              {
-                isAuthor && (
-                  <div className={styles.moreIcon} onClick={moreAction}>
-                    <Dropdown overlay={() => overlayMenu(item.id)} trigger={['click']}>
-                      <MoreOutlined />
-                    </Dropdown>
-                  </div>
-                )
-              }
-            </div>
-          );
-        })}
-      </div>
-      {/* 右侧文章主题 */}
-      <div className={styles.rightContent}>
-        <div id="rightContent" style={{ minHeight: '500px', background: '#FFF' }}>
-          <div style={{ position: 'absolute', right: '20px', top: '20px' }}>
-            {!fullScreenFlag && (
-              <FullscreenOutlined onClick={fullScreen} style={{ fontSize: '16px' }} />
-            )}
-            {fullScreenFlag && (
-              <FullscreenExitOutlined onClick={exitFullScreen} style={{ fontSize: '16px' }} />
-            )}
-          </div>
-          <div className={styles.title}>{selectData?.title || ''}</div>
-          <MyEditor value={selectData?.content ? JSON.parse(selectData?.content) : ''} readOnly={true} editorStyle={fullScreenFlag ? { overflow: 'auto', height: '80vh' } : {}} />
-          {/* <div dangerouslySetInnerHTML={{ __html: selectData?.content ? selectData?.content.substr(1, selectData?.content.length - 2) : '' }}></div> */}
-        </div>
-        <Space style={{ color: '#c1c1c1' }}>
-          <Space>
-            <UserDeleteOutlined />
-            {selectData?.createName}
-          </Space>
-          <Space style={{ marginLeft: '20px' }}>
-            <ClockCircleOutlined />
-            {selectData?.modifyTime ? FormatTime(selectData?.modifyTime) : ''}
-          </Space>
-        </Space>
-        {!isEmpty(commentData) && (
-          <div>
-            <div className={styles.commentsTotal}>所有评论({commentData.length})</div>
-            {commentData.map((item: CommentProps) => {
-              return (
-                <div className={styles.avatarAndComment}>
-                  <Avatar
-                    style={{ marginTop: '0px', marginRight: '10px' }}
-                    size="large"
-                    src={item?.photo}
-                  />
-                  <div>
-                    <div>
-                      {item.createName}
-                      <span style={{ color: '#8A8F8D', marginLeft: '10px' }}>
-                        {TimeToText(item.createTime)} {FormatTime(item.createTime, 'HH:mm')} {item.ip}
-                      </span>
+                {
+                  isAuthor && (
+                    <div className={styles.moreIcon} onClick={moreAction}>
+                      <Dropdown overlay={() => overlayMenu(item.id)} trigger={['click']}>
+                        <MoreOutlined />
+                      </Dropdown>
                     </div>
-                    {editId == item.id ? (
-                      <div style={{ marginTop: '10px' }}>
-                        <TextArea
-                          value={editTextArea}
-                          rows={3}
-                          style={{ width: '500px' }}
-                          onChange={(e) => setEditTextArea(e.target.value)}
-                        />
-                        <div style={{ marginTop: '10px' }}>
-                          <Button
-                            type="primary"
-                            onClick={commitEditComment}
-                            disabled={!editTextArea}
-                          >
-                            提交
-                          </Button>
-                          <Button type="link" onClick={() => setEditId('')}>
-                            取消
-                          </Button>
-                        </div>
+                  )
+                }
+              </div>
+            );
+          })}
+        </div>
+        {/* 右侧文章主题 */}
+        <div className={styles.rightContent}>
+          <div id="rightContent" style={{ minHeight: '500px', background: '#FFF' }}>
+            <div style={{ position: 'absolute', right: '20px', top: '20px' }}>
+              {!fullScreenFlag && (
+                <FullscreenOutlined onClick={fullScreen} style={{ fontSize: '16px' }} />
+              )}
+              {fullScreenFlag && (
+                <FullscreenExitOutlined onClick={exitFullScreen} style={{ fontSize: '16px' }} />
+              )}
+            </div>
+            <div className={styles.title}>{selectData?.title || ''}</div>
+            <MyEditor value={selectData?.content ? JSON.parse(selectData?.content) : ''} readOnly={true} editorStyle={fullScreenFlag ? { overflow: 'auto', height: '80vh' } : {}} />
+            {/* <div dangerouslySetInnerHTML={{ __html: selectData?.content ? selectData?.content.substr(1, selectData?.content.length - 2) : '' }}></div> */}
+          </div>
+          <Space style={{ color: '#c1c1c1' }}>
+            <Space>
+              <UserDeleteOutlined />
+              {selectData?.createName}
+            </Space>
+            <Space style={{ marginLeft: '20px' }}>
+              <ClockCircleOutlined />
+              {selectData?.modifyTime ? FormatTime(selectData?.modifyTime) : ''}
+            </Space>
+          </Space>
+          {!isEmpty(commentData) && (
+            <div>
+              <div className={styles.commentsTotal}>所有评论({commentData.length})</div>
+              {commentData.map((item: CommentProps) => {
+                return (
+                  <div className={styles.avatarAndComment}>
+                    <Avatar
+                      style={{ marginTop: '0px', marginRight: '10px' }}
+                      size="large"
+                      src={item?.photo}
+                    />
+                    <div>
+                      <div>
+                        {item.createName}
+                        <span style={{ color: '#8A8F8D', marginLeft: '10px' }}>
+                          {TimeToText(item.createTime)} {FormatTime(item.createTime, 'HH:mm')} {item.ip}
+                        </span>
                       </div>
-                    ) : (
-                      <div style={{ paddingTop: '8px' }}>{item.comments}</div>
-                    )}
-                    {
-                      // 只有自己的评论才可以修改和删除
-                      user?.name === item.createName && (
-                        <Space style={{ marginTop: '6px' }}>
-                          <EditOutlined
-                            className={styles.operateCommentIcon}
-                            onClick={() => editComment(item)}
+                      {editId == item.id ? (
+                        <div style={{ marginTop: '10px' }}>
+                          <TextArea
+                            value={editTextArea}
+                            rows={3}
+                            style={{ width: '500px' }}
+                            onChange={(e) => setEditTextArea(e.target.value)}
                           />
-                          <Popconfirm title="确认删该评论么？" onConfirm={() => deleteComment(item.id)}>
-                            <DeleteOutlined className={styles.operateCommentIcon} />
-                          </Popconfirm>
-                        </Space>
-                      )
-                    }
+                          <div style={{ marginTop: '10px' }}>
+                            <Button
+                              type="primary"
+                              onClick={commitEditComment}
+                              disabled={!editTextArea}
+                            >
+                              提交
+                            </Button>
+                            <Button type="link" onClick={() => setEditId('')}>
+                              取消
+                            </Button>
+                          </div>
+                        </div>
+                      ) : (
+                        <div style={{ paddingTop: '8px' }}>{item.comments}</div>
+                      )}
+                      {
+                        // 只有自己的评论才可以修改和删除
+                        user?.name === item.createName && (
+                          <Space style={{ marginTop: '6px' }}>
+                            <EditOutlined
+                              className={styles.operateCommentIcon}
+                              onClick={() => editComment(item)}
+                            />
+                            <Popconfirm title="确认删该评论么？" onConfirm={() => deleteComment(item.id)}>
+                              <DeleteOutlined className={styles.operateCommentIcon} />
+                            </Popconfirm>
+                          </Space>
+                        )
+                      }
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+          )}
+          <div>
+            <div style={{ display: 'flex', margin: '20px 0' }}>
+              <Avatar style={{ marginTop: '0px', marginRight: '10px' }} size="large" src={user?.photo} />
+              <TextArea
+                value={textArea}
+                rows={3}
+                style={{ width: '500px' }}
+                onChange={textAreaChange}
+              />
+            </div>
+            <Button
+              type="primary"
+              style={{ marginLeft: '50px', borderRadius: '6px', marginBottom: '50px' }}
+              onClick={reply}
+              disabled={!textArea || !selectData?.title}
+            >
+              回复
+            </Button>
           </div>
-        )}
-        <div>
-          <div style={{ display: 'flex', margin: '20px 0' }}>
-            <Avatar style={{ marginTop: '0px', marginRight: '10px' }} size="large" src={user?.photo} />
-            <TextArea
-              value={textArea}
-              rows={3}
-              style={{ width: '500px' }}
-              onChange={textAreaChange}
-            />
-          </div>
-          <Button
-            type="primary"
-            style={{ marginLeft: '50px', borderRadius: '6px' }}
-            onClick={reply}
-            disabled={!textArea || !selectData?.title}
-          >
-            回复
-          </Button>
         </div>
       </div>
-    </div>
+      <div className={styles.icpNum}>
+        <a target="_blank" href="/personal">关于我</a>
+        <a style={{}} target="_blank" href="https://tsm.miit.gov.cn/">粤ICP备2023077596号</a>
+      </div>
+    </>
   );
 };
 
