@@ -12,7 +12,7 @@ const Settings: LayoutSettings & {
   fixedHeader: false,
   fixSiderbar: true,
   colorWeak: false,
-  title: 'Lzengp.top',
+  title: '前端笔记分享',
   pwa: false,
   // logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   iconfontUrl: '//at.alicdn.com/t/c/font_3269449_pxfeihmehnf.js', // 改地址为iconfont中的项目地址，可根据实际情况修改

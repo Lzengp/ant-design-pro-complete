@@ -417,6 +417,7 @@ const MyArticle = (props: any) => {
       <div className={styles.icpNum}>
         <a target="_blank" href="/personal">关于我</a>
         <a style={{}} target="_blank" href="https://tsm.miit.gov.cn/">粤ICP备2023077596号</a>
+        <a style={{}} target="_blank" href="https://tsm.miit.gov.cn/">粤ICP备2023077596号-1</a>
       </div>
     </>
   );
