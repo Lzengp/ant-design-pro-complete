@@ -10,6 +10,11 @@
     component: './mypages/myEditorPage',
   },
   {
+    layout: false,
+    path: '/myModularization',
+    component: './mypages/myModularization',
+  },
+  {
     path: '/personal',
     layout: false,
     routes: [
