@@ -74,4 +74,6 @@ export default defineConfig({
   mfsu: {},
   webpack5: {},
   exportStatic: {},
+  externals: { 'AMap': 'window.AMap' },
+  plugins: ['./src/plugins/GdMapPlugin.js']
 });

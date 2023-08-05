@@ -1,0 +1,201 @@
+.about-company-warp {
+
+    margin-top: 60px;
+
+    .official-img {
+        position: relative;
+
+        img {
+            width: 100%;
+        }
+
+        .official-phone-number {
+            font-size: 50px;
+            font-weight: 600;
+            position: absolute;
+            left: 30%;
+            bottom: 50px;
+        }
+    }
+
+    .company-tab {
+
+
+        font-size: 14px;
+        // justify-content: end;
+        // gap: 5%;
+        // padding: 20px 10% 10px;
+        // border-bottom: 5px solid #f2f2f2;
+        position: relative;
+
+        .company-tab-title {
+            display: flex;
+            justify-content: end;
+            gap: 5%;
+            padding: 20px 10% 10px;
+
+            span {
+                cursor: pointer;
+
+                &:hover {
+                    color: #ff572d;
+                }
+
+            }
+
+
+            .select-title {
+                border-bottom: 5px solid #ff572d;
+                padding-bottom: 10px;
+                color: #ff572d;
+                z-index: 1;
+            }
+        }
+
+        .grey-line {
+            position: absolute;
+            width: 100%;
+            border-bottom: 5px solid #f2f2f2;
+            bottom: 10px;
+            z-index: 0;
+        }
+    }
+
+    .about-company-content {
+        padding: 0 50px;
+        font-size: 16px;
+        border-bottom: 15px solid #f2f2f2;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    .about-company-title {
+        font-size: 18px;
+        color: #ff572d;
+        text-align: center;
+        font-weight: 600;
+        padding: 10px 0;
+    }
+
+    .video-img {
+        padding: 20px 0;
+        width: 100%;
+        height: 500px;
+    }
+
+    .global-logistics-coverage {
+        padding: 30px;
+        font-size: 35px;
+        font-weight: 600;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .border-line-style {
+            border-bottom: 4px solid #d91a24;
+            width: 50px;
+            padding: 5px;
+        }
+    }
+
+    .brief-introduction-row {
+        text-align: center;
+        position: relative;
+
+        .brief-introduction-desc {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            color: #FFFFFF;
+        }
+
+        img {
+            padding: 20px 0;
+            width: 90%;
+            height: 400px;
+        }
+    }
+
+    .about-gaojet-real {
+        padding: 80px 50px;
+        display: flex;
+        justify-content: space-around;
+
+        .real-module {
+            display: flex;
+            flex-direction: column;
+            // gap: 30px;
+            justify-content: center;
+            align-items: center;
+            width: 296px;
+            height: 146px;
+            border: 1px solid rgba(255, 255, 255, 1);
+            border-radius: 5px;
+            box-shadow: 0px 3px 20px rgba(110, 0, 255, 0.14901960784313725);
+            position: relative;
+
+            .core-values {
+                padding-top: 15px;
+
+                .core-values-text {
+                    width: 200px;
+                    display: flex;
+                    justify-content: space-between;
+                    padding-bottom: 12px;
+                }
+            }
+        }
+    }
+
+    .honorary-qualifications {
+        display: flex;
+        padding-bottom: 70px;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .img-desc {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+    }
+
+    :global {
+        .ant-steps-item-title {
+            font-size: 16px !important;
+            font-weight: 600;
+            color: #ff572d !important;
+        }
+
+        .ant-steps-item-description {
+            color: #000000 !important;
+            margin: 10px 0 25px;
+        }
+
+        .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-tail::after {
+            width: 4px !important;
+            height: 112% !important;
+            background-color: #fdb3be !important;
+        }
+
+        .ant-steps-dot .ant-steps-item-icon .ant-steps-icon-dot::after,
+        .ant-steps-dot.ant-steps-small .ant-steps-item-icon .ant-steps-icon-dot::after {
+            position: absolute;
+            top: -6px !important;
+            left: -6px !important;
+            width: 22px !important;
+            height: 22px !important;
+            background: #ff572d !important;
+            content: '';
+            border-radius: 66px;
+        }
+    }
+
+
+}

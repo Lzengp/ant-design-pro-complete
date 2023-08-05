@@ -1,0 +1,259 @@
+.portalpage-content {
+    margin-top: 60px;
+
+    .portalpage-carousel {
+        height: 500px;
+
+        img {
+            max-height: 500px;
+            width: 100%;
+        }
+    }
+
+    .core-services {
+        padding: 0 10px;
+
+        .core-services-row {
+            display: flex;
+            min-width: 0;
+            justify-content: center;
+
+            :global {
+                .ant-col {
+                    width: 290px;
+                    height: 418px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            .core-services-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
+                margin: 10px 0;
+                padding: 70px 8px 0 8px;
+                width: 263px;
+                height: 380px;
+                box-sizing: border-box;
+                border-width: 1px;
+                border-style: solid;
+                border-color: rgba(240, 240, 244, 1);
+                border-radius: 5px;
+                -moz-box-shadow: 0px 3px 20px rgba(204, 204, 204, 0.149019607843137);
+                -webkit-box-shadow: 0px 3px 20px rgba(204, 204, 204, 0.149019607843137);
+                box-shadow: 0px 3px 20px rgba(204, 204, 204, 0.149019607843137);
+                cursor: pointer;
+
+                img {
+                    width: 68px;
+                }
+
+                .first-level-title {
+                    font-family: 'PingFangSC-Semibold', 'PingFang SC Semibold', 'PingFang SC';
+                    font-weight: 650;
+                    font-style: normal;
+                    font-size: 32px;
+                }
+
+                .core-services-desc {
+                    font-size: 16px;
+                    line-height: 36px;
+                    padding-bottom: 70px;
+                    position: relative;
+
+                }
+
+                .core-services-btn {
+                    margin-top: 30px;
+                    text-align: center;
+                    // display: none;
+                    opacity: 0;
+                    position: absolute;
+                    top: 100px;
+                    left: 30%;
+                    transition: all 0.5s;
+
+                    :global {
+                        .ant-btn-primary {
+                            border-radius: 4px;
+                            width: 100px;
+                            height: 36px;
+                            border-color: #1890ff;
+                            background: #1890ff;
+                        }
+                    }
+                }
+
+                transition: all 0.5s;
+
+                &:hover {
+                    width: 316px;
+                    height: 456px;
+                    transition: all 0.5s;
+                    background-color: #e0eefa;
+
+                    .core-services-btn {
+                        // display: block;
+                        opacity: 1;
+                        transition: all 0.5s;
+                    }
+
+                }
+            }
+
+        }
+    }
+
+    .about-gaojet {
+
+
+        .about-gaojet-content {
+
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+
+
+            .about-gaojet-text {
+                padding: 18px 82px !important;
+                line-height: 42px;
+                font-size: 16px;
+                position: relative;
+
+                :global {
+                    .ant-btn-primary {
+                        border-radius: 16px;
+                        width: 100px;
+                        height: 36px;
+                        border-color: #1890ff;
+                        background: #1890ff;
+                        bottom: 10px;
+                        right: 30px;
+                        position: absolute;
+                    }
+                }
+
+            }
+
+
+        }
+
+        .about-gaojet-real {
+            padding: 80px 50px;
+            display: flex;
+            justify-content: space-around;
+
+            .real-module {
+                display: flex;
+                flex-direction: column;
+                // gap: 30px;
+                justify-content: center;
+                align-items: center;
+                width: 296px;
+                height: 146px;
+                border: 1px solid rgba(255, 255, 255, 1);
+                border-radius: 5px;
+                box-shadow: 0px 3px 20px rgba(110, 0, 255, 0.14901960784313725);
+                position: relative;
+
+                .core-values {
+                    padding-top: 15px;
+
+                    .core-values-text {
+                        width: 200px;
+                        display: flex;
+                        justify-content: space-between;
+                        padding-bottom: 12px;
+                    }
+                }
+            }
+        }
+
+    }
+
+
+    .serviceability {
+
+
+        .serviceability-content {
+
+
+            .serviceability-item {
+
+                width: 25%;
+                padding: 0 10px;
+
+                .serviceability-content-title {
+                    color: #ff4f25;
+                    font-size: 40px;
+                    font-weight: 550;
+                    padding-bottom: 30px;
+                    text-align: center;
+
+                    .number-title {
+                        color: #000000;
+                        font-weight: 500
+                    }
+                }
+            }
+
+
+        }
+    }
+
+    .news-information {
+
+        .news {
+
+            .news-item {
+                width: 20%;
+                border: 1px solid #d9d9d9;
+                border-radius: 12px;
+                box-shadow: 2px 1px 20px #d9d9d9;
+                padding: 15px;
+                cursor: pointer;
+
+                img {
+                    width: 100%;
+                }
+
+                .news-desc {
+                    line-height: 30px;
+                    font-size: 15px;
+                    padding-top: 20px;
+
+                }
+
+                &:hover {
+                    color: #1890ff;
+                    font-weight: 550;
+                }
+            }
+        }
+
+
+
+    }
+
+    .partners {
+
+        .partners-logo {
+
+            :global {
+                .ant-col {
+                    width: 25%;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+
+        }
+
+    }
+}

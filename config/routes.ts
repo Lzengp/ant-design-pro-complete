@@ -1,5 +1,10 @@
 ﻿export default [
   {
+    layout: false,
+    path: '/portalPage',
+    component: './PortalPage',
+  },
+  {
     path: '/myArticle',
     layout: false,
     component: './mypages/myArticle',
