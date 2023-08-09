@@ -40,7 +40,7 @@ const PortalPage = () => {
                 case '解决方案':
                     setCurrentPage(3);
                     break;
-                case '关于艾普':
+                case '关于高捷':
                     setCurrentPage(4);
                     break;
                 case '联系我们':
@@ -96,8 +96,8 @@ const PortalPage = () => {
             <div className={styles['portalpage-head']}>
                 <div className={styles['head-content']}>
                     <div className={styles['head-img']}>
-                        {/* <img src={gjlogo}></img> */}
-                        <img src={logo}></img>
+                        <img src={gjlogo} className={styles['gj-img']}></img>
+                        {/* <img src={logo} className={styles['arp-img']}></img> */}
                     </div>
                     <nav className={styles['head-nav']} onClick={headClick}>
                         <div style={{ color: currentPage === 1 ? '#1890ff' : '' }}>首页</div>
@@ -115,7 +115,7 @@ const PortalPage = () => {
                             theme="light"
                             items={items}
                         /> */}
-                        <div style={{ color: currentPage === 4 ? '#1890ff' : '' }}>关于艾普</div>
+                        <div style={{ color: currentPage === 4 ? '#1890ff' : '' }}>关于高捷</div>
                         <div style={{ color: currentPage === 5 ? '#1890ff' : '' }}>联系我们</div>
                         {/* <span>首页</span>
                         <span>关于高捷</span>

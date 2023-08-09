@@ -108,7 +108,7 @@ const ContactUs = () => {
 
                     </div>
                     <div className="detail-address">
-                        <div className="address-title">总公司：广东艾普航运物流有限公司</div>
+                        <div className="address-title">总公司：广东高捷航运物流有限公司</div>
                         <div>地址：广州市白云区云城东路559-571号宏鼎云璟汇1栋13层</div>
                         <div>电话：020-66616988/86389688（50条线）</div>
                         <div>邮箱：marketing@goldjet.com.cn</div>

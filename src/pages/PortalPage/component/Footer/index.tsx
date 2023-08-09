@@ -9,9 +9,9 @@ const Footer = () => {
         <div className={styles['footer-wrap']}>
             <div className={styles['footer-content']}>
                 <div className={styles['content-item']}>
-                    <div className={styles['content-item-title']}>了解艾普数智</div>
+                    <div className={styles['content-item-title']}>了解高捷</div>
                     <div style={{ marginLeft: '16px' }}>
-                        <div>艾普数智简介</div>
+                        <div>高捷简介</div>
                         <div>发展历程</div>
                         <div>企业文化</div>
                         <div>荣誉资质</div>
@@ -39,8 +39,9 @@ const Footer = () => {
                 </div>
             </div>
             <div className={styles['company-information']}>
-                <span>广东艾普数智科技有限公司</span>
-                <span className={styles['filing-number']} onClick={() => { window.open('https://tsm.miit.gov.cn/'); }}>粤ICP备2023052583号</span>
+                <span>广东高捷航运物流有限公司</span>
+                <span className={styles['filing-number']} onClick={() => { window.open('https://tsm.miit.gov.cn/'); }}>粤ICP备2023080911号</span>
+                {/* <span className={styles['filing-number']} onClick={() => { window.open('https://tsm.miit.gov.cn/'); }}>粤ICP备2023052583号</span> */}
             </div>
 
         </div>

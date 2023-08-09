@@ -18,11 +18,12 @@ const HomePage = () => {
                 <div className={styles['portalpage-carousel']}>
                     <Carousel autoplay>
                         <div>
-                            <img src={"https://files.axshare.com/gsc/EI6QAV/03/66/65/0366657bdafb4bdb9e3971710550f5d9/images/%E9%A6%96%E9%A1%B5-2_0/u14.png?pageId=f8e3c235-357e-4f1e-b98b-00069ed597a6"} />
-                            {/* <img src={"https://files.axshare.com/gsc/EI6QAV/e8/a0/58/e8a058ec6df447bc854bbe5e1af134fd/images/%E9%A6%96%E9%A1%B5-2_0/u14.png?pageId=f8e3c235-357e-4f1e-b98b-00069ed597a6"} /> */}
+                            <img src="https://www.walltechsystem.cn/upload/2022-08/166064681774185600.png" />
+                            {/* <img src={"https://files.axshare.com/gsc/EI6QAV/03/66/65/0366657bdafb4bdb9e3971710550f5d9/images/%E9%A6%96%E9%A1%B5-2_0/u14.png?pageId=f8e3c235-357e-4f1e-b98b-00069ed597a6"} /> */}
                         </div>
                         <div>
-                            <img src={"https://files.axshare.com/gsc/EI6QAV/03/66/65/0366657bdafb4bdb9e3971710550f5d9/images/%E9%A6%96%E9%A1%B5-2_0/u18.png?pageId=f8e3c235-357e-4f1e-b98b-00069ed597a6"} />
+                            <img src="	https://www.walltechsystem.cn/upload/2023-02/167687813995203800.jpg" />
+                            {/* <img src={"https://files.axshare.com/gsc/EI6QAV/03/66/65/0366657bdafb4bdb9e3971710550f5d9/images/%E9%A6%96%E9%A1%B5-2_0/u18.png?pageId=f8e3c235-357e-4f1e-b98b-00069ed597a6"} /> */}
                         </div>
                         <div>
                             <img src={"https://www.walltechsystem.cn/upload/2022-08/166064706418675300.png"} />
@@ -99,10 +100,10 @@ const HomePage = () => {
                     </Row>
                 </div>
                 <div className={styles['about-gaojet']}>
-                    <Title title='关于艾普' />
+                    <Title title='关于高捷' />
                     <Row className={styles['about-gaojet-content']} gutter={24}>
                         <Col span={12} className={styles['about-gaojet-text']} style={{}}>
-                            <div style={{ textIndent: '5em' }}>艾普数智成立于2004年，是一家提供跨境贸易全链条一站式解决方案的国家 5A 级物流企业。</div>
+                            <div style={{ textIndent: '5em' }}>高捷物流成立于2004年，是一家提供跨境贸易全链条一站式解决方案的国家 5A 级物流企业。</div>
                             <div style={{ textIndent: '5em' }}>
                                 近20年来始终活跃在国际物流、跨境电商、外贸进出口服务领域，涵盖国际空运、海运、陆运、跨境电商、外贸综合服务等模块，
                                 集运输、报关、仓储、配送于一体，是目前跨洲际货运代理行业内最具规模的现代物流企业...
