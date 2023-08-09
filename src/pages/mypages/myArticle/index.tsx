@@ -9,6 +9,7 @@ import {
   GithubOutlined,
   MoreOutlined,
   PlusOutlined,
+  SearchOutlined,
   UserDeleteOutlined,
 } from '@ant-design/icons';
 import { Avatar, Button, Dropdown, Input, Menu, message, Modal, Popconfirm, Space } from 'antd';
@@ -19,6 +20,8 @@ import { useEffect, useState } from 'react';
 import { request, history } from 'umi';
 import styles from './index.less';
 import MyEditor from '@/components/MyEditor';
+import Footer from '@/components/Footer';
+import RewriteFooter from '@/components/RewriteFooter';
 
 interface ArticleProps {
   id: string;
@@ -45,12 +48,15 @@ interface UserProps {
 
 const MyArticle = (props: any) => {
   const {
-    location: {
-      query: { id },
+    // location: {
+    //   query: { id },
+    // },
+    match: {
+      params: { id },
     },
   } = props;
   const [data, setData] = useState<Array<ArticleProps>>([]);
-  const [selectData, setSelectData] = useState<ArticleProps | null>(null);
+  const [selectData, setSelectData] = useState<ArticleProps>();
   const [fullScreenFlag, setFullScreenFlag] = useState<boolean>(false);
   const [commentData, setCommentData] = useState<Array<CommentProps>>([]);
   const [textArea, setTextArea] = useState<string>(); // 回复输入框
@@ -59,6 +65,13 @@ const MyArticle = (props: any) => {
   const [user, setUser] = useState<UserProps>();
   const isMenuPage = window.location.href.indexOf('myPages') > -1; // 是否为菜单页面
   const isAuthor = localStorage.getItem('currentAuthor') === 'longwei';
+
+  useEffect(() => {
+    console.log('id变化了');
+    if (Array.isArray(data) && id) {
+      setSelectData(data.find(d => d.id == id));
+    }
+  }, [id, data]);
 
   // 初始化查询所有文章
   useEffect(() => {
@@ -78,13 +91,19 @@ const MyArticle = (props: any) => {
     request('/apiL/article/getArticle').then((res: any) => {
       if (id && Array.isArray(res.data) && res.data.length) {
         setData(res.data);
-        setSelectData(res.data.filter((item: any) => item.id === id)[0]);
+        const currentData = res.data.find((item: any) => item.id === id);
+        if (currentData?.id) {
+          setSelectData(res.data.filter((item: any) => item.id === id)[0]);
+        } else {
+          setSelectData(res.data[0]);
+          history.replace(`/myArticle/${res.data[0].id}`);
+        }
       } else if (Array.isArray(res.data) && res.data.length) {
         setData(res.data);
         setSelectData(res.data[0]);
       } else {
         setData([]);
-        setSelectData(null);
+        setSelectData(undefined);
       }
     });
   };
@@ -113,10 +132,10 @@ const MyArticle = (props: any) => {
   const editArticle = (id: string) => {
     // 跳转到富文本编辑页面
     history.push({
-      pathname: isMenuPage ? '/myPages/myEditor' : '/myEditor',
-      query: {
-        id,
-      },
+      pathname: isMenuPage ? `/myPages/myEditor/${id}` : `/myEditor/${id}`,
+      // query: {
+      //   id,
+      // },
     });
   };
 
@@ -151,7 +170,7 @@ const MyArticle = (props: any) => {
     );
   };
   const newAddArticle = () => {
-    history.push(isMenuPage ? '/myPages/myEditor' : '/myEditor',);
+    history.push(isMenuPage ? `/myPages/myEditor/create` : '/myEditor/create',);
   };
 
   const searchArticle = (e: any) => {
@@ -162,7 +181,7 @@ const MyArticle = (props: any) => {
           setSelectData(res.data[0]);
         } else {
           setData([]);
-          setSelectData(null);
+          setSelectData(undefined);
         }
       });
     } else {
@@ -268,7 +287,17 @@ const MyArticle = (props: any) => {
   };
 
   return (
-    <>
+    <div>
+      <div className={styles.globalSearch}>
+        <Input
+          placeholder='请输入关键字进行全局搜索'
+          style={{ width: '400px', borderRadius: '15px' }}
+          prefix={<SearchOutlined />}
+          onPressEnter={(e) => {
+            console.log(e.target.value);
+          }}
+        />
+      </div>
       <div className={styles.myArticleWarp}>
         {/* 左侧文章目录 */}
         <div className={styles.leftTitle}>
@@ -281,35 +310,37 @@ const MyArticle = (props: any) => {
             />
             {isAuthor && <PlusOutlined title="新增文章" className={styles.newAddArticle} onClick={newAddArticle} />}
           </div>
-          {data.map((item: ArticleProps) => {
-            return (
-              <div
-                className={classNames(
-                  styles.titleWrapper,
-                  selectData?.id === item.id && styles.selectTitleWrapper,
-                )}
-                onClick={() => setSelectData(item)}
-              >
-                {item.title}
-                {/* <div className={styles.moreIcon} onClick={moreAction}>
-                <MoreOutlined />
-              </div> */}
-                {
-                  isAuthor && (
-                    <div className={styles.moreIcon} onClick={moreAction}>
-                      <Dropdown overlay={() => overlayMenu(item.id)} trigger={['click']}>
-                        <MoreOutlined />
-                      </Dropdown>
-                    </div>
-                  )
-                }
-              </div>
-            );
-          })}
+          <div className={styles.articleTitles}>
+            {data.map((item: ArticleProps) => {
+              return (
+                <div
+                  className={classNames(
+                    styles.titleWrapper,
+                    selectData?.id === item.id && styles.selectTitleWrapper,
+                  )}
+                  onClick={() => {
+                    setSelectData(item);
+                    history.replace(`/myArticle/${item.id}`);
+                  }}
+                >
+                  {item.title}
+                  {
+                    isAuthor && (
+                      <div className={styles.moreIcon} onClick={moreAction}>
+                        <Dropdown overlay={() => overlayMenu(item.id)} trigger={['click']}>
+                          <MoreOutlined />
+                        </Dropdown>
+                      </div>
+                    )
+                  }
+                </div>
+              );
+            })}
+          </div>
         </div>
         {/* 右侧文章主题 */}
         <div className={styles.rightContent}>
-          <div id="rightContent" style={{ minHeight: '500px', background: '#FFF' }}>
+          <div id="rightContent" style={fullScreenFlag ? { paddingLeft: '50px', background: '#FFF' } : { minHeight: '65vh', background: '#FFF' }}>
             <div style={{ position: 'absolute', right: '20px', top: '20px' }}>
               {!fullScreenFlag && (
                 <FullscreenOutlined onClick={fullScreen} style={{ fontSize: '16px' }} />
@@ -413,24 +444,10 @@ const MyArticle = (props: any) => {
               回复
             </Button>
           </div>
+          <RewriteFooter />
         </div>
       </div>
-      <div className={styles.icpNum}>
-        <a target="_blank" href="/personal">关于我</a>
-        <a target='-blank' href='/myModularization'>模块化页面体验</a>
-        <a
-          target='-blank'
-          onClick={() => {
-            window.open('https://github.com/Lzengp');
-          }}
-        >
-          <GithubOutlined style={{ marginRight: '5px' }} />
-          GitHub
-        </a>
-        <a style={{}} target="_blank" href="https://tsm.miit.gov.cn/">粤ICP备2023077596号</a>
-        <a style={{}} target="_blank" href="https://tsm.miit.gov.cn/">粤ICP备2023077596号-1</a>
-      </div>
-    </>
+    </div>
   );
 };
 

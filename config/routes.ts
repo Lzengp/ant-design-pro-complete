@@ -5,12 +5,12 @@
     component: './PortalPage',
   },
   {
-    path: '/myArticle',
+    path: '/myArticle/:id',
     layout: false,
     component: './mypages/myArticle',
   },
   {
-    path: '/myEditor',
+    path: '/myEditor/:id',
     layout: false,
     component: './mypages/myEditorPage',
   },
@@ -316,12 +316,12 @@
     routes: [
       {
         path: '/myPages',
-        redirect: '/myPages/myEditor',
+        redirect: '/myPages/myEditor/:id',
       },
       {
         name: 'myEditor',
         icon: 'smile',
-        path: '/myPages/myEditor',
+        path: '/myPages/myEditor/:id',
         component: './mypages/myEditorPage',
       },
       {
@@ -333,7 +333,7 @@
       {
         name: 'myArticle',
         icon: 'smile',
-        path: '/myPages/myArticle',
+        path: '/myPages/myArticle/:id',
         component: './mypages/myArticle',
       },
       {
@@ -352,7 +352,7 @@
   },
   {
     path: '/',
-    redirect: '/myArticle',
+    redirect: '/myArticle/1',
   },
   {
     component: '404',

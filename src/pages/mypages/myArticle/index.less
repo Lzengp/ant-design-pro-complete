@@ -1,6 +1,18 @@
+.globalSearch {
+  position: fixed;
+  height: 60px;
+  z-index: 1000;
+  text-align: center;
+  line-height: 60px;
+  background-color: #ffffff;
+  width: 100%;
+  border-bottom: 1px solid #f1f3f4;
+}
+
 .myArticleWarp {
+  // margin-top: 60px;
   display: flex;
-  padding: 20px;
+  padding: 60px 20px 20px;
   background-color: #fff;
 
   .catalogue {
@@ -20,8 +32,20 @@
     display: flex;
     flex-direction: column;
     width: 300px;
-    height: 700px;
+    border-right: 1px solid #f4f5f5;
+    padding-top: 16px;
+
+    .articleTitles {
+      height: 80vh;
+      overflow: auto;
+    }
+
+
     overflow: auto;
+    position: fixed;
+    z-index: 999;
+    background: #FFFFFF;
+    height: auto;
 
     .titleWrapper {
       position: relative;
@@ -75,10 +99,11 @@
   }
 
   .rightContent {
-    width: 900px;
+    margin-left: 300px;
     padding: 0 40px 40px;
     background-color: #fff;
-    border-left: 1px solid #f4f5f5;
+    height: 89vh;
+    width: 100%;
 
     .title {
       margin: 24px 0 32px;
@@ -111,21 +136,5 @@
   .ipAddress {
     margin: 0 0 20px 50px;
     color: #d9d9d9;
-  }
-}
-
-.icpNum {
-  width: 100%;
-  height: 50px;
-  background-color: #fff;
-  border-top: 1px solid #eee;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-
-  a {
-    color: #8590a6;
-    font-size: 12px;
   }
 }

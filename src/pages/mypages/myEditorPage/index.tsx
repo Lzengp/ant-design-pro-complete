@@ -16,13 +16,14 @@ const { Paragraph } = Typography;
 
 interface MyEditorPageProps {
   location: any;
+  match: any;
 }
 
 // 富文本编辑页面
 const myEditorPage = (props: MyEditorPageProps) => {
   const {
-    location: {
-      query: { id },
+    match: {
+      params: { id },
     },
   } = props;
   const [value, setValue] = useState<string>('');
@@ -30,7 +31,7 @@ const myEditorPage = (props: MyEditorPageProps) => {
   const isMenuPage = window.location.href.indexOf('myPages') > -1; // 是否为菜单页面
 
   useEffect(() => {
-    if (id) {
+    if (id && id !== 'create') {
       queryData();
     }
   }, [id]);
@@ -49,7 +50,7 @@ const myEditorPage = (props: MyEditorPageProps) => {
       return message.error("请输入标题和内容");
     }
     const json = JSON.stringify(value);
-    if (id) {
+    if (id && id !== 'create') {
       request(`/apiL/article/updateArticle/${id}`, {
         data: {
           title: title,
@@ -58,7 +59,7 @@ const myEditorPage = (props: MyEditorPageProps) => {
         method: 'post',
       }).then((res: any) => {
         message.success('更新成功');
-        history.goBack();
+        history.push(isMenuPage ? `/myPages/myArticle/${id}` : `/myArticle/${id}`);
       });
     } else {
       request('/apiL/article/addArticle', {
@@ -70,7 +71,7 @@ const myEditorPage = (props: MyEditorPageProps) => {
         method: 'post',
       }).then((res: any) => {
         message.success('新增成功');
-        history.push(isMenuPage ? '/myPages/myArticle' : '/myArticle');
+        history.push(isMenuPage ? `/myPages/myArticle/${res.data}` : `/myArticle/${res.data}`);
       });
     }
     return;
@@ -98,14 +99,11 @@ const myEditorPage = (props: MyEditorPageProps) => {
           }}
         />
         <Button type="primary" onClick={save}>
-          {id ? '更新' : '保存'}
+          {id && id !== 'create' ? '更新' : '保存'}
         </Button>
         <Button onClick={() => {
           history.push({
-            pathname: isMenuPage ? '/myPages/myArticle' : '/myArticle',
-            query: {
-              id,
-            },
+            pathname: isMenuPage ? `/myPages/myArticle/${id}` : `/myArticle/${id}`,
           });
         }}>返回</Button>
       </Space>

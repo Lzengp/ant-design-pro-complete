@@ -96,8 +96,8 @@ const PortalPage = () => {
             <div className={styles['portalpage-head']}>
                 <div className={styles['head-content']}>
                     <div className={styles['head-img']}>
-                        <img src={gjlogo} className={styles['gj-img']}></img>
-                        {/* <img src={logo} className={styles['arp-img']}></img> */}
+                        {/* <img src={gjlogo} className={styles['gj-img']}></img> */}
+                        <img src={logo} className={styles['arp-img']}></img>
                     </div>
                     <nav className={styles['head-nav']} onClick={headClick}>
                         <div style={{ color: currentPage === 1 ? '#1890ff' : '' }}>首页</div>
