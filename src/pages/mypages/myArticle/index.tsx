@@ -12,11 +12,11 @@ import {
   SearchOutlined,
   UserDeleteOutlined,
 } from '@ant-design/icons';
-import { Avatar, Button, Dropdown, Input, Menu, message, Modal, Popconfirm, Space } from 'antd';
+import { Avatar, Button, Dropdown, Input, Menu, message, Modal, Popconfirm, Popover, Space } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import classNames from 'classnames';
 import { debounce, isEmpty } from 'lodash';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { request, history } from 'umi';
 import styles from './index.less';
 import MyEditor from '@/components/MyEditor';
@@ -48,9 +48,6 @@ interface UserProps {
 
 const MyArticle = (props: any) => {
   const {
-    // location: {
-    //   query: { id },
-    // },
     match: {
       params: { id },
     },
@@ -66,8 +63,10 @@ const MyArticle = (props: any) => {
   const isMenuPage = window.location.href.indexOf('myPages') > -1; // 是否为菜单页面
   const isAuthor = localStorage.getItem('currentAuthor') === 'longwei';
 
+  const [searchData, setSearchData] = useState<any>();
+  const [popoverOpen, setPopoverOpen] = useState<boolean>(false); // 全局搜索popover弹窗
+
   useEffect(() => {
-    console.log('id变化了');
     if (Array.isArray(data) && id) {
       setSelectData(data.find(d => d.id == id));
     }
@@ -133,9 +132,6 @@ const MyArticle = (props: any) => {
     // 跳转到富文本编辑页面
     history.push({
       pathname: isMenuPage ? `/myPages/myEditor/${id}` : `/myEditor/${id}`,
-      // query: {
-      //   id,
-      // },
     });
   };
 
@@ -286,19 +282,68 @@ const MyArticle = (props: any) => {
     });
   };
 
+  const PopoverContent = () => useMemo(() => {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '40px', width: '300px' }}>
+        {
+          searchData?.map((item: any) => {
+            return (
+              <a target='-blank' onClick={() => {
+                history.replace(`/myArticle/${item.id}`);
+                setPopoverOpen(false);
+              }}>
+                {item.title}
+              </a>
+            );
+          })
+        }
+      </div>
+    );
+  }, [searchData]);
+
+  const globalSearchChange = (e: any) => {
+    const value = e.target.value;
+    if (value) {
+      request(`/apiL/article/getSearchArticle/${value}`).then((res: any) => {
+        if (Array.isArray(res?.data) && res?.data.length) {
+          setSearchData(res?.data || []);
+          setPopoverOpen(true);
+        } else {
+          setSearchData([]);
+          setPopoverOpen(false);
+        }
+      });
+    } else {
+      setSearchData([]);
+      setPopoverOpen(false);
+    }
+  };
+
+
   return (
     <div>
-      <div className={styles.globalSearch}>
-        <Input
-          placeholder='请输入关键字进行全局搜索'
-          style={{ width: '400px', borderRadius: '15px' }}
-          prefix={<SearchOutlined />}
-          onPressEnter={(e) => {
-            console.log(e.target.value);
-          }}
-        />
+      <div className={styles.globalSearch} >
+        <Popover
+          placement="bottomLeft"
+          title={''}
+          arrowPointAtCenter={false}
+          content={PopoverContent}
+          open={popoverOpen}>
+          <Input
+            placeholder='请输入关键字进行全局搜索'
+            style={{ width: '400px', borderRadius: '15px' }}
+            prefix={<SearchOutlined />}
+            onChange={debounce((e) => globalSearchChange(e), 500)}
+            onFocus={(e) => {
+              if (searchData && searchData.length) {
+                setPopoverOpen(true);
+              }
+              console.log(e);
+            }}
+          />
+        </Popover>
       </div>
-      <div className={styles.myArticleWarp}>
+      <div className={styles.myArticleWarp} onClick={(e) => { e.stopPropagation(); setPopoverOpen(false); }}>
         {/* 左侧文章目录 */}
         <div className={styles.leftTitle}>
           <div className={styles.catalogue}>

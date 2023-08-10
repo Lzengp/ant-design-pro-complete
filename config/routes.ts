@@ -355,6 +355,18 @@
     redirect: '/myArticle/1',
   },
   {
+    path: '/myArticle/',
+    redirect: '/myArticle/1',
+  },
+  {
+    path: '/myEditor/',
+    redirect: '/myEditor/create',
+  },
+  {
+    path: '/myEditor',
+    redirect: '/myEditor/create',
+  },
+  {
     component: '404',
   },
 ];

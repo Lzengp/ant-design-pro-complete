@@ -17,10 +17,10 @@ export default {
       changeOrigin: true,
     },
     '/apiL/': {
-      // target: 'http://localhost:8088',
-      // pathRewrite: { '/apiL': '' },
-      target: 'http://110.42.246.29:8001',
-      changeOrigin: true,
+      target: 'http://localhost:8088',
+      pathRewrite: { '/apiL': '' },
+      // target: 'http://110.42.246.29:8001',
+      // changeOrigin: true,
     },
   },
   test: {

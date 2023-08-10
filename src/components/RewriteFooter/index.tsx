@@ -4,8 +4,9 @@ import styles from './index.less';
 const RewriteFooter = () => {
     return (
         <div className={styles.icpNum}>
-            <a target="_blank" href="/personal">关于我</a>
-            <a target='-blank' href='/myModularization'>模块化页面体验</a>
+            <span>Copyright © lzengp.top </span>|
+            <a target="_blank" href="/personal">关于我</a>|
+            <a target='-blank' href='/myModularization'>模块化页面体验</a>|
             <a
                 target='-blank'
                 onClick={() => {
@@ -13,9 +14,8 @@ const RewriteFooter = () => {
                 }}
             >
                 <GithubOutlined style={{ marginRight: '5px' }} />
-                GitHub
-            </a>
-            <a style={{}} target="_blank" href="https://tsm.miit.gov.cn/">粤ICP备2023077596号</a>
+            </a>|
+            <a style={{}} target="_blank" href="https://tsm.miit.gov.cn/">粤ICP备2023077596号</a>|
             <a style={{}} target="_blank" href="https://tsm.miit.gov.cn/">粤ICP备2023077596号-1</a>
         </div>
     );
