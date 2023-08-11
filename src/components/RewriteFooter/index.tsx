@@ -5,8 +5,8 @@ const RewriteFooter = () => {
     return (
         <div className={styles.icpNum}>
             <span>Copyright © lzengp.top </span>|
-            <a target="_blank" href="/personal">关于我</a>|
-            <a target='-blank' href='/myModularization'>模块化页面体验</a>|
+            <a target="_blank" href="#/personal">关于我</a>|
+            <a target='-blank' href='#/myModularization'>模块化页面体验</a>|
             <a
                 target='-blank'
                 onClick={() => {

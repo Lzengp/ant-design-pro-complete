@@ -36,6 +36,10 @@ npm start
 
 项目体验地址: [https://www.lzengp.top](https://www.lzengp.top)
 
+### 2023年7月更新
+
+- 此项目已经部署到腾讯云
+
 ## 引入第三方组件库
 
 ### [使用 wangEditor 富文本编辑器](https://www.wangeditor.com/v5/for-frame.html#react)

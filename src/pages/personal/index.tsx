@@ -24,7 +24,7 @@ const personalIntroduction = () => {
   return (
     <div className={styles.personalIntroductionWrap}>
       <div className={styles.upperRightCorner}>
-        <a href="./myArticle">体验系统</a>
+        <a target="_blank" href="#/myArticle">体验系统</a>
         <a
           onClick={() => {
             window.open('https://github.com/Lzengp');
@@ -42,7 +42,7 @@ const personalIntroduction = () => {
         {/* <div dangerouslySetInnerHTML={{ __html: html }} className={styles.mainContent} /> */}
         <div id="introduce" className={styles.mainContent}></div>
       </div>
-      <div className={styles.poweredByVercel}>Powered by Vercel</div>
+      {/* <div className={styles.poweredByVercel}>Powered by Vercel</div> */}
       <LuminousFont />
     </div>
   );

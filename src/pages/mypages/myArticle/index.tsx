@@ -69,6 +69,10 @@ const MyArticle = (props: any) => {
   useEffect(() => {
     if (Array.isArray(data) && id) {
       setSelectData(data.find(d => d.id == id));
+      document.querySelector(`#anchorPoint`)?.scrollIntoView({
+        behavior: 'smooth', // 平滑过度效果
+        block: 'start',
+      });
     }
   }, [id, data]);
 
@@ -304,7 +308,7 @@ const MyArticle = (props: any) => {
   const globalSearchChange = (e: any) => {
     const value = e.target.value;
     if (value) {
-      request(`/apiL/article/getSearchArticle/${value}`).then((res: any) => {
+      request(`/apiL/article/getSearchArticle?content=${value.toString()}`).then((res: any) => {
         if (Array.isArray(res?.data) && res?.data.length) {
           setSearchData(res?.data || []);
           setPopoverOpen(true);
@@ -322,7 +326,13 @@ const MyArticle = (props: any) => {
 
   return (
     <div>
-      <div className={styles.globalSearch} >
+      <div
+        className={styles.globalSearch}
+        onClick={(e: any) => {
+          if (e.target.nodeName !== 'INPUT') {
+            setPopoverOpen(false);
+          }
+        }}>
         <Popover
           placement="bottomLeft"
           title={''}
@@ -334,11 +344,11 @@ const MyArticle = (props: any) => {
             style={{ width: '400px', borderRadius: '15px' }}
             prefix={<SearchOutlined />}
             onChange={debounce((e) => globalSearchChange(e), 500)}
+            onPressEnter={debounce((e) => globalSearchChange(e), 500)}
             onFocus={(e) => {
               if (searchData && searchData.length) {
                 setPopoverOpen(true);
               }
-              console.log(e);
             }}
           />
         </Popover>
@@ -385,6 +395,7 @@ const MyArticle = (props: any) => {
         </div>
         {/* 右侧文章主题 */}
         <div className={styles.rightContent}>
+          <div style={{ height: '40px' }} id="anchorPoint"></div>
           <div id="rightContent" style={fullScreenFlag ? { paddingLeft: '50px', background: '#FFF' } : { minHeight: '65vh', background: '#FFF' }}>
             <div style={{ position: 'absolute', right: '20px', top: '20px' }}>
               {!fullScreenFlag && (
