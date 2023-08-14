@@ -1,0 +1,166 @@
+.product-introduction-wrap {
+
+
+
+
+    .product-introduction-carousel {
+        height: 500px;
+        position: relative;
+
+        .carousel-desc {
+            position: absolute;
+            color: #FFFFFF;
+            bottom: 40%;
+            padding-left: 40px;
+
+            .carousel-desc-title {
+                font-size: 30px;
+            }
+
+            .carousel-desc-detail {
+                font-size: 20px;
+
+
+            }
+        }
+
+        img {
+            max-height: 500px;
+            width: 100%;
+        }
+    }
+
+    .product-capability {
+
+        :global {
+            .anticon-dot-chart {
+                font-size: 30px;
+            }
+
+            .ant-col {
+                width: 20%;
+            }
+        }
+
+        .product-capability-context {
+
+
+            .product-capability-item {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                gap: 9px;
+                padding: 20px 30px;
+
+
+                .product-capability-title {
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+
+                .product-capability-desc {
+                    font-size: 16px;
+                }
+
+                transition: all 0.5s;
+
+                &:hover {
+                    background: #01a8ec;
+                    color: #FFFFFF;
+                    border-radius: 5px;
+                    transform: translateY(-10px);
+                    cursor: context-menu;
+                }
+            }
+
+
+
+        }
+
+    }
+
+    .technical-capabilities {
+        .technical-capabilities-conetext {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            align-items: center;
+
+            .technical-capabilities-text {
+                position: absolute;
+                left: 50%;
+
+                .technical-capabilities-item {
+                    display: flex;
+                    width: 100%;
+                    align-items: baseline;
+                    margin-bottom: 20px;
+                    // justify-content: space-between;
+
+                    .technical-capabilities-title {
+                        font-size: 20px;
+                        font-weight: 600;
+                        width: 160px;
+                    }
+
+                    .technical-capabilities-desc {
+                        margin-bottom: 10px;
+                        // width: 500px;
+                        font-size: 16px;
+                        line-height: 30px;
+                        color: #757575;
+                    }
+                }
+            }
+        }
+    }
+
+    .product-value {
+        .about-gaojet-thought {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 50px;
+
+            .thought-content {
+
+                font-size: 16px;
+                color: #757575;
+
+                .thought-content-item {
+                    margin-bottom: 10px;
+
+                    .item-title {
+                        margin-left: -20px;
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: #000000;
+                        position: relative;
+                        line-height: 23px;
+                        margin-bottom: 10px;
+                        padding-left: 20px;
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            left: 0;
+                            top: 2px;
+                            width: 6px;
+                            height: 20px;
+                            background: #01a8ec;
+                        }
+                    }
+
+                    .item-desc {
+                        line-height: 35px;
+                    }
+                }
+            }
+
+        }
+    }
+
+
+    .intelligent-resource {}
+
+}

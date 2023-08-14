@@ -1,7 +1,8 @@
 import MapComponent from "@/components/MapComponent";
 import './index.less';
 import { useState } from "react";
-import { Col, Row } from "antd";
+import { Button, Checkbox, Col, Form, Input, Row } from "antd";
+import { HomeOutlined, MailOutlined, MobileOutlined, ScheduleOutlined, UserOutlined } from "@ant-design/icons";
 
 const btnStyleBorder = {
     background: '#FFFFFF',
@@ -15,6 +16,16 @@ const selectBtn = {
 };
 
 const ContactUs = () => {
+
+    const [form] = Form.useForm();
+
+    const options = [
+        { label: '智能制造', value: '1' },
+        { label: '智慧供应链', value: '2' },
+        { label: '全球贸易与跨境物流', value: '3' },
+        { label: '全渠道管理', value: '4' },
+        { label: '其他', value: '5' },
+    ];
 
     const [currentBtn, setCurrentBtn] = useState<string>('1');
 
@@ -85,7 +96,7 @@ const ContactUs = () => {
                 <div className="official-phone-number">官方电话：86-20-66616988</div>
             </div>
             <div className="contactus-content">
-                <div className="contactus-button">
+                {/* <div className="contactus-button">
                     <div
                         className="contactus-button-item"
                         style={currentBtn == '1' ? selectBtn : btnStyleBorder}
@@ -96,7 +107,7 @@ const ContactUs = () => {
                         style={currentBtn == '2' ? selectBtn : btnStyleBorder}
                         onClick={() => { setCurrentBtn('2'); }}
                     >合作商</div>
-                </div>
+                </div> */}
                 <div className="head-office-address">
                     <div >
                         <div className="office-img">
@@ -108,14 +119,14 @@ const ContactUs = () => {
 
                     </div>
                     <div className="detail-address">
-                        <div className="address-title">总公司：广东高捷航运物流有限公司</div>
-                        <div>地址：广州市白云区云城东路559-571号宏鼎云璟汇1栋13层</div>
-                        <div>电话：020-66616988/86389688（50条线）</div>
-                        <div>邮箱：marketing@goldjet.com.cn</div>
-                        <div>网址：http://www.goldjet.com.cn</div>
+                        <div className="address-title">公司：广东艾普数智科技有限公司</div>
+                        <div>地址：广州市黄埔区大沙北路12号</div>
+                        <div>手机：18802092056</div>
+                        <div>邮箱：Kevin_Ng@.Arp.com.cn</div>
+                        <div>网址：http://www.arp.com.cn</div>
                     </div>
                 </div>
-
+                {/* 
                 <div className="branch-office-address">
                     <Row gutter={24}>
                         {
@@ -136,6 +147,61 @@ const ContactUs = () => {
                             })
                         }
                     </Row>
+                </div> */}
+                <div style={{ marginTop: '50px' }}>
+                    <Form
+                        form={form}
+                        layout="vertical"
+                        onFinish={(values) => { console.log(values); }}
+                    >
+                        <Form.Item label="1.公司名称" name="corporateName" rules={[{ required: true, message: '请输入公司名称' }]}>
+                            <Input prefix={<HomeOutlined />} placeholder="请输入公司名称" />
+                        </Form.Item>
+                        <Form.Item label="2.姓名" name="name" rules={[{ required: true, message: '请输入姓名' }]}>
+                            <Input prefix={<UserOutlined />} placeholder="请输入姓名" />
+                        </Form.Item>
+                        <Form.Item label="3.职位" name="position" rules={[{ required: true, message: '请输入职位' }]}>
+                            <Input prefix={<ScheduleOutlined />} placeholder="请输入职位" />
+                        </Form.Item>
+                        <Form.Item
+                            label="4.邮箱"
+                            name="email"
+                            rules={[
+                                { required: true, message: '请输入邮箱' },
+                                { type: 'email', message: '请输入正确的邮箱' }
+                            ]}
+                        >
+                            <Input prefix={<MailOutlined />} placeholder="请输入邮箱" />
+                        </Form.Item>
+                        <Form.Item label="5.手机号" name="phoneNumber" rules={[
+                            { required: true, message: '请输入手机号' },
+                            {
+                                validator: (_, value) => {
+                                    if (!value) {
+                                        return Promise.reject();
+                                    }
+                                    if (/^0?(13[0-9]|15[012356789]|18[0-9]|17[0-9])[0-9]{8}$/.test(value)) {
+                                        return Promise.resolve();
+                                    }
+                                    return Promise.reject(new Error('请输入正确的手机号码'));
+                                }
+                            }
+                        ]}>
+                            <Input prefix={<MobileOutlined />} placeholder="请输入手机号" />
+                        </Form.Item>
+                        <Form.Item
+                            label="6.您比较关心以下哪些内容"
+                            name="concernedContent"
+                            valuePropName="checked"
+                        >
+                            <Checkbox.Group options={options} />
+                        </Form.Item>
+                        <Form.Item >
+                            <Button type="primary" htmlType="submit">
+                                提交
+                            </Button>
+                        </Form.Item>
+                    </Form>
                 </div>
             </div>
 
