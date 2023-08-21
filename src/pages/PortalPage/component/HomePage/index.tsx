@@ -2,7 +2,7 @@
 
 
 import styles from './index.less';
-import { Carousel, Col, Row, Button } from 'antd';
+import { Carousel, Col, Row, Button, Typography } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 import Title from '../Title';
@@ -11,16 +11,20 @@ import aircraft from '../../../../assets/aircraft.svg';
 import HomeHannerOne from '@/assets/home-banner-one.png';
 import HomeHannerTwo from '@/assets/home-banner-two.png';
 import HomeHannerThree from '@/assets/home-banner-three.png';
+import HomeHanner from '@/assets/home-banner.png';
 import SmartSupplyChain from '@/assets/smart-supply-chain.png';
 import Omnichannel from '@/assets/omnichannel.png';
 import IntelligentManufacturin from '@/assets/intelligent-manufacturing.png';
+
+const { Paragraph } = Typography;
 
 const HomePage = () => {
 
     const carouselImgList = [
         HomeHannerOne,
-        HomeHannerTwo,
-        HomeHannerThree,
+        // HomeHannerTwo,
+        HomeHanner
+        // HomeHannerThree,
         // "https://www.walltechsystem.cn/upload/2023-02/167687813995203800.jpg",
         // "https://www.walltechsystem.cn/upload/2022-08/166064706418675300.png",
         // "https://www.walltechsystem.cn/upload/2022-08/166070601401522300.png",
@@ -147,7 +151,7 @@ const HomePage = () => {
                 <div className={styles['about-gaojet']}>
                     <Title title='关于艾普' />
                     <Row className={styles['about-gaojet-content']} gutter={24}>
-                        <Col span={12} className={styles['about-gaojet-text']} style={{}}>
+                        <Col span={12} className={classNames(styles['about-gaojet-text'])}>
                             <div style={{ textIndent: '5em' }}>广东艾普数智科技有限公司（简称：艾普数智）是国内领先的企业数智化转型服务商，公司成立于2021年，总部位于广州，由国家“千人计划”特聘专家林熹教授和人工智能科学家、产业专家组成，核心成员来自头部互联网企业和咨询企业。</div>
                             <div style={{ textIndent: '5em' }}>
                                 艾普数智基于云原生互联网架构，综合云计算、大数据、人工智能、物联网、区块链等新技术，打造智能引擎和高度灵活扩展的产业智能资源协同平台产品（简称：ARP)，为企业提供全场景数智服务。
@@ -155,7 +159,7 @@ const HomePage = () => {
                             <Button type='primary'>了解更多<RightOutlined /></Button>
                         </Col>
                         <Col span={12}>
-                            <img src="https://www.walltechsystem.cn/upload/2023-02/167687813995203800.jpg" style={{ width: '100%' }} />
+                            <img src={HomeHanner} style={{ width: '100%' }} />
                         </Col>
                     </Row>
                     <div className={styles['about-gaojet-thought']}>

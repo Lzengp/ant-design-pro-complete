@@ -1,0 +1,106 @@
+.solution-context {
+
+    .solution-carousel {
+        height: 500px;
+        position: relative;
+
+        .carousel-desc {
+            // position: absolute;
+            color: #FFFFFF;
+            // bottom: 40%;
+            // padding-left: 40px;
+
+            position: absolute;
+            right: 3%;
+            top: 10%;
+            display: flex;
+            flex-direction: column;
+            line-height: 60px;
+            align-items: end;
+
+            .carousel-desc-title {
+                font-size: 30px;
+                // color: #ffff00;
+                font-weight: 600;
+            }
+
+            .carousel-desc-detail {
+                // font-size: 20px;
+                font-size: 22px;
+                // color: #0b1073;
+                font-weight: 600;
+            }
+        }
+
+        img {
+            max-height: 500px;
+            width: 100%;
+        }
+
+    }
+
+    .pain-spot {
+
+
+
+        .pain-spot-context-show {
+
+            transform: translateY(-70px) !important;
+            opacity: 1 !important;
+            transition: all 1s;
+        }
+
+        .pain-spot-context {
+            // transition: all 0.5s;
+            display: flex;
+            justify-content: space-between;
+            // transform: translateY(30px);
+            // padding-top: 70px;
+            // opacity: 0;
+
+            .pain-spot-item {
+                display: flex;
+                flex-direction: column;
+                width: 20%;
+                align-items: center;
+                padding: 30px;
+                box-shadow: 0px 3px 20px rgba(204, 204, 204, 0.149019607843137);
+                cursor: pointer;
+                border: 1px solid rgba(240, 240, 244, 1);
+                border-radius: 5px;
+                justify-content: center;
+                height: 350px;
+
+                &:hover {
+                    background-color: #273ca2;
+                    color: #FFFFFF;
+
+                    .pain-spot-desc {
+                        font-size: 16px;
+                        color: #FFFFFF;
+                    }
+                }
+
+                :global {
+                    .anticon-aim {
+                        font-size: 40px;
+                    }
+                }
+
+                .pain-spot-title {
+                    font-size: 18px;
+                    font-weight: 600;
+                    margin: 30px 0 10px;
+                }
+
+                .pain-spot-desc {
+                    font-size: 16px;
+                    color: #757575;
+                }
+            }
+
+
+        }
+
+    }
+}

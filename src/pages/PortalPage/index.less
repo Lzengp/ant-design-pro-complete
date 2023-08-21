@@ -1,5 +1,7 @@
 .portalpage-wrap {
 
+    min-width: 1200px;
+
     .portalpage-head {
         position: fixed;
         top: 0;
@@ -8,6 +10,7 @@
         width: 100%;
         background: #FFFFFF;
         box-shadow: 0 3px 6px 1px rgba(17, 15, 15, .06);
+        min-width: 1200px;
 
         .head-content {
             display: flex;
@@ -30,6 +33,37 @@
                 gap: 6%;
                 font-size: 16px;
 
+                .solution {
+                    position: relative;
+
+                    .solution-detail {
+
+
+                        position: absolute;
+                        width: 150px;
+                        height: 0;
+                        overflow: hidden;
+                        background-color: #ffffff;
+                        font-size: 14px;
+                        left: -26px;
+                        transition: all 0.5s;
+
+                        .solution-detail-item {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 10px;
+                            padding: 20px;
+                        }
+                    }
+
+                    &:hover {
+                        .solution-detail {
+                            height: 190px;
+
+                        }
+                    }
+                }
+
                 div {
                     cursor: pointer;
                     min-width: 100px;
@@ -49,8 +83,8 @@
 
                     :global {
                         .anticon-down {
-                            background-color: red;
-                            color: aquamarine;
+                            // background-color: red;
+                            // color: aquamarine;
                         }
                     }
 
@@ -80,6 +114,7 @@
             width: 40px;
             height: 40px;
             cursor: pointer;
+            padding-left: 9px;
 
             &:hover {
                 background-color: #262626;
@@ -87,4 +122,17 @@
         }
     }
 
+}
+
+:global {
+    .font-style {
+        line-height: 42px;
+        font-size: 16px;
+    }
+
+    .padding-50 {
+        padding: 0 50px;
+        display: flex;
+        justify-content: space-between;
+    }
 }

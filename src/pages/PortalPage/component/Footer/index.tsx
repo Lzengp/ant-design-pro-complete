@@ -31,10 +31,10 @@ const Footer = () => {
                 <div className={styles['contact']}>
                     <div className={styles['contact-title']}>欢迎联系</div>
                     <div className={styles['company-phone']}>
-                        <PhoneOutlined />86-20-66616988
+                        <PhoneOutlined />18802092056
                     </div>
                     <div>
-                        总部：广州市白云区云城东路559 - 571号宏鼎.云璟汇1栋13楼
+                        总部：广州市黄埔区大沙北路12号
                     </div>
                 </div>
             </div>

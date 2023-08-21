@@ -59,7 +59,7 @@ const AboutCompany = () => {
 
             <div className={styles['official-img']}>
                 <img src={"https://www.walltechsystem.cn/upload/2023-01/167498305603816400.jpg"} />
-                <div className={styles['official-phone-number']}>官方电话：86-20-66616988</div>
+                <div className={styles['official-phone-number']}>官方电话：18802092056</div>
             </div>
             <div className={styles['company-tab']}>
                 <div className={styles['company-tab-title']} onClick={headClick} >

@@ -93,7 +93,7 @@ const ContactUs = () => {
         <div className="contactus-wrap">
             <div className="official-img">
                 <img src={"https://www.walltechsystem.cn/upload/2020-11/160499550614158300.jpg"} />
-                <div className="official-phone-number">官方电话：86-20-66616988</div>
+                <div className="official-phone-number">官方电话：18802092056</div>
             </div>
             <div className="contactus-content">
                 {/* <div className="contactus-button">

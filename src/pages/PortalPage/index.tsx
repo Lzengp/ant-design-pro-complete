@@ -4,29 +4,29 @@ import gjlogo from '@/assets/gjlogo.png';
 import styles from './index.less';
 import Footer from './component/Footer';
 import HomePage from './component/HomePage';
-import { useState } from 'react';
-import { history } from 'umi';
+import { useEffect, useState } from 'react';
 import AboutCompany from './component/AboutCompany';
 import ContactUs from './component/ContactUs';
-import { DownOutlined, MailOutlined, VerticalAlignTopOutlined } from '@ant-design/icons';
-import { BackTop, Menu } from 'antd';
+import { DownOutlined, VerticalAlignTopOutlined } from '@ant-design/icons';
+import { BackTop } from 'antd';
 import ProductIntroduction from './component/ProductIntroduction';
-
-
-const TYPE_COLOR: { [key: number]: string; } = {
-    1: '#1890ff',
-    2: '#1890ff',
-    3: '#1890ff',
-    4: '#1890ff',
-    5: '#1890ff',
-};
+import Solution from './component/Solution';
+import { use } from 'echarts';
 
 const PortalPage = () => {
 
     const [currentPage, setCurrentPage] = useState<number>(1);
 
+    const setScrollIntoView = () => {
+        document.querySelector(`#anchorPoint`)?.scrollIntoView({
+            behavior: 'smooth', // 平滑过度效果
+            block: 'start',
+        });
+    };
+
     const headClick = (e: any) => {
         console.log(e.target, e.target.nodeName, e.target.innerText,);
+        setScrollIntoView();
         if (e.target.nodeName === 'DIV') {
             switch (e.target.innerText) {
                 case '首页':
@@ -39,7 +39,7 @@ const PortalPage = () => {
                     // history.replace({ pathname: '/portalPage/desc' });
                     break;
                 case '解决方案':
-                    setCurrentPage(3);
+                    // setCurrentPage(3);
                     break;
                 case '关于艾普':
                     setCurrentPage(4);
@@ -53,48 +53,9 @@ const PortalPage = () => {
         }
     };
 
-    function getItem(
-        label: React.ReactNode,
-        key?: React.Key | null,
-        icon?: React.ReactNode,
-        children?: any[],
-        theme?: 'light' | 'dark',
-    ): any {
-        return {
-            key,
-            icon,
-            children,
-            label,
-            theme,
-        } as any;
-    }
-
-    const items: any[] = [
-        getItem(
-            '解决方案',
-            'sub1',
-            <MailOutlined />,
-            [getItem('Option 1', '1'), getItem('Option 2', '2'), getItem('Option 3', '3')],
-            'light',
-        ),
-        // getItem('Option 5', '5'),
-        // getItem('Option 6', '6'),
-    ];
-
-    const style: React.CSSProperties = {
-        height: 40,
-        width: 40,
-        lineHeight: '40px',
-        borderRadius: 4,
-        backgroundColor: '#1088e9',
-        color: '#fff',
-        textAlign: 'center',
-        fontSize: 14,
-    };
-
     return (
         <div className={styles['portalpage-wrap']}>
-            <div className={styles['portalpage-head']}>
+            <div className={styles['portalpage-head']} >
                 <div className={styles['head-content']}>
                     <div className={styles['head-img']}>
                         {/* <img src={gjlogo}></img> */}
@@ -103,27 +64,29 @@ const PortalPage = () => {
                     <nav className={styles['head-nav']} onClick={headClick}>
                         <div style={{ color: currentPage === 1 ? '#1890ff' : '' }}>首页</div>
                         <div style={{ color: currentPage === 2 ? '#1890ff' : '' }}>产品介绍</div>
-                        <div style={{ color: currentPage === 3 ? '#1890ff' : '' }} className='solution'>
+                        <div style={{ color: currentPage === 3 ? '#1890ff' : '' }} className={styles['solution']}>
                             解决方案
                             <DownOutlined className='solution-anticon-down' />
+                            <div className={styles['solution-detail']}>
+                                <div className={styles['solution-detail-item']}>
+                                    <a onClick={() => { setCurrentPage(3); }}>跨境智慧供应链</a>
+                                    <a onClick={() => { setCurrentPage(3); }}>国内智慧供应链</a>
+                                    <a onClick={() => { setCurrentPage(3); }}>全球贸易</a>
+                                    <a onClick={() => { setCurrentPage(3); }}>智能制造</a>
+                                    <a onClick={() => { setCurrentPage(3); }}>全渠道管理</a>
+                                </div>
+
+                            </div>
                         </div>
-                        {/* <Menu
-                            // onClick={onClick}
-                            style={{ width: 256 }}
-                            defaultOpenKeys={['sub1']}
-                            // selectedKeys={[current]}
-                            mode="vertical"
-                            theme="light"
-                            items={items}
-                        /> */}
                         <div style={{ color: currentPage === 4 ? '#1890ff' : '' }}>关于艾普</div>
                         <div style={{ color: currentPage === 5 ? '#1890ff' : '' }}>联系我们</div>
                     </nav>
                 </div>
             </div>
-            <div className={styles['portalpage-allContent']}>
+            <div className={styles['portalpage-allContent']} id="anchorPoint">
                 {currentPage === 1 && <HomePage />}
                 {currentPage === 2 && <ProductIntroduction />}
+                {currentPage === 3 && <Solution />}
                 {currentPage === 4 && <AboutCompany />}
                 {currentPage === 5 && <ContactUs />}
             </div>

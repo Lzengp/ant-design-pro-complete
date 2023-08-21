@@ -2,6 +2,10 @@ import { Carousel, Col, Row } from "antd";
 import styles from './index.less';
 import { DotChartOutlined } from "@ant-design/icons";
 import Title from "../Title";
+import HomeHannerOne from '@/assets/home-banner-one.png';
+import HomeHannerTwo from '@/assets/home-banner-two.png';
+import HomeHannerThree from '@/assets/home-banner-three.png';
+import HomeHanner from '@/assets/home-banner.png';
 
 const ProductIntroduction = () => {
 
@@ -13,17 +17,20 @@ const ProductIntroduction = () => {
                 '智能制造、智慧供应链、智能通关、智能协同、智慧生态',
                 '全球贸易、跨境电商、国际物流'
             ],
-            src: 'https://www.walltechsystem.cn/upload/2022-08/166064681774185600.png',
+            // src: 'https://www.walltechsystem.cn/upload/2022-08/166064681774185600.png',
+            src: HomeHanner,
         },
         {
             title: '智能引擎，开启万有引力，一切皆有可能！',
             desc: '',
-            src: "https://www.walltechsystem.cn/upload/2023-02/167687813995203800.jpg",
+            // src: "https://www.walltechsystem.cn/upload/2023-02/167687813995203800.jpg",
+            src: HomeHannerTwo,
         },
         {
             title: '智能制造、全球协同',
             desc: '致力于建造低碳、绿色产业链和供应链，珍爱地球，让人生活更美好！',
-            src: "https://www.walltechsystem.cn/upload/2022-08/166064706418675300.png",
+            // src: "https://www.walltechsystem.cn/upload/2022-08/166064706418675300.png",
+            src: HomeHannerThree,
         },
     ];
 
