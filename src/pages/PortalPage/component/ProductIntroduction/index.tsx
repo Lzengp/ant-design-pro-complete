@@ -2,35 +2,46 @@ import { Carousel, Col, Row } from "antd";
 import styles from './index.less';
 import { DotChartOutlined } from "@ant-design/icons";
 import Title from "../Title";
+import ProductIntroductionTwo from '@/assets/product-introduction-two.png';
 import HomeHannerOne from '@/assets/home-banner-one.png';
-import HomeHannerTwo from '@/assets/home-banner-two.png';
-import HomeHannerThree from '@/assets/home-banner-three.png';
-import HomeHanner from '@/assets/home-banner.png';
+import HomeHannerFour from '@/assets/home-banner-four.png';
+import HomeHannerFive from '@/assets/home-banner-five.png';
+import TechnicalCapabilities from '@/assets/technical-capabilities.png';
+import ProductValue from '@/assets/product-value.png';
+import IntelligentResource from '@/assets/intelligent-resource.png';
+import GridBlock from "@/components/GridBlock";
+
 
 const ProductIntroduction = () => {
 
     // 轮播图
     const carouselImgList = [
         {
-            title: '技术平台、业务平台、数据平台、智能平台',
-            desc: [
-                '智能制造、智慧供应链、智能通关、智能协同、智慧生态',
-                '全球贸易、跨境电商、国际物流'
-            ],
+            // title: '技术平台、业务平台、数据平台、智能平台',
+            // desc: [
+            //     '智能制造、智慧供应链、智能通关、智能协同、智慧生态',
+            //     '全球贸易、跨境电商、国际物流'
+            // ],
             // src: 'https://www.walltechsystem.cn/upload/2022-08/166064681774185600.png',
-            src: HomeHanner,
+            src: HomeHannerOne,
         },
         {
-            title: '智能引擎，开启万有引力，一切皆有可能！',
+            // title: '智能引擎，开启万有引力，一切皆有可能！',
             desc: '',
             // src: "https://www.walltechsystem.cn/upload/2023-02/167687813995203800.jpg",
-            src: HomeHannerTwo,
+            src: ProductIntroductionTwo,
         },
         {
-            title: '智能制造、全球协同',
-            desc: '致力于建造低碳、绿色产业链和供应链，珍爱地球，让人生活更美好！',
+            // title: '智能制造、全球协同',
+            // desc: '致力于建造低碳、绿色产业链和供应链，珍爱地球，让人生活更美好！',
             // src: "https://www.walltechsystem.cn/upload/2022-08/166064706418675300.png",
-            src: HomeHannerThree,
+            src: HomeHannerFour,
+        },
+        {
+            // title: '智能制造、全球协同',
+            // desc: '致力于建造低碳、绿色产业链和供应链，珍爱地球，让人生活更美好！',
+            // src: "https://www.walltechsystem.cn/upload/2022-08/166064706418675300.png",
+            src: HomeHannerFive,
         },
     ];
 
@@ -146,12 +157,13 @@ const ProductIntroduction = () => {
                         return (
                             <div>
                                 <div className={styles['carousel-desc']}>
-                                    <div className={styles['carousel-desc-title']}>{item.title}</div>
-                                    <div className={styles['carousel-desc-detail']}>{
+                                    {item.title && <div className={styles['carousel-desc-title']}>{item.title}</div>}
+                                    {item.desc && <div className={styles['carousel-desc-detail']}>{
                                         typeof item.desc === 'string' ? item.desc : item.desc.map(d => {
                                             return <>{d}<br /></>;
                                         })
                                     }</div>
+                                    }
                                 </div>
                                 <img src={item.src} />
                             </div>
@@ -159,18 +171,18 @@ const ProductIntroduction = () => {
                     })}
                 </Carousel>
             </div>
-            <div style={{ padding: '10px 50px' }}>
-                <div className={styles['product-capability']}>
+            <div className="global-content">
+                <GridBlock title="产品能力" list={productCapabilityList} />
+                {/* <div className={styles['product-capability']}>
                     <Title>产品能力</Title>
                     <Row className={styles['product-capability-context']}>
-
                         {
                             productCapabilityList.map(d => {
                                 return (
                                     <Col className={styles['product-capability-item']}>
                                         <div>
                                             {d.src}
-                                            {/* <img src="" /> */}
+                           
                                         </div>
                                         <div className={styles['product-capability-title']}>
                                             {d.title}
@@ -182,13 +194,14 @@ const ProductIntroduction = () => {
                                 );
                             })
                         }
-                    </Row>
-                </div>
+                    </Row> 
+                 </div> */}
                 <div className={styles['technical-capabilities']}>
                     <Title>技术能力</Title>
                     <div className={styles['technical-capabilities-conetext']}>
                         <div>
-                            <img src="https://bitsun-website.oss-cn-shanghai.aliyuncs.com/img/product/adv.png" />
+                            {/* <img src="https://bitsun-website.oss-cn-shanghai.aliyuncs.com/img/product/adv.png" /> */}
+                            <img src={TechnicalCapabilities} />
                         </div>
                         <div className={styles['technical-capabilities-text']}>
                             {
@@ -214,7 +227,6 @@ const ProductIntroduction = () => {
                     <Title>产品价值</Title>
                     <div className={styles['about-gaojet-thought']}>
                         <div className={styles['thought-content']}>
-
                             {
                                 productValueList.map(item => {
                                     return (
@@ -227,19 +239,21 @@ const ProductIntroduction = () => {
                             }
                         </div>
                         <div>
-                            <img src="https://bitsun-website.oss-cn-shanghai.aliyuncs.com/img/product/val.png" />
+                            {/* <img src="https://bitsun-website.oss-cn-shanghai.aliyuncs.com/img/product/val.png" /> */}
+                            <img src={ProductValue} />
                         </div>
                     </div>
                 </div>
                 <div className={styles['intelligent-resource']}>
                     <Title>智能资源协同平台</Title>
                     <div style={{ textAlign: 'center' }}>
-                        <img src='https://bitsun-website.oss-cn-shanghai.aliyuncs.com/img/solution/blueprint.png' />
+                        {/* <img src='https://bitsun-website.oss-cn-shanghai.aliyuncs.com/img/solution/blueprint.png' /> */}
+                        <img src={IntelligentResource} />
                     </div>
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 };
 

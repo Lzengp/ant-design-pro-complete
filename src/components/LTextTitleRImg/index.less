@@ -1,0 +1,44 @@
+.lTextTitleRImg-wrap {
+    .lTextTitleRImg-thought {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        // padding: 50px;
+
+        .thought-content {
+
+            font-size: 16px;
+            color: #757575;
+
+            .thought-content-item {
+                margin-bottom: 10px;
+
+                .item-title {
+                    margin-left: -20px;
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: #000000;
+                    position: relative;
+                    line-height: 23px;
+                    margin-bottom: 10px;
+                    padding-left: 20px;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        top: 2px;
+                        width: 6px;
+                        height: 20px;
+                        background: #01a8ec;
+                    }
+                }
+
+                .item-desc {
+                    line-height: 30px;
+                }
+            }
+        }
+
+    }
+}

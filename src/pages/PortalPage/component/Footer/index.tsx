@@ -7,7 +7,7 @@ const Footer = () => {
 
     return (
         <div className={styles['footer-wrap']}>
-            <div className={styles['footer-content']}>
+            {/* <div className={styles['footer-content']}>
                 <div className={styles['content-item']}>
                     <div className={styles['content-item-title']}>了解艾普数智</div>
                     <div style={{ marginLeft: '16px' }}>
@@ -37,9 +37,9 @@ const Footer = () => {
                         总部：广州市黄埔区大沙北路12号
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className={styles['company-information']}>
-                <span>广东艾普数智科技有限公司</span>
+                <span>Copyright © 2022 广东艾普数智科技有限公司 All Rights Reserved</span>
                 <span className={styles['filing-number']} onClick={() => { window.open('https://tsm.miit.gov.cn/'); }}>粤ICP备2023052583号</span>
             </div>
 

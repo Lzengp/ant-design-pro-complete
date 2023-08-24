@@ -1,6 +1,6 @@
 
 import styles from './index.less';
-import line from '../../../../assets/line.svg';
+import GraduallyEmerging from '@/components/GraduallyEmerging';
 
 interface TitleProps {
     title?: string;
@@ -13,12 +13,13 @@ const Title = (props: TitleProps) => {
 
     return (
         <>
+            {/* <GraduallyEmerging id={('id' + (Math.random() * 1000000).toFixed(0))}> */}
             <div className={styles['content-title']}>
-                {/* <img src={line} /> */}
                 <div className={styles['blue-line']}></div>
                 <span className={styles['title']}>{title || children}</span>
                 <div className={styles['blue-line']}></div>
             </div>
+            {/* </GraduallyEmerging> */}
         </>
     );
 };

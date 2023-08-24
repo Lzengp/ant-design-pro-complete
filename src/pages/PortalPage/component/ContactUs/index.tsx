@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Button, Checkbox, Col, Form, Input, Row } from "antd";
 import { HomeOutlined, MailOutlined, MobileOutlined, ScheduleOutlined, UserOutlined } from "@ant-design/icons";
 
+import ContactUsImg from '@/assets/contact-us.png';
+
 const btnStyleBorder = {
     background: '#FFFFFF',
     color: '#000000',
@@ -92,11 +94,14 @@ const ContactUs = () => {
     return (
         <div className="contactus-wrap">
             <div className="official-img">
-                <img src={"https://www.walltechsystem.cn/upload/2020-11/160499550614158300.jpg"} />
-                <div className="official-phone-number">官方电话：18802092056</div>
+                {/* <img src={"https://www.walltechsystem.cn/upload/2020-11/160499550614158300.jpg"} /> */}
+                <img src={ContactUsImg} style={{ height: '500px' }} />
+                {/* <div className="official-phone-number">官方电话：18802092056</div> */}
             </div>
-            <div className="contactus-content">
-                {/* <div className="contactus-button">
+            <div className='global-content'>
+
+                <div className="contactus-content">
+                    {/* <div className="contactus-button">
                     <div
                         className="contactus-button-item"
                         style={currentBtn == '1' ? selectBtn : btnStyleBorder}
@@ -108,25 +113,25 @@ const ContactUs = () => {
                         onClick={() => { setCurrentBtn('2'); }}
                     >合作商</div>
                 </div> */}
-                <div className="head-office-address">
-                    <div >
-                        <div className="office-img">
-                            <img src="https://img.scbao.com/uploads/allimg/110724/6285-110H409503525.jpg" />
-                        </div>
-                        <div className="office-map">
-                            <MapComponent height={350} width={420} />
-                        </div>
+                    <div className="head-office-address">
+                        <div >
+                            <div className="office-img">
+                                <img src="https://img.scbao.com/uploads/allimg/110724/6285-110H409503525.jpg" />
+                            </div>
+                            <div className="office-map">
+                                <MapComponent height={350} width={420} />
+                            </div>
 
+                        </div>
+                        <div className="detail-address">
+                            <div className="address-title">公司：广东艾普数智科技有限公司</div>
+                            <div>地址：广州市黄埔区大沙北路12号</div>
+                            <div>手机：18802092056</div>
+                            <div>邮箱：Kevin_Ng@.Arp.com.cn</div>
+                            <div>网址：http://www.arp.com.cn</div>
+                        </div>
                     </div>
-                    <div className="detail-address">
-                        <div className="address-title">公司：广东艾普数智科技有限公司</div>
-                        <div>地址：广州市黄埔区大沙北路12号</div>
-                        <div>手机：18802092056</div>
-                        <div>邮箱：Kevin_Ng@.Arp.com.cn</div>
-                        <div>网址：http://www.arp.com.cn</div>
-                    </div>
-                </div>
-                {/* 
+                    {/* 
                 <div className="branch-office-address">
                     <Row gutter={24}>
                         {
@@ -148,62 +153,64 @@ const ContactUs = () => {
                         }
                     </Row>
                 </div> */}
-                <div style={{ marginTop: '50px' }}>
-                    <Form
-                        form={form}
-                        layout="vertical"
-                        onFinish={(values) => { console.log(values); }}
-                    >
-                        <Form.Item label="1.公司名称" name="corporateName" rules={[{ required: true, message: '请输入公司名称' }]}>
-                            <Input prefix={<HomeOutlined />} placeholder="请输入公司名称" />
-                        </Form.Item>
-                        <Form.Item label="2.姓名" name="name" rules={[{ required: true, message: '请输入姓名' }]}>
-                            <Input prefix={<UserOutlined />} placeholder="请输入姓名" />
-                        </Form.Item>
-                        <Form.Item label="3.职位" name="position" rules={[{ required: true, message: '请输入职位' }]}>
-                            <Input prefix={<ScheduleOutlined />} placeholder="请输入职位" />
-                        </Form.Item>
-                        <Form.Item
-                            label="4.邮箱"
-                            name="email"
-                            rules={[
-                                { required: true, message: '请输入邮箱' },
-                                { type: 'email', message: '请输入正确的邮箱' }
-                            ]}
+                    <div style={{ marginTop: '50px' }}>
+                        <Form
+                            form={form}
+                            layout="vertical"
+                            onFinish={(values) => { console.log(values); }}
                         >
-                            <Input prefix={<MailOutlined />} placeholder="请输入邮箱" />
-                        </Form.Item>
-                        <Form.Item label="5.手机号" name="phoneNumber" rules={[
-                            { required: true, message: '请输入手机号' },
-                            {
-                                validator: (_, value) => {
-                                    if (!value) {
-                                        return Promise.reject();
+                            <Form.Item label="1.公司名称" name="corporateName" rules={[{ required: true, message: '请输入公司名称' }]}>
+                                <Input prefix={<HomeOutlined />} placeholder="请输入公司名称" />
+                            </Form.Item>
+                            <Form.Item label="2.姓名" name="name" rules={[{ required: true, message: '请输入姓名' }]}>
+                                <Input prefix={<UserOutlined />} placeholder="请输入姓名" />
+                            </Form.Item>
+                            <Form.Item label="3.职位" name="position" rules={[{ required: true, message: '请输入职位' }]}>
+                                <Input prefix={<ScheduleOutlined />} placeholder="请输入职位" />
+                            </Form.Item>
+                            <Form.Item
+                                label="4.邮箱"
+                                name="email"
+                                rules={[
+                                    { required: true, message: '请输入邮箱' },
+                                    { type: 'email', message: '请输入正确的邮箱' }
+                                ]}
+                            >
+                                <Input prefix={<MailOutlined />} placeholder="请输入邮箱" />
+                            </Form.Item>
+                            <Form.Item label="5.手机号" name="phoneNumber" rules={[
+                                { required: true, message: '请输入手机号' },
+                                {
+                                    validator: (_, value) => {
+                                        if (!value) {
+                                            return Promise.reject();
+                                        }
+                                        if (/^0?(13[0-9]|15[012356789]|18[0-9]|17[0-9])[0-9]{8}$/.test(value)) {
+                                            return Promise.resolve();
+                                        }
+                                        return Promise.reject(new Error('请输入正确的手机号码'));
                                     }
-                                    if (/^0?(13[0-9]|15[012356789]|18[0-9]|17[0-9])[0-9]{8}$/.test(value)) {
-                                        return Promise.resolve();
-                                    }
-                                    return Promise.reject(new Error('请输入正确的手机号码'));
                                 }
-                            }
-                        ]}>
-                            <Input prefix={<MobileOutlined />} placeholder="请输入手机号" />
-                        </Form.Item>
-                        <Form.Item
-                            label="6.您比较关心以下哪些内容"
-                            name="concernedContent"
-                            valuePropName="checked"
-                        >
-                            <Checkbox.Group options={options} />
-                        </Form.Item>
-                        <Form.Item >
-                            <Button type="primary" htmlType="submit">
-                                提交
-                            </Button>
-                        </Form.Item>
-                    </Form>
+                            ]}>
+                                <Input prefix={<MobileOutlined />} placeholder="请输入手机号" />
+                            </Form.Item>
+                            <Form.Item
+                                label="6.您比较关心以下哪些内容"
+                                name="concernedContent"
+                                valuePropName="checked"
+                            >
+                                <Checkbox.Group options={options} />
+                            </Form.Item>
+                            <Form.Item >
+                                <Button type="primary" htmlType="submit">
+                                    提交
+                                </Button>
+                            </Form.Item>
+                        </Form>
+                    </div>
                 </div>
             </div>
+
 
         </div>
     );

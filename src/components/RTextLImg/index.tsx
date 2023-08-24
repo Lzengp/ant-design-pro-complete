@@ -9,7 +9,7 @@ interface LTextRImg {
     list: Array<string>;
 }
 
-// 左字右图
+// 左图右字
 const LTextRImg = (props: LTextRImg) => {
 
     const { title, img, list } = props;
