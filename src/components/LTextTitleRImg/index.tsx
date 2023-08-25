@@ -15,7 +15,7 @@ const LTextTitleRImg = (props: LTextTitleRImg) => {
 
     return (
         <div className='lTextTitleRImg-wrap'>
-            <Title>{title}</Title>
+            {title && <Title>{title}</Title>}
             <div className='lTextTitleRImg-thought'>
                 <div className='thought-content'>
                     {
@@ -23,16 +23,21 @@ const LTextTitleRImg = (props: LTextTitleRImg) => {
                             return (
                                 <div className='thought-content-item'>
                                     <div className='item-title'>{item.title}</div>
-                                    <div className='item-desc'>{item.desc}</div>
+                                    <div className='item-desc' dangerouslySetInnerHTML={{ __html: item.desc }} />
                                 </div>
                             );
                         })
                     }
                 </div>
-                <div>
-                    {/* <img src="https://bitsun-website.oss-cn-shanghai.aliyuncs.com/img/product/val.png" /> */}
-                    <img src={img} />
-                </div>
+                {
+                    img && (
+                        <div>
+                            {/* <img src="https://bitsun-website.oss-cn-shanghai.aliyuncs.com/img/product/val.png" /> */}
+                            <img src={img} />
+                        </div>
+                    )
+                }
+
             </div>
         </div>
     );

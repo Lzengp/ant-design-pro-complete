@@ -115,8 +115,8 @@ const ContactUs = () => {
                 </div> */}
                     <div className="head-office-address">
                         <div >
-                            <div className="office-img">
-                                <img src="https://img.scbao.com/uploads/allimg/110724/6285-110H409503525.jpg" />
+                            <div className="office-img" style={{ background: '#dadada', height: '500px', width: '100%' }}>
+                                {/* <img src="https://img.scbao.com/uploads/allimg/110724/6285-110H409503525.jpg" /> */}
                             </div>
                             <div className="office-map">
                                 <MapComponent height={350} width={420} />

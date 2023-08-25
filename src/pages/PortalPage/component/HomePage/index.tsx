@@ -234,10 +234,6 @@ const HomePage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={styles['global-logistics-coverage']}>
-                        <Title title='全球贸易与跨境电商物流' />
-                        {/* <MapEchart /> */}
-                    </div>
                     {/* <img style={{ width: '100%' }} src="https://files.axshare.com/gsc/EI6QAV/a5/53/82/a55382653e6348bab95fa2dbdb57f043/images/%E5%85%B3%E4%BA%8E%E8%89%BE%E6%99%AE/u200.png?pageId=6c73d544-2b6a-48ab-89af-0720db628798" /> */}
                     <div className={styles['news-information']} style={{ display: 'none' }}>
                         <Title title='新闻资讯' />

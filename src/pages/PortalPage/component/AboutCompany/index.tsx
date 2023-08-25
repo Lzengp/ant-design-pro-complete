@@ -6,6 +6,7 @@ import { Col, Row, Steps } from 'antd';
 import MapEchart from '../MapEchart';
 import AboutUs from '@/assets/about-us.png';
 import AboutUs1 from '@/assets/about-us1.png';
+import LTextTitleRImg from '@/components/LTextTitleRImg';
 
 
 const AboutCompany = () => {
@@ -46,10 +47,10 @@ const AboutCompany = () => {
                     setCurrentTab(4);
                     goAnchor('HonoraryQualifications');
                     break;
-                case '社会责任':
-                    setCurrentTab(5);
-                    goAnchor('SocialResponsibility');
-                    break;
+                // case '社会责任':
+                //     setCurrentTab(5);
+                //     goAnchor('SocialResponsibility');
+                //     break;
                 default:
                     break;
             };
@@ -71,7 +72,7 @@ const AboutCompany = () => {
                         <span className={classNames(currentTab === 2 && styles['select-title'])}>企业文化</span>
                         <span className={classNames(currentTab === 3 && styles['select-title'])}>发展历程</span>
                         <span className={classNames(currentTab === 4 && styles['select-title'])}>荣誉资历</span>
-                        <span className={classNames(currentTab === 5 && styles['select-title'])}>社会责任</span>
+                        {/* <span className={classNames(currentTab === 5 && styles['select-title'])}>社会责任</span> */}
                     </div>
                     <div className={styles['grey-line']} />
                 </div>
@@ -88,7 +89,6 @@ const AboutCompany = () => {
                             </div>
                         </div>
                         <img src={AboutUs1} style={{ width: '100%', padding: '20px 0' }} />
-                        <div style={{ textIndent: '2em', paddingBottom: '20px' }}>帮助企业数智化转型，提升企业核心竞争力！</div>
                         {/* <img className={styles['video-img']} src="https://www.walltechsystem.cn/upload/2022-08/166070601401522300.png" /> */}
 
                         {/* <div className={styles['global-logistics-coverage']}>
@@ -122,7 +122,21 @@ const AboutCompany = () => {
                         <div id="CorporateCulture">企业文化</div>
                         <DownOutlined />
                     </div>
-                    <div className={styles['about-gaojet-real']}>
+                    <LTextTitleRImg title={''} img={''} list={[
+                        { title: '愿景', desc: '让人生活更美好' },
+                        { title: '使命', desc: '帮助企业数智化转型，实现全链路24小时库存和资源高效配置' },
+                        {
+                            title: '价值观', desc: `
+                        诚实守信：诚实、道德规范及高尚情操是我们做事的准则。<br />
+                        客户至上：以客户为中心，满足或超越客户期望的产品与服务。<br />
+                        创新思维：不断创新是令客户满意的基石，更会推动我们发展和提高竞争力。<br />
+                        追求极致：我们无论做任何事都要精益求精，尽善尽美，用心把事情做到极致。<br />
+                        快速响应：响应速度决定工作态度，我们要养成立即执行的工作习惯及提高灵活性。<br />
+                        团队合作：建立相互信任，尊敬互爱的人际关系。
+                        ` },
+                        { title: '行为准则', desc: '实干激情、负责担当、专注简单、共享透明、充分授权!' },
+                    ]} />
+                    {/* <div className={styles['about-gaojet-real']}>
                         <div className={styles['real-module']}>
                             <div style={{ fontSize: '20px', fontWeight: 600 }}>愿景</div>
                             <div >让人生活更美好</div>
@@ -141,7 +155,7 @@ const AboutCompany = () => {
                             <div style={{ fontSize: '20px', fontWeight: 600 }}>行为准则</div>
                             <div >实干激情、负责担当、专注简单、共享透明、充分授权</div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className={styles['about-company-content']}>
                     <div className={styles['about-company-title']}>
