@@ -2,13 +2,14 @@ import logo from '@/assets/logo.png';
 import styles from './index.less';
 import Footer from './component/Footer';
 import HomePage from './component/HomePage';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AboutCompany from './component/AboutCompany';
 import ContactUs from './component/ContactUs';
 import { DownOutlined, VerticalAlignTopOutlined } from '@ant-design/icons';
 import { BackTop, message } from 'antd';
 import ProductIntroduction from './component/ProductIntroduction';
 import Solution from './component/Solution';
+import { initScrollReveal } from '../utils';
 
 const PortalPage = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -21,7 +22,6 @@ const PortalPage = () => {
   };
 
   const headClick = (e: any) => {
-    console.log(e.target, e.target.nodeName, e.target.innerText);
     setScrollIntoView();
     if (e.target.nodeName === 'DIV') {
       switch (e.target.innerText) {
@@ -54,13 +54,22 @@ const PortalPage = () => {
     message.info('更多内容正在更新中，敬请期待！');
   };
 
+  useEffect(() => {
+    initScrollReveal();
+  }, [currentPage]);
+
   return (
     <div className={styles['portalpage-wrap']}>
       <div className={styles['portalpage-head']}>
         <div className={styles['head-content']}>
           <div className={styles['head-img']}>
             {/* <img src={gjlogo}></img> */}
-            <img src={logo}></img>
+            <img src={logo} onClick={() => {
+              setScrollIntoView();
+              setCurrentPage(1);
+            }}
+              style={{ cursor: 'pointer' }}
+            />
           </div>
           <nav className={styles['head-nav']} onClick={headClick}>
             <div style={{ color: currentPage === 1 ? '#1890ff' : '' }}>首页</div>

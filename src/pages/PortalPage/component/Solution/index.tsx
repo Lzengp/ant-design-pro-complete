@@ -163,32 +163,11 @@ const Solution = ({ currentPage }: { currentPage: number; }) => {
                     img={HomeHannerTwo}
                     list={[
                         '是基于云原生技术架构和智能引擎搭建的数智化技术底座，彻底解决企业数智化转型中遇到的痛点问题，支持全球范围内统一部署和数据无缝链接！',
+                        '数智化转型及变革涉及：战略升级、组织升级、人才升级、技术升级、流程升级、管理升级等，选择艾普数智将助力企业加速成功转型和降低转型风险。',
                     ]}
                     title={'智能资源协同平台'}
-                    bottomList={[
-                        '数智化转型及变革涉及：战略升级、组织升级、人才升级、技术升级、流程升级、管理升级等，选择艾普数智将助力企业加速成功转型和降低转型风险。'
-                    ]}
+
                 />
-
-                {/* <div className={classNames(styles['pain-spot'])}>
-                    <Title>行业痛点</Title>
-                    <GraduallyEmerging id="industryPainPointsList">
-                        <div className={classNames(styles['pain-spot-context'])} id="pain-spot-context">
-                            {
-                                IndustryPainPointsList.map(item => {
-                                    return (
-                                        <div className={styles['pain-spot-item']}>
-                                            <div>{item.icon}</div>
-                                            <div className={styles['pain-spot-title']}>{item.title}</div>
-                                            <div className={styles['pain-spot-desc']}>{item.desc}</div>
-                                        </div>
-                                    );
-                                })
-                            }
-                        </div>
-                    </GraduallyEmerging>
-                </div> */}
-
                 <GridDarkBlue title="行业痛点" id="industryPainPointsList" list={IndustryPainPointsList} />
                 <TTextBImg
                     img={Solutionimg1}

@@ -1,5 +1,5 @@
-import { message } from 'antd';
 import moment from 'moment';
+import ScrollReveal from 'scrollreveal';
 
 export const isEmpty = (value: any) => {
   if (Array.isArray(value) && value.length) {
@@ -87,4 +87,42 @@ export const bufferToJSON = (buffer: any) => {
 // 判断是手机还是pc
 export const isMobileDevice = () => {
   return /Android|webOS|iPhone|iPad|BlackBerry/i.test(navigator.userAgent);
+};
+
+export const initScrollReveal = () => {
+  const scrollReveal = new ScrollReveal();
+  const config = (origin: string, duration: number = 2000) => {
+    return {
+      duration,
+      origin,
+      reset: false, // 动画是否重复
+      mobile: true,
+      distance: '500px',
+      opacity: 0, // 初始透明度
+      // viewOffset: {//可看到的范围，全屏往里缩
+      //   top: 150,
+      //   right: 0,
+      //   bottom: 150,
+      //   left: 0
+      // },
+    };
+  };
+  scrollReveal.reveal('.left', {
+    ...config('left')
+  });
+  scrollReveal.reveal('.right', {
+    ...config('right')
+  });
+  scrollReveal.reveal('.top', {
+    ...config('top')
+  });
+  scrollReveal.reveal('.bottom', {
+    ...config('bottom')
+  });
+  scrollReveal.reveal('.bottom-duration-2500', {
+    ...config('bottom', 2500)
+  });
+  scrollReveal.reveal('.bottom-duration-3000', {
+    ...config('bottom', 3000)
+  });
 };

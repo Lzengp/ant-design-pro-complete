@@ -10,6 +10,7 @@ import TechnicalCapabilities from '@/assets/technical-capabilities.png';
 import ProductValue from '@/assets/product-value.png';
 import IntelligentResource from '@/assets/intelligent-resource.png';
 import GridBlock from "@/components/GridBlock";
+import classnames from "classnames";
 
 
 const ProductIntroduction = () => {
@@ -173,37 +174,13 @@ const ProductIntroduction = () => {
             </div>
             <div className="global-content">
                 <GridBlock title="产品能力" list={productCapabilityList} />
-                {/* <div className={styles['product-capability']}>
-                    <Title>产品能力</Title>
-                    <Row className={styles['product-capability-context']}>
-                        {
-                            productCapabilityList.map(d => {
-                                return (
-                                    <Col className={styles['product-capability-item']}>
-                                        <div>
-                                            {d.src}
-                           
-                                        </div>
-                                        <div className={styles['product-capability-title']}>
-                                            {d.title}
-                                        </div>
-                                        <div className={styles['product-capability-desc']}>
-                                            {d.desc}
-                                        </div>
-                                    </Col>
-                                );
-                            })
-                        }
-                    </Row> 
-                 </div> */}
                 <div className={styles['technical-capabilities']}>
                     <Title>技术能力</Title>
                     <div className={styles['technical-capabilities-conetext']}>
-                        <div>
-                            {/* <img src="https://bitsun-website.oss-cn-shanghai.aliyuncs.com/img/product/adv.png" /> */}
+                        <div className="left">
                             <img src={TechnicalCapabilities} />
                         </div>
-                        <div className={styles['technical-capabilities-text']}>
+                        <div className={classnames(styles['technical-capabilities-text'], 'right')}>
                             {
                                 technicalCapabilities.map(item => {
                                     return (
@@ -226,7 +203,7 @@ const ProductIntroduction = () => {
                 <div className={styles['product-value']}>
                     <Title>产品价值</Title>
                     <div className={styles['about-gaojet-thought']}>
-                        <div className={styles['thought-content']}>
+                        <div className={classnames(styles['thought-content'], 'left')}>
                             {
                                 productValueList.map(item => {
                                     return (
@@ -238,8 +215,7 @@ const ProductIntroduction = () => {
                                 })
                             }
                         </div>
-                        <div>
-                            {/* <img src="https://bitsun-website.oss-cn-shanghai.aliyuncs.com/img/product/val.png" /> */}
+                        <div className="right">
                             <img src={ProductValue} />
                         </div>
                     </div>
@@ -247,7 +223,6 @@ const ProductIntroduction = () => {
                 <div className={styles['intelligent-resource']}>
                     <Title>智能资源协同平台</Title>
                     <div style={{ textAlign: 'center' }}>
-                        {/* <img src='https://bitsun-website.oss-cn-shanghai.aliyuncs.com/img/solution/blueprint.png' /> */}
                         <img src={IntelligentResource} />
                     </div>
                 </div>

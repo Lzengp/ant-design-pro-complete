@@ -18,10 +18,10 @@ const TTextBImg = (props: TTextBImg) => {
         <div className="TTextBImg-wrap">
             <Title title={title} />
             <div className={'TTextBImg-content'} >
-                <div className='TTextBImg-text'>
+                <div className='TTextBImg-text right'>
                     {list?.map(item => <div style={{ textIndent: '3em' }}>{item}</div>)}
                 </div>
-                <div style={{ textAlign: 'center' }}>
+                <div style={{ textAlign: 'center' }} className='left'>
 
                     {
                         typeof img === 'string' && <img src={img} style={{ width: '100%', padding: '20px 0' }} />
@@ -31,7 +31,7 @@ const TTextBImg = (props: TTextBImg) => {
                         typeof img === 'object' && img.map(item => <img src={item} style={{ width: '100%', padding: '20px 0' }} />)
                     }
                 </div>
-                <div className='TTextBImg-text'>
+                <div className='TTextBImg-text  right'>
                     {bottomList?.map(item => <div style={{ textIndent: '3em' }}>{item}</div>)}
                 </div>
             </div>

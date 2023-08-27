@@ -2,24 +2,17 @@
 
 
 import styles from './index.less';
-import { Carousel, Col, Row, Button, Typography } from 'antd';
-import { RightOutlined } from '@ant-design/icons';
+import { Carousel, Col, Row } from 'antd';
 import classNames from 'classnames';
 import Title from '../Title';
-import MapEchart from '../MapEchart';
-import aircraft from '../../../../assets/aircraft.svg';
 import HomeHannerOne from '@/assets/home-banner-one.png';
 import HomeHannerTwo from '@/assets/home-banner-two.png';
 import HomeHannerThree from '@/assets/home-banner-three.png';
 import HomeHannerFour from '@/assets/home-banner-four.png';
 import HomeHannerFive from '@/assets/home-banner-five.png';
-import HomeHanner from '@/assets/home-banner-one.png';
-import aboutUs from '@/assets/about-us.png';
 import SmartSupplyChain from '@/assets/smart-supply-chain.png';
 import Omnichannel from '@/assets/omnichannel.png';
 import IntelligentManufacturin from '@/assets/intelligent-manufacturing.png';
-
-const { Paragraph } = Typography;
 
 const HomePage = () => {
 
@@ -29,13 +22,7 @@ const HomePage = () => {
         HomeHannerThree,
         HomeHannerFour,
         HomeHannerFive
-        // HomeHanner
-        // HomeHannerThree,
-        // "https://www.walltechsystem.cn/upload/2023-02/167687813995203800.jpg",
-        // "https://www.walltechsystem.cn/upload/2022-08/166064706418675300.png",
-        // "https://www.walltechsystem.cn/upload/2022-08/166070601401522300.png",
     ];
-
 
     const coreServicesList = [
         {
@@ -68,7 +55,7 @@ const HomePage = () => {
         <>
             <div className={styles['portalpage-content']}>
                 <div className={styles['portalpage-carousel']}>
-                    <Carousel autoplay>{carouselImgList.map((item) => <div> <img src={item} /></div>)}</Carousel>
+                    <Carousel autoplay>{carouselImgList.map((item) => <img src={item} />)}</Carousel>
                 </div>
                 <div className='global-content'>
                     <div className={styles['core-services']}>
@@ -83,75 +70,12 @@ const HomePage = () => {
                                                 <div className={styles['first-level-title']}>{item.title}</div>
                                                 <div className={styles['core-services-desc']}>
                                                     {item.describe}
-                                                    {/* <div className={styles['core-services-btn']}>
-                                                    <Button type="primary">查看更多</Button>
-                                                </div> */}
                                                 </div>
                                             </div>
                                         </Col>
                                     );
                                 })
                             }
-                            {/* <Col> */}
-                            {/* <div className={styles['core-services-card']}>
-                                <img src={aircraft} />
-                                <div className={styles['first-level-title']}>干线运输</div>
-                                <div className={styles['core-services-desc']}>
-                                    海运、陆运、空运、铁路等多式联运国际物流解决方案
-                                    <div className={styles['core-services-btn']}>
-                                        <Button type="primary">查看更多</Button>
-                                    </div>
-                                </div>
-                            </div>
-                        </Col>
-                        <Col>
-                            <div className={styles['core-services-card']}>
-                                <img src={aircraft} />
-                                <div className={styles['first-level-title']}>跨境电商物流</div>
-                                <div className={styles['core-services-desc']}>
-                                    提供跨境保税、海外直邮、海外仓、专线、小包等进出口全链路物流服务
-                                    <div className={styles['core-services-btn']}>
-                                        <Button type="primary">查看更多</Button>
-                                    </div>
-                                </div>
-                            </div>
-                        </Col>
-                        <Col>
-                            <div className={styles['core-services-card']}>
-                                <img src={aircraft} />
-                                <div className={styles['first-level-title']}>报关报检服务</div>
-                                <div className={styles['core-services-desc']}>
-                                    提供高效便捷的报关、报检服务
-                                    <div className={styles['core-services-btn']}>
-                                        <Button type="primary">查看更多</Button>
-                                    </div>
-                                </div>
-                            </div>
-                        </Col>
-                        <Col>
-                            <div className={styles['core-services-card']}>
-                                <img src={aircraft} />
-                                <div className={styles['first-level-title']}>配套服务</div>
-                                <div className={styles['core-services-desc']}>
-                                    仓储配送、地面服务、空运打板、国外清关派送等
-                                    <div className={styles['core-services-btn']}>
-                                        <Button type="primary">查看更多</Button>
-                                    </div>
-                                </div>
-                            </div>
-                        </Col>
-                        <Col>
-                            <div className={styles['core-services-card']}>
-                                <img src={aircraft} />
-                                <div className={styles['first-level-title']}>外贸综合服务</div>
-                                <div className={styles['core-services-desc']}>
-                                    提供一站式的物流、通关、外汇、出口退税、信保融资等外贸交易所需的进出口服务
-                                    <div className={styles['core-services-btn']}>
-                                        <Button type="primary">查看更多</Button>
-                                    </div>
-                                </div>
-                            </div>
-                        </Col> */}
                         </Row>
                     </div>
                     <div className={styles['about-gaojet']}>
@@ -162,14 +86,10 @@ const HomePage = () => {
                                 <div style={{ textIndent: '3em' }}>
                                     艾普数智基于云原生互联网架构，综合云计算、大数据、人工智能、物联网、区块链等新技术，打造智能引擎和高度灵活扩展的产业智能资源协同平台产品（简称：ARP)，为企业提供全场景数智服务。
                                 </div>
-                                {/* <Button type='primary'>了解更多<RightOutlined /></Button> */}
                             </Col>
-                            {/* <Col span={12}>
-                                <img src={HomeHanner} style={{ width: '100%' }} />
-                            </Col> */}
                         </Row>
-                        <div className={styles['about-gaojet-thought']}>
-                            <div className={styles['thought-content']}>
+                        <div className={styles['about-gaojet-thought']} >
+                            <div className={classNames(styles['thought-content'], 'left')}>
                                 <div className={styles['thought-content-item']}>
                                     <div className={styles['item-title']}>愿景</div>
                                     <div className={styles['item-desc']}>让人生活更美好</div>
@@ -194,17 +114,18 @@ const HomePage = () => {
                                     <div className={styles['item-desc']}>实干激情、负责担当、专注简单、共享透明、充分授权!</div>
                                 </div>
                             </div>
-                            <div>
+                            <div className='right'>
                                 <img src="https://bitsun-website.oss-cn-shanghai.aliyuncs.com/img/product/val.png" />
                             </div>
                         </div>
+
+
                     </div>
                     <div className={styles['serviceability']}>
                         <Title title='技术能力' />
                         <div className={classNames(styles['serviceability-content'], 'padding-50')}>
-                            <div className={styles['serviceability-item']}>
+                            <div className={classNames(styles['serviceability-item'], 'bottom')}>
                                 <div className={styles['serviceability-content-title']}>
-                                    {/* 超<span className={styles['number-title']}>2997</span>万票 */}
                                     <span>技术领先性</span>
                                 </div>
                                 <div className="font-style">
@@ -213,9 +134,8 @@ const HomePage = () => {
                                     3、彻底解决复杂性的系统架构问题，适应产业集群及多集团组织模型，可以按照不同的行业、业务及应用划分，总体灵活又统一，架构风格统一。
                                 </div>
                             </div>
-                            <div className={styles['serviceability-item']}>
+                            <div className={classNames(styles['serviceability-item'], 'bottom-duration-2500')}>
                                 <div className={styles['serviceability-content-title']}>
-                                    {/* 超<span className={styles['number-title']}>2998</span>家 */}
                                     <span>产品先进性</span>
                                 </div>
                                 <div className="font-style">
@@ -223,9 +143,8 @@ const HomePage = () => {
                                     2、可以支持不同行业不同场景搭建应用，业务协同更加高效透明，企业内部、上下游、产业生态等都可以支持，真正实现一个平台和一个数据库（分布式）。
                                 </div>
                             </div>
-                            <div className={styles['serviceability-item']}>
+                            <div className={classNames(styles['serviceability-item'], 'bottom-duration-3000')}>
                                 <div className={styles['serviceability-content-title']}>
-                                    {/* 超<span className={styles['number-title']}>8</span>万平方米 */}
                                     <span>场景智能化</span>
                                 </div>
                                 <div className="font-style">
@@ -234,7 +153,6 @@ const HomePage = () => {
                             </div>
                         </div>
                     </div>
-                    {/* <img style={{ width: '100%' }} src="https://files.axshare.com/gsc/EI6QAV/a5/53/82/a55382653e6348bab95fa2dbdb57f043/images/%E5%85%B3%E4%BA%8E%E8%89%BE%E6%99%AE/u200.png?pageId=6c73d544-2b6a-48ab-89af-0720db628798" /> */}
                     <div className={styles['news-information']} style={{ display: 'none' }}>
                         <Title title='新闻资讯' />
                         <div className={classNames(styles['news'], 'padding-50')}>
@@ -306,11 +224,7 @@ const HomePage = () => {
                         </Row>
                     </div>
                 </div>
-
-
-                {/* <div style={{ height: '1000px' }}></div> */}
             </div>
-
         </>
     );
 };
