@@ -29,6 +29,7 @@ export async function getInitialState(): Promise<{
   loading?: boolean;
   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
 }> {
+  return {};
   // 个人介绍页面就不调用接口
   if (history.location.pathname.includes(personalPath)) {
     return {};
@@ -74,9 +75,9 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
         return;
       }
       // 如果没有登录，重定向到 login
-      if (!initialState?.currentUser && location.pathname !== loginPath) {
-        history.push(loginPath);
-      }
+      // if (!initialState?.currentUser && location.pathname !== loginPath) {
+      //   history.push(loginPath);
+      // }
     },
     links: isDev
       ? [

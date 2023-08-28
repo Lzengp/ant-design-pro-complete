@@ -11,8 +11,18 @@ import HomeHannerThree from '@/assets/home-banner-three.png';
 import HomeHannerFour from '@/assets/home-banner-four.png';
 import HomeHannerFive from '@/assets/home-banner-five.png';
 import SmartSupplyChain from '@/assets/smart-supply-chain.png';
+import GlobalTrade from '@/assets/global-trade.png';
 import Omnichannel from '@/assets/omnichannel.png';
 import IntelligentManufacturin from '@/assets/intelligent-manufacturing.png';
+import HomeAboutArp from '@/assets/home-aboutArp.png';
+import Partners1 from '@/assets/partners/partners1.png';
+import Partners2 from '@/assets/partners/partners2.png';
+import Partners3 from '@/assets/partners/partners3.png';
+import Partners4 from '@/assets/partners/partners4.png';
+import Partners5 from '@/assets/partners/partners5.png';
+import Partners6 from '@/assets/partners/partners6.png';
+import Partners7 from '@/assets/partners/partners7.png';
+import Partners8 from '@/assets/partners/partners8.png';
 
 const HomePage = () => {
 
@@ -41,7 +51,7 @@ const HomePage = () => {
             title: '全球贸易与跨境物流',
             describe: '智能资源协同平台提供“全球部署、统一入口，智能协同，业务整合，数据驱动”，为货主、货代、电商企业、贸易商、报关企业、物流企业，仓储企业、场站企业、港口、监管单位等提供“一站式”科技赋能。实现全链路资源高效协同及整合，促进全链路服务标准化，操作自动化，贸易便利化，资源共享最大化，达到“提质、降本、增效”的效果，形成良好的贸易生态圈及体系，助力中国商品及品牌走向全球和优质商品引进中国。',
             href: '',
-            src: SmartSupplyChain,
+            src: GlobalTrade,
         },
         {
             title: '全渠道管理',
@@ -49,6 +59,18 @@ const HomePage = () => {
             href: '',
             src: Omnichannel,
         }
+    ];
+
+    // 合作伙伴
+    const PartnersList = [
+        Partners1,
+        Partners2,
+        Partners3,
+        Partners4,
+        Partners5,
+        Partners6,
+        Partners7,
+        Partners8,
     ];
 
     return (
@@ -115,7 +137,8 @@ const HomePage = () => {
                                 </div>
                             </div>
                             <div className='right'>
-                                <img src="https://bitsun-website.oss-cn-shanghai.aliyuncs.com/img/product/val.png" />
+                                {/* <img src="https://bitsun-website.oss-cn-shanghai.aliyuncs.com/img/product/val.png" /> */}
+                                <img src={HomeAboutArp} style={{ width: '120%', height: '550px' }} />
                             </div>
                         </div>
 
@@ -197,30 +220,13 @@ const HomePage = () => {
                     <div className={styles['partners']}>
                         <Title title='合作伙伴' />
                         <Row className={styles['partners-logo']}>
-                            <Col>
-                                <img src="https://www.hjlingxi.com/static/8.3cac1b74.png" />
-                            </Col>
-                            <Col>
-                                <img src="https://www.hjlingxi.com/static/7.22402ea2.png" />
-                            </Col>
-                            <Col>
-                                <img src="https://www.hjlingxi.com/static/5.68b11218.png" />
-                            </Col>
-                            <Col>
-                                <img src="https://www.hjlingxi.com/static/2.4251c2a5.png" />
-                            </Col>
-                            <Col>
-                                <img src="https://www.hjlingxi.com/static/9.9b25a964.png" />
-                            </Col>
-                            <Col>
-                                <img src="https://www.hjlingxi.com/static/3.137aba0e.png" />
-                            </Col>
-                            <Col>
-                                <img src="https://www.hjlingxi.com/static/1.3e6b5345.png" />
-                            </Col>
-                            <Col>
-                                <img src="https://www.hjlingxi.com/static/6.6ea280f9.png" />
-                            </Col>
+                            {
+                                PartnersList.map(item => (
+                                    <Col>
+                                        <img src={item} />
+                                    </Col>
+                                ))
+                            }
                         </Row>
                     </div>
                 </div>

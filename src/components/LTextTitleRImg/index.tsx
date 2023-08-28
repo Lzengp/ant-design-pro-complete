@@ -16,7 +16,7 @@ const LTextTitleRImg = (props: LTextTitleRImg) => {
     return (
         <div className='lTextTitleRImg-wrap'>
             {title && <Title>{title}</Title>}
-            <div className='lTextTitleRImg-thought'>
+            <div className='lTextTitleRImg-thought left'>
                 <div className='thought-content'>
                     {
                         list.map(item => {
@@ -31,9 +31,9 @@ const LTextTitleRImg = (props: LTextTitleRImg) => {
                 </div>
                 {
                     img && (
-                        <div>
+                        <div style={{ width: '50%' }} className='right'>
                             {/* <img src="https://bitsun-website.oss-cn-shanghai.aliyuncs.com/img/product/val.png" /> */}
-                            <img src={img} />
+                            <img src={img} style={{ width: '100%' }} />
                         </div>
                     )
                 }

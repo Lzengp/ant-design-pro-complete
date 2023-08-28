@@ -3,6 +3,8 @@ import './index.less';
 import { useState } from "react";
 import { Button, Checkbox, Col, Form, Input, Row } from "antd";
 import { HomeOutlined, MailOutlined, MobileOutlined, ScheduleOutlined, UserOutlined } from "@ant-design/icons";
+import Company from '@/assets/company.png';
+
 
 import ContactUsImg from '@/assets/contact-us.png';
 
@@ -115,11 +117,11 @@ const ContactUs = () => {
                 </div> */}
                     <div className="head-office-address">
                         <div >
-                            <div className="office-img" style={{ background: '#dadada', height: '500px', width: '100%' }}>
-                                {/* <img src="https://img.scbao.com/uploads/allimg/110724/6285-110H409503525.jpg" /> */}
+                            <div className="office-img">
+                                <img src={Company} />
                             </div>
                             <div className="office-map">
-                                <MapComponent height={350} width={420} />
+                                <MapComponent height={200} width={250} />
                             </div>
 
                         </div>
