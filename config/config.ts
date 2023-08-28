@@ -76,9 +76,9 @@ export default defineConfig({
     development: {
       output: './.mfsu-dev',
     },
-    production: {
-      output: '.mfsu-prod',
-    },
+    // production: {
+    //   output: '.mfsu-prod',
+    // },
   },
   webpack5: {},
   exportStatic: {},
