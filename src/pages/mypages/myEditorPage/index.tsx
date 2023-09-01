@@ -8,9 +8,9 @@
 import MyEditor from '@/components/MyEditor';
 import { Button, Input, message, Space, Typography } from 'antd';
 import { useEffect, useMemo, useState } from 'react';
-import format from 'xml-formatter';
 import { request, history } from 'umi';
 import styles from './index.less';
+import { debounce } from 'lodash';
 
 const { Paragraph } = Typography;
 
@@ -53,7 +53,7 @@ const myEditorPage = (props: MyEditorPageProps) => {
     if (id && id !== 'create') {
       request(`/apiL/article/updateArticle/${id}`, {
         data: {
-          title: title,
+          title,
           content: json,
         },
         method: 'post',
@@ -64,7 +64,7 @@ const myEditorPage = (props: MyEditorPageProps) => {
     } else {
       request('/apiL/article/addArticle', {
         data: {
-          title: title,
+          title,
           content: json,
           createName: '龙伟',
         },
@@ -77,11 +77,40 @@ const myEditorPage = (props: MyEditorPageProps) => {
     return;
   };
 
+  // 实时保存 - 需要有标题
+  const realTimeSaving = debounce((val) => {
+    let currentTitle = '';
+    setTitle(e => {
+      currentTitle = e;
+      return e;
+    });
+    if (id && id !== 'create') {
+      const json = JSON.stringify(val);
+      request(`/apiL/article/updateArticle/${id}`, {
+        data: {
+          title: currentTitle,
+          content: json,
+        },
+        method: 'post',
+      }).then((res: any) => {
+        if (!val) {
+          message.success('更新成功');
+          history.push(isMenuPage ? `/myPages/myArticle/${id}` : `/myArticle/${id}`);
+        }
+      });
+    }
+  }, 2000);
+
+  const onChange = (val: string) => {
+    setValue(val);
+    realTimeSaving(val);
+  };
+
   const renderMyEditor = useMemo(() => {
     return (
       <MyEditor
         value={value}
-        onChange={setValue}
+        onChange={onChange}
         style={{ top: '72px' }}
         editorStyle={{ overflow: 'auto', height: '80vh' }}
       />);
