@@ -11,10 +11,11 @@ interface MyEditorProps {
   readOnly?: boolean;
   style?: React.CSSProperties;
   editorStyle?: React.CSSProperties;
+  onDoubleClick?: () => void;
 }
 
 function MyEditor(props: MyEditorProps) {
-  const { value, onChange, readOnly = false, style, editorStyle } = props;
+  const { value, onChange, readOnly = false, style, editorStyle, onDoubleClick } = props;
   // editor 实例
   const [editor, setEditor] = useState<IDomEditor | null>(null); // TS 语法
 
@@ -49,8 +50,17 @@ function MyEditor(props: MyEditorProps) {
     scroll: false
   };
 
-  // 及时销毁 editor ，重要！
   useEffect(() => {
+    // 阻止浏览器默认的ctrl + s事件
+    window.addEventListener("keydown", function (e) {
+      //可以判断是不是mac，如果是mac,ctrl变为花键
+      //event.preventDefault() 方法阻止元素发生默认的行为。
+      if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+        e.preventDefault();
+      }
+    }, false);
+
+    // 及时销毁 editor ，重要！
     return () => {
       if (editor == null) return;
       editor.destroy();
@@ -60,7 +70,7 @@ function MyEditor(props: MyEditorProps) {
 
   return (
     <>
-      <div style={{ zIndex: 100, position: 'relative', ...style }}>
+      <div style={{ zIndex: 100, position: 'relative', ...style }} onDoubleClick={onDoubleClick && onDoubleClick}>
         {
           !readOnly && (
             <Toolbar

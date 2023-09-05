@@ -126,3 +126,12 @@ export const initScrollReveal = () => {
     ...config('bottom', 3000)
   });
 };
+
+
+// 动态替换浏览器tab页签名称
+export const setBrowserTabTitle = (name: string) => {
+  const title = document.getElementsByTagName('title')[0];
+  if (title && name) {
+    title.innerText = name;
+  }
+}

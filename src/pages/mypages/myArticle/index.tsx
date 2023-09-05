@@ -1,4 +1,4 @@
-import { FormatTime, TimeToText } from '@/pages/utils';
+import { FormatTime, TimeToText, setBrowserTabTitle } from '@/pages/utils';
 import {
   ClockCircleOutlined,
   DeleteOutlined,
@@ -128,6 +128,7 @@ const MyArticle = (props: any) => {
           setSelectData(res.data.filter((item: any) => item.id === id)[0]);
         } else {
           setSelectData(res.data[0]);
+          setBrowserTabTitle(res.data[0].title)
           history.replace(`/myArticle/${res.data[0].id}`);
         }
       } else if (Array.isArray(res.data) && res.data.length) {
@@ -420,6 +421,7 @@ const MyArticle = (props: any) => {
                   )}
                   onClick={() => {
                     setSelectData(item);
+                    setBrowserTabTitle(item.title)
                     history.replace(`/myArticle/${item.id}`);
                   }}
                 >
@@ -451,7 +453,17 @@ const MyArticle = (props: any) => {
               )}
             </div>
             <div className={styles.title}>{selectData?.title || ''}</div>
-            <MyEditor value={selectData?.content ? JSON.parse(selectData?.content) : ''} readOnly={true} editorStyle={fullScreenFlag ? { overflow: 'auto', height: '80vh' } : {}} />
+            <MyEditor
+              value={selectData?.content ? JSON.parse(selectData?.content) : ''}
+              readOnly={true}
+              editorStyle={fullScreenFlag ? { overflow: 'auto', height: '80vh' } : {}}
+              onDoubleClick={() => {
+                // 需要判断是否有权限修改文章
+                console.log('需要判断是否有权限修改文章', isAuthor)
+                if (!isAuthor) { return };
+                editArticle(selectData?.id || '');
+              }}
+            />
             {/* <div dangerouslySetInnerHTML={{ __html: selectData?.content ? selectData?.content.substr(1, selectData?.content.length - 2) : '' }}></div> */}
           </div>
           <Space style={{ color: '#c1c1c1' }}>
