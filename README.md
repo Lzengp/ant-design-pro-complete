@@ -4,7 +4,7 @@
 - 支持全局关键字搜索
 - 支持评论
   
-##  [访问地址](https://lzengp/top)
+##  [访问地址](https://lzengp.top)
 
 # 项目介绍
 

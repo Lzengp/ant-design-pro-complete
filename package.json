@@ -58,6 +58,7 @@
     "@antv/l7": "^2.3.7",
     "@antv/l7-maps": "^2.3.7",
     "@antv/l7-react": "^2.1.9",
+    "@giscus/react": "^2.3.0",
     "@umijs/route-utils": "^2.0.0",
     "@wangeditor/editor": "^5.1.14",
     "@wangeditor/editor-for-react": "^1.0.4",

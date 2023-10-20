@@ -23,6 +23,7 @@ import MyEditor from '@/components/MyEditor';
 import Footer from '@/components/Footer';
 import RewriteFooter from '@/components/RewriteFooter';
 import type { DataNode, DirectoryTreeProps } from 'antd/es/tree';
+import MyGiscus from '@/components/MyGiscus';
 
 
 const { DirectoryTree } = Tree;
@@ -556,6 +557,7 @@ const MyArticle = (props: any) => {
             >
               回复
             </Button>
+            <MyGiscus />
           </div>
           <RewriteFooter />
         </div>
