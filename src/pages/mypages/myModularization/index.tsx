@@ -24,6 +24,7 @@ import MultipleDateInput from './components/MultipleDateInput';
 import ColumnsSets from './components/ColumnsSets';
 // import DragVerificationCode from './components/DragVerificationCode';
 import { Decimal } from 'decimal.js';
+import MyCard from '@/components/Card';
 
 interface ComponentsProps {
   dom: JSX.Element;
@@ -35,6 +36,7 @@ interface ComponentsProps {
 // 模块化页面：不同的模块功能组成的一个大页面，用于一些小功能的展示
 const myModularization = () => {
   const componentsList = [
+    { dom: <MyCard logo={'https://static.wetools.com/assets/images/web/favicon.ico'} title={'微工具'} url={'https://www.wetools.com/'} description={'一个提供免费在线工具集合的网站，例如JSON 格式化校验工具、URL编码/解码等等'} />, id: 'Introduce1', name: '我的卡片' },
     // { dom: <DragVerificationCode />, id: 'DragVerificationCode', name: '拖动验证码', height: 400 },
     { dom: <Introduce />, id: 'Introduce', name: '自我介绍' },
     { dom: <TypedJs />, id: 'TypedJs', name: '打字效果' },

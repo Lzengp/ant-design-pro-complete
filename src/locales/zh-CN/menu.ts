@@ -63,4 +63,5 @@ export default {
   'menu.myPages.myArticle': '我的文章',
   'menu.myPages.myArticleList': '我的文章列表',
   'menu.myPages.myVirtualTable': '虚拟列表',
+  'menu.toolClassification': '工具分类',
 };

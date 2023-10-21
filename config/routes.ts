@@ -1,6 +1,12 @@
 ﻿export default [
   {
     layout: false,
+    name: 'toolClassification',
+    path: '/toolClassification',
+    component: './mypages/toolClassification',
+  },
+  {
+    layout: false,
     path: '/portalPage',
     component: './PortalPage',
   },
