@@ -24,7 +24,7 @@ const MyCard = (props: MyCardProps) => {
             >
                 <div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '60px' }}>
-                        <div style={{ maxWidth: '250px', color: '#999' }}>{description}</div>
+                        <div style={{marginRight: '10px', color: '#999' }}>{description}</div>
                         <Button onClick={() => { window.open(url); }}>立即体验</Button>
                     </div>
                 </div>

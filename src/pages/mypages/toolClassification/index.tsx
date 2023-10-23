@@ -1,9 +1,7 @@
 import PaginationCard from "@/components/PaginationCard";
+import styles from './index.less';
 
-// 分类
-const TypeData = ['工具'];
-
-// 工具集合类
+// 工具
 const ToolData = [
     {
         logo: 'https://static.wetools.com/assets/images/web/favicon.ico',
@@ -49,18 +47,48 @@ const ToolData = [
     },
 ];
 
+// 博客
+const BlogData = [
+    {
+        logo: 'https://www.leoku.top/favicon.ico',
+        title: 'leoku',
+        url: 'https://www.leoku.top/',
+        description: '一位同事的博客，他做的东西感觉很有新颖性，并且技术也是杠杠的',
+    },
+    {
+        logo: 'https://hutusi.com/favicon.ico',
+        title: '胡涂说',
+        url: 'https://hutusi.com/about/',
+        description: '一位喜欢读书的程序员，2012年就开始了写博客，里面还有很多友情链接，也可以看到其他优秀的博客',
+    },
+];
+
+// 前端技术
+const FontendData = [
+    {
+        logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+        title: 'Ant Design',
+        url: 'https://4x-ant-design.antgroup.com/components/overview-cn/',
+        description: '阿里的前端组件库，国内最好用的react前端UI组件库之一',
+    },
+];
+
 const ToolClassification = () => {
 
     return (
-        <>
+        <div className={styles.toolClassificationWrap}>
             <div style={{ width: '100%', height: '60px', lineHeight: '60px', textAlign: 'center' }}>
                 <h2>收集好玩的一些网站，仅供学习参考使用</h2>
             </div>
-            <div style={{ backgroundColor: '#f2f4f2', padding: '60px' }}>
-                {/* <h3>工具</h3> */}
+            <div className={styles.content}>
+                <h2>工具</h2>
                 <PaginationCard dataSource={ToolData} />
+                <h2>博客</h2>
+                <PaginationCard dataSource={BlogData} />
+                <h2>前端技术</h2>
+                <PaginationCard dataSource={FontendData} />
             </div>
-        </>
+        </div>
     );
 
 };

@@ -21,7 +21,7 @@ const PaginationCard = (props: PaginationCardProps) => {
 
 
     return (
-        <div key={propsData[0].title} style={{ position: 'relative' }}>
+        <div key={propsData[0].title} style={{ position: 'relative', marginBottom: '20px' }}>
             <Row gutter={24}>
                 {
                     dataSource.map((item: MyCardProps) => {
@@ -35,7 +35,6 @@ const PaginationCard = (props: PaginationCardProps) => {
                 onChange={onChange}
                 current={current}
                 pageSize={9}
-                style={{ position: "absolute", right: '0px' }}
             />
         </div>
     );
