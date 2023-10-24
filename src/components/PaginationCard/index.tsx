@@ -3,6 +3,7 @@
 import { Col, Pagination, Row } from "antd";
 import MyCard, { MyCardProps } from "../Card";
 import { useState } from "react";
+import styles from './index.less';
 
 interface PaginationCardProps {
     dataSource: Array<MyCardProps>;
@@ -21,7 +22,7 @@ const PaginationCard = (props: PaginationCardProps) => {
 
 
     return (
-        <div key={propsData[0].title} style={{ position: 'relative', marginBottom: '20px' }}>
+        <div key={propsData[0].title} style={{ position: 'relative', marginBottom: '20px' }} className={styles.paginationCardWrap}>
             <Row gutter={24}>
                 {
                     dataSource.map((item: MyCardProps) => {

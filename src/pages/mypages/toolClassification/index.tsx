@@ -78,7 +78,7 @@ const ToolClassification = () => {
     return (
         <div className={styles.toolClassificationWrap}>
             <div style={{ width: '100%', height: '60px', lineHeight: '60px', textAlign: 'center' }}>
-                <h2>收集好玩的一些网站，仅供学习参考使用</h2>
+                <h2>网站书签</h2>
             </div>
             <div className={styles.content}>
                 <h2>工具</h2>
