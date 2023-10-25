@@ -69,12 +69,6 @@ const ToolData = [
         url: 'https://convertio.co/zh/download/61a4ed90e02d176657d51bb8fcda3d4dad6092/',
         description: '在线PNG转换ICO',
     },
-    {
-        logo: 'https://assets.vercel.com/image/upload/front/favicon/vercel/favicon.ico',
-        title: 'Vercel',
-        url: 'https://vercel.com/',
-        description: '可用于部署自己的网站，并且关联了github之后，代码上传自动部署',
-    },
 ];
 
 // 博客
@@ -102,6 +96,12 @@ const BlogData = [
         title: '张洪HEO',
         url: 'https://blog.zhheo.com/',
         description: '界面风格十分酷炫的博客',
+    },
+    {
+        logo: '/logo_l.png',
+        title: '不语',
+        url: 'lzengp.top',
+        description: '一款个人在线笔记',
     },
 ];
 
@@ -137,6 +137,18 @@ const FontendData = [
         url: 'https://wowjs.uk/',
         description: 'wow.js依赖于animate.css，在页面滚动时展现动感的元素动画效果，适用于官网样式交互，这狗头很有喜感',
     },
+    {
+        logo: 'https://giscus.app/favicon.ico',
+        title: 'giscus',
+        url: 'https://giscus.app/zh-CN',
+        description: '利用 GitHub Discussions 实现的评论系统',
+    },
+    {
+        logo: 'https://assets.vercel.com/image/upload/front/favicon/vercel/favicon.ico',
+        title: 'Vercel',
+        url: 'https://vercel.com/',
+        description: '可用于部署自己的网站，并且关联了github之后，代码上传自动部署',
+    },
 ];
 
 const ToolClassification = () => {
@@ -144,7 +156,7 @@ const ToolClassification = () => {
     return (
         <div className={styles.toolClassificationWrap}>
             <div style={{ width: '100%', height: '60px', lineHeight: '60px', textAlign: 'center' }}>
-                <h2>网站书签</h2>
+                <h2>微书签</h2>
             </div>
             <div className={styles.content}>
                 <h2>工具</h2>

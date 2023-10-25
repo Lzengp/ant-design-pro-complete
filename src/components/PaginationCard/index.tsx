@@ -35,7 +35,7 @@ const PaginationCard = (props: PaginationCardProps) => {
                 total={propsData?.length}
                 onChange={onChange}
                 current={current}
-                pageSize={9}
+                pageSize={12}
             />
         </div>
     );
