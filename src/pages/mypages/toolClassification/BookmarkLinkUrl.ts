@@ -81,4 +81,13 @@ export default [
             },
         ],
     },
+    {
+        title: 'GIT',
+        children: [
+            {
+                title: '偶遇OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054',
+                url: 'https://zhuanlan.zhihu.com/p/273370216',
+            },
+        ],
+    },
 ];
