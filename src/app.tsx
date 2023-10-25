@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import Icon, { BookOutlined, LinkOutlined } from '@ant-design/icons';
 import defaultSettings from '../config/defaultSettings';
-import logo from '../public/logo_w.png';
+import logo from '../public/logo_l.png';
 import { IconMap } from './components/MenuIcon';
 
 const isDev = process.env.NODE_ENV === 'development';
