@@ -27,7 +27,7 @@ export default [
     {
         logo: '/logo_l.png',
         title: '不语',
-        url: 'lzengp.top',
+        url: 'https://www.lzengp.top/',
         description: '一款个人在线笔记',
     },
 ];

@@ -8,7 +8,7 @@ export default function MyGiscus() {
       repoId="R_kgDOKiuSXA"
       category="Announcements"
       categoryId="DIC_kwDOKiuSXM4CaSZF"
-      mapping="url"
+      mapping="title"
       strict='1'
       term="Welcome to lw-giscus Discussions!"
       reactionsEnabled="1"
