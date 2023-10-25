@@ -1,6 +1,9 @@
 import MyGiscus from "@/components/MyGiscus";
 import PaginationCard from "@/components/PaginationCard";
 import { Divider, List } from "antd";
+import moment from "moment";
+import { useEffect, useState } from "react";
+import { request } from "umi";
 import BlogData from "./BlogData";
 import BookmarkLinkUrl from "./BookmarkLinkUrl";
 import FontendData from "./FontendData";
@@ -8,6 +11,19 @@ import styles from './index.less';
 import ToolData from "./ToolData";
 
 const ToolClassification = () => {
+
+    const [lastUpdate, setLastUpdate] = useState<string>();
+
+    const getLastUpdate = () => {
+        request("https://api.github.com/repos/Lzengp/ant-design-pro-complete ").then((res: any) => {
+            console.log(res.pushed_at);
+            setLastUpdate(moment(res.pushed_at).format('YYYY-MM-DD HH:mm:ss'));
+        });
+    };
+
+    useEffect(() => {
+        getLastUpdate();
+    }, []);
 
     return (
         <div className={styles.toolClassificationWrap}>
@@ -37,8 +53,8 @@ const ToolClassification = () => {
                     />
                 </div>
                 <MyGiscus />
+                <Divider orientation="left">最后修改时间：{lastUpdate}</Divider>
             </div>
-
         </div>
     );
 
