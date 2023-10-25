@@ -12,11 +12,11 @@ interface PaginationCardProps {
 
 const PaginationCard = (props: PaginationCardProps) => {
     const { dataSource: propsData } = props;
-    const [dataSource, setDataSource] = useState<Array<MyCardProps>>(propsData.slice(0, 9));
+    const [dataSource, setDataSource] = useState<Array<MyCardProps>>(propsData.slice(0, 12));
     const [current, setCurrent] = useState<number>(1);
 
     const onChange = (page: number) => {
-        setDataSource(propsData.slice((page - 1) * 9, page * 9));
+        setDataSource(propsData.slice((page - 1) * 12, page * 12));
         setCurrent(page);
     };
 
