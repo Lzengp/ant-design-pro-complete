@@ -21,6 +21,27 @@ export default [
         ],
     },
     {
+        title: '推荐的npm库',
+        children: [
+            {
+                title: 'plugin-web-update-notification - 检测网页更新并通知用户重新加载。支持 Vite、Umijs 和 Webpack',
+                url: 'https://www.nuomiphp.com/github/zh/63bb5e04807a2d2f632fcb47.html',
+            },
+            {
+                title: 'JavaScript小数精确相加，使用decimal.js或者big.js',
+                url: 'https://blog.csdn.net/weixin_44523517/article/details/130645439',
+            },
+            {
+                title: '富文本编辑器Quill',
+                url: 'https://quilljs.com/docs/download/',
+            },
+            {
+                title: '持拖拽分割页面占比',
+                url: 'https://github.com/tomkp/react-split-pane',
+            },
+        ],
+    },
+    {
         title: '小程序',
         children: [
             {
