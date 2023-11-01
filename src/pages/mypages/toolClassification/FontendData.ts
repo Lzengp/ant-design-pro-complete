@@ -49,9 +49,15 @@ export default [
         description: '可用于部署自己的网站，并且关联了github之后，代码上传自动部署',
     },
     {
+        logo: 'https://static-production.npmjs.com/1996fcfdf7ca81ea795f67f093d7f449.png',
+        title: 'NPM',
+        url: 'https://www.npmjs.com/',
+        description: 'npm官网',
+    },
+    {
         logo: 'https://npmmirror.com/favicon.ico',
         title: 'npmmirror 镜像站',
-        url: 'https://npmmirror.com/',
+        url: 'https://www.npmjs.com/',
         description: '国内淘宝npm镜像',
     },
     {

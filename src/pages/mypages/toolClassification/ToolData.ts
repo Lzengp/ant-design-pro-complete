@@ -57,7 +57,7 @@ export default [
     },
     {
         logo: 'https://www.designevo.com/templates/designevosite/favicon.ico',
-        title: 'removebg',
+        title: 'designevo',
         url: 'https://www.designevo.com/cn/apps/logo/',
         description: '在线生成logo工具，我网站的logo就是用这个工具改了下生成的',
     },
@@ -72,5 +72,11 @@ export default [
         title: 'jsons.cn',
         url: 'http://www.jsons.cn/barcode/',
         description: '条形码在线生成工具，也包含其他常用工具',
+    },
+    {
+        logo: 'https://shapefactory.co/static/images/favicon-dark.png',
+        title: 'Gradient',
+        url: 'https://gradient.shapefactory.co/',
+        description: '渐变色工具',
     },
 ];

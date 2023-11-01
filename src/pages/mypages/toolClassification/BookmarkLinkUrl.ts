@@ -91,6 +91,10 @@ export default [
                 title: 'Flexbox优雅解决inline-block空隙问题',
                 url: 'https://www.jianshu.com/p/29170ce23310',
             },
+            {
+                title: '四个免费的渐变配色网站！',
+                url: 'https://zhuanlan.zhihu.com/p/46609832',
+            },
         ],
     },
     {
