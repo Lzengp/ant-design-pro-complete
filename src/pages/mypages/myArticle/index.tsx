@@ -129,7 +129,7 @@ const MyArticle = (props: any) => {
           setSelectData(res.data.filter((item: any) => item.id === id)[0]);
         } else {
           setSelectData(res.data[0]);
-          setBrowserTabTitle(res.data[0].title)
+          setBrowserTabTitle(res.data[0].title);
           history.replace(`/myArticle/${res.data[0].id}`);
         }
       } else if (Array.isArray(res.data) && res.data.length) {
@@ -392,6 +392,19 @@ const MyArticle = (props: any) => {
             }}
           />
         </Popover>
+        <div className={styles.icpNum}>
+          <a target="_blank" href="#/personal">关于我</a>|
+          <a target='-blank' href='#/myModularization'>模块化页面体验</a>|
+          <a target='-blank' href='#/toolClassification'>微书签</a>|
+          <a
+                target='-blank'
+                onClick={() => {
+                    window.open('https://github.com/Lzengp');
+                }}
+            >
+                <GithubOutlined style={{ marginRight: '5px' }} />
+            </a>
+        </div>
       </div>
       <div className={styles.myArticleWarp} onClick={(e) => { e.stopPropagation(); setPopoverOpen(false); }}>
         {/* 左侧文章目录 */}
@@ -422,7 +435,7 @@ const MyArticle = (props: any) => {
                   )}
                   onClick={() => {
                     setSelectData(item);
-                    setBrowserTabTitle(item.title)
+                    setBrowserTabTitle(item.title);
                     history.replace(`/myArticle/${item.id}`);
                   }}
                 >
@@ -460,8 +473,8 @@ const MyArticle = (props: any) => {
               editorStyle={fullScreenFlag ? { overflow: 'auto', height: '80vh' } : {}}
               onDoubleClick={() => {
                 // 需要判断是否有权限修改文章
-                console.log('需要判断是否有权限修改文章', isAuthor)
-                if (!isAuthor) { return };
+                console.log('需要判断是否有权限修改文章', isAuthor);
+                if (!isAuthor) { return; };
                 editArticle(selectData?.id || '');
               }}
             />
