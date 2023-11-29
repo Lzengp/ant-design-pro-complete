@@ -52,6 +52,10 @@ export default [
                 title: '微信公众平台',
                 url: 'https://mp.weixin.qq.com/wxopen/devprofile?action=get_profile&token=513525402&lang=zh_CN',
             },
+            {
+                title: '微信小程序如何使用背景图',
+                url: 'https://developers.weixin.qq.com/community/develop/article/doc/00060a68d6c720dee8acce6135b413',
+            },
         ],
     },
     {
