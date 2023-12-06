@@ -1,4 +1,5 @@
 import { Col, Row } from 'antd';
+import Bg from '@/assets/bg.png';
 
 const GoodTools = () => {
   const arrList = [
@@ -21,7 +22,7 @@ const GoodTools = () => {
   ];
 
   return (
-    <>
+    <div  style={{ backgroundImage: `url(${Bg})`}}>
       <h2>好用的代码工具网址</h2>
       <Row gutter={24}>
         {arrList.map((item, index) => {
@@ -39,7 +40,7 @@ const GoodTools = () => {
           );
         })}
       </Row>
-    </>
+    </div>
   );
 };
 
