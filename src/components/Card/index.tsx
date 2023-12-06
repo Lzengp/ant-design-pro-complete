@@ -1,4 +1,4 @@
-import { Button, Card } from "antd";
+import { Avatar, Button, Card } from "antd";
 import { MyIcon } from "../MyIcon";
 import styles from './index.less';
 
@@ -9,11 +9,12 @@ export interface MyCardProps {
     description: string;
     wall?: boolean; // 是否要翻墙
     recommend?: boolean; // 是否推荐
+    btnName?: string; // 按钮名称
 }
 
 const MyCard = (props: MyCardProps) => {
 
-    const { logo, title, url, description, wall, recommend } = props;
+    const { logo, title, url, description, wall, recommend, btnName } = props;
 
     return (
         <div className={styles.myCardWrap}>
@@ -22,7 +23,8 @@ const MyCard = (props: MyCardProps) => {
                 title={(
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <img src={logo} style={{ height: '50px', marginRight: '10px' }} alt="图标" />
+                            {logo && <img src={logo} style={{ height: '50px', marginRight: '10px' }} alt="图标" />}
+                            {!logo && <Avatar className={styles.myAvater}>{title.substring(0, 1)?.toLocaleUpperCase()}</Avatar>}
                             <h3><a target="_blank" href={url} title="chatgpt在线" style={{ color: '#000000' }}>{title}</a></h3>
                         </div>
                         <div>
@@ -36,7 +38,7 @@ const MyCard = (props: MyCardProps) => {
                 <div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '60px' }}>
                         <div style={{ marginRight: '10px', color: '#999' }}>{description}</div>
-                        <Button onClick={() => { window.open(url); }}>立即体验</Button>
+                        <Button onClick={() => { window.open(url); }}>{btnName || '立即体验'}</Button>
                     </div>
                 </div>
             </Card>

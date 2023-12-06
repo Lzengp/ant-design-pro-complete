@@ -3,7 +3,7 @@ export default [
     {
         logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
         title: 'Ant Design',
-        url: 'https://4x-ant-design.antgroup.com/components/overview-cn/',
+        url: 'https://ant-design.antgroup.com/components/overview-cn',
         description: '阿里的前端组件库，国内最好用的react前端UI组件库之一',
     },
     {
@@ -90,5 +90,11 @@ export default [
         url: 'https://www.lodashjs.com/',
         description: '一个一致性、模块化、高性能的 JavaScript 实用工具库',
         recommend: true,
+    },
+    {
+        logo: '/logo_l.png',
+        title: '不语',
+        url: 'https://www.lzengp.top/',
+        description: '一款个人在线笔记',
     },
 ];

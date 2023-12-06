@@ -7,11 +7,12 @@ import styles from './index.less';
 
 interface PaginationCardProps {
     dataSource: Array<MyCardProps>;
+    btnName?: string;
 }
 
 
 const PaginationCard = (props: PaginationCardProps) => {
-    const { dataSource: propsData } = props;
+    const { dataSource: propsData, btnName } = props;
     const [dataSource, setDataSource] = useState<Array<MyCardProps>>(propsData.slice(0, 12));
     const [current, setCurrent] = useState<number>(1);
 
@@ -26,7 +27,7 @@ const PaginationCard = (props: PaginationCardProps) => {
             <Row gutter={24}>
                 {
                     dataSource.map((item: MyCardProps) => {
-                        return <Col style={{ marginBottom: '20px' }} key={item.logo}><MyCard {...item} /></Col>;
+                        return <Col style={{ marginBottom: '20px' }} key={item.logo}><MyCard {...item} btnName={btnName} /></Col>;
                     })
                 }
             </Row>

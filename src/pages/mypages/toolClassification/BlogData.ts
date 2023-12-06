@@ -1,6 +1,18 @@
 // 博客
 export default [
     {
+        // logo: 'https://picx.zhimg.com/8d1f97081f1d5fff3a754f94cb4cd73a_xl.jpg?source=32738c0c',
+        title: '冴羽',
+        url: 'https://www.yuque.com/yayu',
+        description: '冴羽的 JavaScript 博客, github上start30.1k',
+    },
+    {
+        logo: 'https://lh3.googleusercontent.com/a/AGNmyxar_LKeBgq5oO7Hg5AhVYrWyDyiVt3Pzrv_aBgM=s512-c',
+        title: 'robin ren',
+        url: 'https://bento.me/robinren',
+        description: '维护TaroUI的一位技术大佬博客',
+    },
+    {
         logo: 'https://www.leoku.top/favicon.ico',
         title: 'leoku',
         url: 'https://www.leoku.top/',
@@ -26,8 +38,8 @@ export default [
     },
     {
         logo: '/logo_l.png',
-        title: '不语',
-        url: 'https://www.lzengp.top/',
-        description: '一款个人在线笔记',
+        title: 'Lzengp',
+        url: 'http://longwei.site',
+        description: '自己的博客，个人站点',
     },
 ];

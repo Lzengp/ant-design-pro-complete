@@ -59,7 +59,7 @@ const ToolClassification = () => {
                 <Divider orientation="left"> <h2>工具</h2></Divider>
                 <PaginationCard dataSource={ToolData} />
                 <Divider orientation="left"><h2>博客</h2></Divider>
-                <PaginationCard dataSource={BlogData} />
+                <PaginationCard dataSource={BlogData} btnName="进去看看"/>
                 <Divider orientation="left"><h2>前端技术</h2></Divider>
                 <PaginationCard dataSource={FontendData} />
                 <Divider orientation="left"><h2>书签链接</h2></Divider>
