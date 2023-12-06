@@ -6,6 +6,11 @@
     component: './mypages/toolClassification',
   },
   {
+    path: '/mypages/luckySheetShow',
+    layout: false,
+    component: './mypages/luckySheetShow',
+  },
+  {
     layout: false,
     path: '/portalPage',
     component: './PortalPage',
