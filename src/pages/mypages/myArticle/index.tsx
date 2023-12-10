@@ -364,6 +364,13 @@ const MyArticle = (props: any) => {
   };
 
 
+  const QuickEntrance = [
+    { url: '#/personal', title: '关于我' },
+    { url: '#/myPages/myModularization', title: '模块化页面体验' },
+    { url: '#/toolClassification', title: '微书签' },
+    { url: '#/mypages/luckySheetShow', title: '在线Excel' },
+  ];
+
   return (
     <div>
       <div
@@ -393,17 +400,21 @@ const MyArticle = (props: any) => {
           />
         </Popover>
         <div className={styles.icpNum}>
-          <a target="_blank" href="#/personal">关于我</a>|
+          {
+            QuickEntrance.map(item => <><a target="_blank" href={item.url}>{item.title}</a>|</>)
+          }
+          {/* <a target="_blank" href="#/personal">关于我</a>|
           <a target='-blank' href='#/myModularization'>模块化页面体验</a>|
           <a target='-blank' href='#/toolClassification'>微书签</a>|
+          <a target='-blank' href='#/mypages/luckySheetShow'>在线Excel</a>| */}
           <a
-                target='-blank'
-                onClick={() => {
-                    window.open('https://github.com/Lzengp');
-                }}
-            >
-                <GithubOutlined style={{ marginRight: '5px' }} />
-            </a>
+            target='-blank'
+            onClick={() => {
+              window.open('https://github.com/Lzengp');
+            }}
+          >
+            <GithubOutlined style={{ marginRight: '5px' }} />
+          </a>
         </div>
       </div>
       <div className={styles.myArticleWarp} onClick={(e) => { e.stopPropagation(); setPopoverOpen(false); }}>
