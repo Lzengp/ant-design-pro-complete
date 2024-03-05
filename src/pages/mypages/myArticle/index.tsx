@@ -121,7 +121,8 @@ const MyArticle = (props: any) => {
   };
 
   const queryData = () => {
-    request('/apiL/article/getArticle').then((res: any) => {
+    // request('/apiL/article/getArticle').then((res: any) => {
+      request('/apiL/article/getArticle').then((res: any) => {
       if (id && Array.isArray(res.data) && res.data.length) {
         setData(res.data);
         const currentData = res.data.find((item: any) => item.id === id);

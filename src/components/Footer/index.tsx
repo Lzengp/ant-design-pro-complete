@@ -34,15 +34,9 @@ const Footer: React.FC = () => {
           blankTarget: true,
         },
         {
-          key: '粤ICP备2023077596号',
-          title: '粤ICP备2023077596号',
-          href: 'https://tsm.miit.gov.cn/',
-          blankTarget: true,
-        },
-        {
           key: '粤ICP备2023077596号-1',
           title: '粤ICP备2023077596号-1',
-          href: 'https://tsm.miit.gov.cn/',
+          href: 'https://beian.miit.gov.cn/#/Integrated/index',
           blankTarget: true,
         },
       ]}

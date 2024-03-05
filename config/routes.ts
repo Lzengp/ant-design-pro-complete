@@ -359,6 +359,12 @@
         path: '/myPages/myVirtualTable',
         component: './mypages/myVirtualTable',
       },
+      {
+        name: 'bookmark',
+        icon: 'read',
+        path: '/myPages/bookmark',
+        component: './mypages/bookmark',
+      },
     ],
   },
   {

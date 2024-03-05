@@ -50,6 +50,7 @@
     "@ant-design/charts": "^0.9.4",
     "@ant-design/icons": "^4.7.0",
     "@ant-design/pro-card": "^1.19.0",
+    "@ant-design/pro-components": "^2.6.43",
     "@ant-design/pro-descriptions": "^1.10.0",
     "@ant-design/pro-form": "^1.64.0",
     "@ant-design/pro-layout": "^6.35.0",

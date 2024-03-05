@@ -131,9 +131,10 @@ const myEditorPage = (props: MyEditorPageProps) => {
           {id && id !== 'create' ? '更新' : '保存'}
         </Button>
         <Button onClick={() => {
-          history.push({
-            pathname: isMenuPage ? `/myPages/myArticle/${id}` : `/myArticle/${id}`,
-          });
+          // history.push({
+          //   pathname: isMenuPage ? `/myPages/myArticle/${id}` : `/myArticle/${id}`,
+          // });
+          history.goBack();
         }}>返回</Button>
       </Space>
       {renderMyEditor}

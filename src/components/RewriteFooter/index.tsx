@@ -16,8 +16,7 @@ const RewriteFooter = () => {
             >
                 <GithubOutlined style={{ marginRight: '5px' }} />
             </a>|
-            <a style={{}} target="_blank" href="https://tsm.miit.gov.cn/">粤ICP备2023077596号</a>|
-            <a style={{}} target="_blank" href="https://tsm.miit.gov.cn/">粤ICP备2023077596号-1</a>
+            <a style={{}} target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index">粤ICP备2023077596号-1</a>
         </div>
     );
 };

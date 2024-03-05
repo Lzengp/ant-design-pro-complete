@@ -64,4 +64,5 @@ export default {
   'menu.myPages.myArticleList': '我的文章列表',
   'menu.myPages.myVirtualTable': '虚拟列表',
   'menu.toolClassification': '微书签',
+  'menu.myPages.bookmark': '微书签',
 };
